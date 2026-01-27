@@ -30,7 +30,10 @@
       },
       {
         "files": [
+          "index.md",
+          "toc.yml",
           "docs/**.md",
+          "docs/**.yml",
           "README.md",
           "CONTRIBUTING.md",
           "WORKFLOW.md",
