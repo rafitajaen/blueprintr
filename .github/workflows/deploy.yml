@@ -66,6 +66,16 @@ jobs:
         fail_ci_if_error: false
         token: ${{ secrets.CODECOV_TOKEN }}
 
+    # Upload build artifacts for reuse in other jobs
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-output
+        path: |
+          src/**/bin/Release/**
+          src/**/*.csproj
+        retention-days: 1
+
   # Step 2: Publish to NuGet (only if src/ changed)
   publish-nuget:
     name: Publish to NuGet
@@ -84,11 +94,11 @@ jobs:
       with:
         dotnet-version: '10.0.x'
 
-    - name: Restore dependencies
-      run: dotnet restore
-
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: build-output
+        path: .
 
     - name: Detect changed projects
       id: changes
@@ -217,11 +227,11 @@ jobs:
     - name: Setup DocFX
       run: dotnet tool install -g docfx
 
-    - name: Restore dependencies
-      run: dotnet restore
-
-    - name: Build projects
-      run: dotnet build --configuration Release --no-restore
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: build-output
+        path: .
 
     - name: Generate API metadata
       run: docfx metadata docfx.json
