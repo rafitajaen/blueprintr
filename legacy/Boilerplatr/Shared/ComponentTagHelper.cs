@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.DependencyInjection;
+
+namespace Boilerplatr.Shared;
+
 /// <summary>
 /// Implements a tag helper as a Razor view as the template
 /// </summary>
@@ -11,7 +14,6 @@ using Microsoft.Extensions.DependencyInjection;
 ///     * FooTagHelper.cs -> Defines the properties with HtmlAttribute on it (derived from ViewTagHelper)
 ///     * default.cshtml -> Defines the template with Model=>FooTagHelper
 /// </remarks>
-namespace Boilerplatr.Shared;
 public class ComponentBaseTagHelper : TagHelper
 {
     // private string _viewPath;
@@ -22,9 +24,6 @@ public class ComponentBaseTagHelper : TagHelper
     //     _viewPath = $"/src/front/Components/{className}.cshtml";
     // }
 
-    /// <summary>
-    /// Gets or sets the <see cref="Rendering.ViewContext"/> for the current request.
-    /// </summary>
     [HtmlAttributeNotBound]
     [ViewContext]
     public ViewContext ViewContext { get; set; }

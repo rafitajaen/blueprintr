@@ -5,6 +5,7 @@
     <RootNamespace>Boilerplatr</RootNamespace>
     <Copyright>boilerplatr.com - 2025</Copyright>
     <Description>Boilerplate for NET Projects</Description>
+    <NoWarn>$(NoWarn);1591;1573</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,7 +18,6 @@
     <PackageReference Include="MailKit" />
     <PackageReference Include="Markdig" />
     <PackageReference Include="Humanizer" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
