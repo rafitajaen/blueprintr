@@ -2,6 +2,8 @@
 
 Production-ready boilerplate utilities library for .NET projects including converters, validators, extensions, and common patterns.
 
+[![NuGet](https://img.shields.io/nuget/v/Blueprintr.svg)](https://www.nuget.org/packages/Blueprintr/)
+
 ## Installation
 
 ```bash
