@@ -11,6 +11,7 @@
     <Company>Blueprintr</Company>
     <Product>Blueprintr</Product>
     <Description>Production-ready boilerplate utilities library for .NET projects including converters, validators, extensions, and common patterns.</Description>
+    <Copyright>Copyright © 2025 Rafael Tajahuerce</Copyright>
     <PackageTags>dotnet;boilerplate;utilities;blueprintr;converters;validators;extensions</PackageTags>
     <RepositoryUrl>https://github.com/rafitajaen/blueprintr</RepositoryUrl>
     <RepositoryType>git</RepositoryType>

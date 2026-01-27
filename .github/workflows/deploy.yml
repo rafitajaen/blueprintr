@@ -94,9 +94,6 @@ jobs:
       with:
         dotnet-version: '10.0.x'
 
-    - name: Install MinVer CLI
-      run: dotnet tool install --global minver-cli
-
     - name: Restore dependencies
       run: dotnet restore
 
@@ -156,31 +153,34 @@ jobs:
             --no-build \
             --output ./nupkgs
 
-          # Get the package version from MinVer
-          VERSION=$(dotnet minver -t "$PROJECT" -v e)
-          echo "Package version: $VERSION"
-
           # Get project name
           PROJECT_NAME=$(basename "${PROJECT%.csproj}")
 
-          # Find the generated package
-          PACKAGE_FILE="./nupkgs/${PROJECT_NAME}.${VERSION}.nupkg"
+          # Find the generated package file (dotnet pack creates it with version in filename)
+          PACKAGE_FILE=$(find ./nupkgs -name "${PROJECT_NAME}.*.nupkg" -not -name "*.symbols.nupkg" | head -n 1)
 
-          if [ -f "$PACKAGE_FILE" ]; then
-            echo "Publishing $PACKAGE_FILE to NuGet"
-
-            # Push to NuGet
-            dotnet nuget push "$PACKAGE_FILE" \
-              --api-key "$NUGET_API_KEY" \
-              --source https://api.nuget.org/v3/index.json \
-              --skip-duplicate
-
-            echo "✅ Successfully published $PROJECT_NAME version $VERSION"
-          else
-            echo "❌ Package file not found: $PACKAGE_FILE"
+          if [ -z "$PACKAGE_FILE" ]; then
+            echo "❌ No package file found for $PROJECT_NAME"
             ls -la ./nupkgs/
             exit 1
           fi
+
+          # Extract version from filename (e.g., Blueprintr.0.1.0.nupkg -> 0.1.0)
+          VERSION=$(basename "$PACKAGE_FILE" | sed "s/${PROJECT_NAME}\.\(.*\)\.nupkg/\1/")
+          echo "Package version: $VERSION"
+
+          echo "Publishing $PACKAGE_FILE to NuGet"
+
+          # Push to NuGet
+          dotnet nuget push "$PACKAGE_FILE" \
+            --api-key "$NUGET_API_KEY" \
+            --source https://api.nuget.org/v3/index.json \
+            --skip-duplicate
+
+          echo "✅ Successfully published $PROJECT_NAME version $VERSION"
+
+          # Store version for later use
+          echo "LAST_VERSION=$VERSION" >> $GITHUB_ENV
         done
 
     - name: Upload packages as artifacts
@@ -196,9 +196,10 @@ jobs:
       if: steps.changes.outputs.projects != ''
       id: version
       run: |
-        VERSION=$(dotnet minver -v e)
+        # Use the version stored during pack and publish
+        VERSION="${LAST_VERSION}"
         echo "version=$VERSION" >> $GITHUB_OUTPUT
-        echo "Package version: $VERSION"
+        echo "Package version for release: $VERSION"
 
     # Create GitHub Release
     - name: Create GitHub Release
