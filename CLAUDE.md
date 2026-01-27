@@ -59,9 +59,10 @@ blueprintr/
 .NET 10.0 SDK
 Git
 
-# Optional
+# Optional (but recommended)
 VS Code
 DocFX: dotnet tool install -g docfx
+MinVer CLI: dotnet tool install -g minver-cli
 ```
 
 ### 2. Configure GitHub Secrets

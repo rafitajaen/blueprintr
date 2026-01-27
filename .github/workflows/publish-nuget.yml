@@ -22,6 +22,10 @@ jobs:
     needs: ci  # This ensures CI must pass before publishing
     if: success()  # Only run if CI succeeded
 
+    permissions:
+      id-token: write  # Required for Trusted Publishing (OIDC token issuance)
+      contents: read
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -43,7 +47,7 @@ jobs:
       id: changes
       run: |
         # Get list of changed files in src/ directory
-        CHANGED_FILES=$(git diff --name-only HEAD^ HEAD -- 'src/**/*.cs' 'src/**/*.csproj' || echo "")
+        CHANGED_FILES=$(git diff --name-only HEAD^ HEAD -- 'src/**/*.cs' 'src/**/*.csproj' 2>/dev/null || git ls-tree -r --name-only HEAD -- 'src/')
 
         # Initialize array for projects to publish
         PROJECTS_TO_PUBLISH=""
@@ -68,11 +72,39 @@ jobs:
           echo "No projects with changes detected"
         fi
 
+    # TRUSTED PUBLISHING (Recommended): Get short-lived API key via OIDC
+    # Requires: NuGet.org Trusted Publishing policy configured
+    # Docs: https://learn.microsoft.com/en-us/nuget/nuget-org/trusted-publishing
+    - name: NuGet Login (Trusted Publishing)
+      if: steps.changes.outputs.projects != '' && secrets.NUGET_USERNAME != ''
+      uses: NuGet/login@v1
+      id: nuget-login
+      with:
+        user: ${{ secrets.NUGET_USERNAME }}  # NuGet.org username (NOT email)
+      continue-on-error: true  # Fallback to API key if Trusted Publishing fails
+
     - name: Pack and Publish to NuGet
       if: steps.changes.outputs.projects != ''
       env:
-        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        # Use Trusted Publishing API key (short-lived) if available, otherwise use long-lived API key
+        NUGET_API_KEY_TRUSTED: ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
+        NUGET_API_KEY_LEGACY: ${{ secrets.NUGET_API_KEY }}
       run: |
+        # Determine which authentication method to use
+        if [ -n "$NUGET_API_KEY_TRUSTED" ]; then
+          echo "✅ Using Trusted Publishing (OIDC - short-lived token)"
+          API_KEY="$NUGET_API_KEY_TRUSTED"
+        elif [ -n "$NUGET_API_KEY_LEGACY" ]; then
+          echo "⚠️  Using legacy API key (consider migrating to Trusted Publishing)"
+          API_KEY="$NUGET_API_KEY_LEGACY"
+        else
+          echo "❌ No NuGet authentication configured!"
+          echo "Configure either:"
+          echo "  1. Trusted Publishing: https://learn.microsoft.com/en-us/nuget/nuget-org/trusted-publishing"
+          echo "  2. API Key secret: NUGET_API_KEY"
+          exit 1
+        fi
+
         for PROJECT in ${{ steps.changes.outputs.projects }}; do
           echo "Processing $PROJECT"
 
@@ -97,7 +129,7 @@ jobs:
 
             # Push to NuGet
             dotnet nuget push "$PACKAGE_FILE" \
-              --api-key "$NUGET_API_KEY" \
+              --api-key "$API_KEY" \
               --source https://api.nuget.org/v3/index.json \
               --skip-duplicate
 
