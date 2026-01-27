@@ -8,11 +8,11 @@
     <!-- NuGet Package Properties -->
     <PackageId>Blueprintr.Endpoints</PackageId>
     <Authors>Blueprintr Team</Authors>
-    <Company>Blueprint</Company>
+    <Company>Blueprintr</Company>
     <Product>Blueprintr.Endpoints</Product>
     <Description>Boilerplate endpoints library for ASP.NET Core projects</Description>
-    <PackageTags>aspnetcore;endpoints;boilerplate;blueprint</PackageTags>
-    <RepositoryUrl>https://github.com/yourusername/blueprint</RepositoryUrl>
+    <PackageTags>aspnetcore;endpoints;boilerplate;blueprintr</PackageTags>
+    <RepositoryUrl>https://github.com/rafitajaen/blueprintr</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>

@@ -26,7 +26,7 @@ var name = endpointPath.GetEndpointName();
 
 ## API Documentation
 
-For complete API documentation, visit the [Blueprintr Documentation](https://YOUR_USERNAME.github.io/blueprint/).
+For complete API documentation, visit the [Blueprintr Documentation](https://rafitajaen.github.io/blueprintr/).
 
 ## Features
 
@@ -54,14 +54,14 @@ public class EndpointRegistry
 
 ## Contributing
 
-Contributions are welcome! Please read the [Contributing Guide](https://github.com/YOUR_USERNAME/blueprintr/blob/main/CONTRIBUTING.md).
+Contributions are welcome! Please read the [Contributing Guide](https://github.com/rafitajaen/blueprintr/blob/main/CONTRIBUTING.md).
 
 ## License
 
-This project is licensed under the GNU Affero General Public License v3.0 - see the [LICENSE](https://github.com/YOUR_USERNAME/blueprintr/blob/main/LICENSE) file for details.
+This project is licensed under the GNU Affero General Public License v3.0 - see the [LICENSE](https://github.com/rafitajaen/blueprintr/blob/main/LICENSE) file for details.
 
 ## Support
 
-- [Documentation](https://YOUR_USERNAME.github.io/blueprint/)
-- [GitHub Issues](https://github.com/YOUR_USERNAME/blueprintr/issues)
-- [GitHub Discussions](https://github.com/YOUR_USERNAME/blueprintr/discussions)
+- [Documentation](https://rafitajaen.github.io/blueprintr/)
+- [GitHub Issues](https://github.com/rafitajaen/blueprintr/issues)
+- [GitHub Discussions](https://github.com/rafitajaen/blueprintr/discussions)

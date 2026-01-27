@@ -15,7 +15,7 @@ DocFX is Microsoft's documentation generation tool for .NET projects that:
 
 For .NET libraries, DocFX is the best choice because:
 1. **Automatic API docs**: Extracts documentation from XML comments
-2. **Multi-project support**: Documents all Blueprint libraries in one place
+2. **Multi-project support**: Documents all Blueprintr libraries in one place
 3. **GitHub integration**: Publishes to GitHub Pages automatically
 4. **Modern UI**: Clean, responsive, searchable interface
 5. **Official Microsoft tool**: Well-maintained and widely used
@@ -171,7 +171,7 @@ The workflow automatically:
 ## Documentation Structure
 
 ```
-blueprint/
+blueprintr/
 ├── docs/
 │   ├── index.md              # Landing page
 │   ├── getting-started.md    # Getting started guide
@@ -187,9 +187,9 @@ blueprint/
 ### Landing Page (docs/index.md)
 
 ```markdown
-# Blueprint Libraries
+# Blueprintr Libraries
 
-Welcome to Blueprint documentation!
+Welcome to Blueprintr documentation!
 
 ## Available Libraries
 
@@ -244,7 +244,7 @@ The workflow (`.github/workflows/documentation.yml`) will:
 1. Trigger on tags (releases)
 2. Build DocFX documentation
 3. Deploy to `gh-pages` branch
-4. Site available at: `https://YOUR_USERNAME.github.io/blueprint/`
+4. Site available at: `https://rafitajaen.github.io/blueprintr/`
 
 ## Alternatives to DocFX
 
@@ -333,7 +333,7 @@ docfx serve _site
 
 ### Online (after publishing)
 
-`https://YOUR_USERNAME.github.io/blueprint/`
+`https://rafitajaen.github.io/blueprintr/`
 
 ## Maintenance
 

@@ -5,7 +5,7 @@ Thank you for your interest in contributing to Blueprintr!
 ## 🚀 Quick Start
 
 1. Fork the repository
-2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/blueprintr.git`
+2. Clone your fork: `git clone https://github.com/rafitajaen/blueprintr.git`
 3. Create a branch: `git checkout -b feat/my-feature`
 4. Make your changes
 5. Add tests

@@ -63,12 +63,12 @@
     "disableGitFeatures": false,
     "globalMetadata": {
       "_appTitle": "Blueprintr Documentation",
-      "_appName": "Blueprint",
+      "_appName": "Blueprintr",
       "_appFooter": "© Blueprintr Team - AGPL-3.0 License",
       "_enableSearch": true,
       "_enableNewTab": true,
       "_gitContribute": {
-        "repo": "https://github.com/YOUR_USERNAME/blueprintr",
+        "repo": "https://github.com/rafitajaen/blueprintr",
         "branch": "main"
       }
     }

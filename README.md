@@ -1,7 +1,7 @@
 # Blueprintr
 
 [![NuGet](https://img.shields.io/nuget/v/Blueprintr.Endpoints.svg)](https://www.nuget.org/packages/Blueprintr.Endpoints/)
-[![Build Status](https://github.com/YOUR_USERNAME/blueprintr/workflows/CI%20-%20Build%20and%20Test/badge.svg)](https://github.com/YOUR_USERNAME/blueprintr/actions)
+[![Build Status](https://github.com/rafitajaen/blueprintr/workflows/CI%20-%20Build%20and%20Test/badge.svg)](https://github.com/rafitajaen/blueprintr/actions)
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL%203.0-blue.svg)](LICENSE)
 
 Collection of boilerplate code libraries for C# projects. Reusable libraries automatically published to NuGet.
@@ -49,7 +49,7 @@ dotnet pack --configuration Release
 
 - **[CLAUDE.md](CLAUDE.md)** - Complete project guide
 - **[CONTRIBUTING.md](CONTRIBUTING.md)** - Contribution guidelines
-- **[API Documentation](https://YOUR_USERNAME.github.io/blueprintr/)** - Generated from code
+- **[API Documentation](https://rafitajaen.github.io/blueprintr/)** - Generated from code
 - **[docs/](docs/)** - Additional documentation
 
 ## 🎯 Features
@@ -92,9 +92,9 @@ See [LICENSE](LICENSE) file for details.
 
 ## 📞 Support
 
-- 📝 [GitHub Issues](https://github.com/YOUR_USERNAME/blueprintr/issues) - Bug reports & features
-- 📖 [GitHub Discussions](https://github.com/YOUR_USERNAME/blueprintr/discussions) - Questions & ideas
-- 📚 [Documentation](https://YOUR_USERNAME.github.io/blueprintr/) - API reference
+- 📝 [GitHub Issues](https://github.com/rafitajaen/blueprintr/issues) - Bug reports & features
+- 📖 [GitHub Discussions](https://github.com/rafitajaen/blueprintr/discussions) - Questions & ideas
+- 📚 [Documentation](https://rafitajaen.github.io/blueprintr/) - API reference
 
 ---
 

@@ -247,7 +247,7 @@ docfx serve _site
 
 ### GitHub Pages
 After first tag push:
-- Docs available at: `https://YOUR_USERNAME.github.io/blueprintr/`
+- Docs available at: `https://rafitajaen.github.io/blueprintr/`
 
 ## 🛠️ Useful Commands
 
@@ -354,9 +354,9 @@ Versioning: MinVer (Git tags)
 ## 🔗 Important Links
 
 - **NuGet Package**: https://www.nuget.org/packages/Blueprintr.Endpoints/
-- **Documentation**: https://YOUR_USERNAME.github.io/blueprintr/
-- **GitHub Repo**: https://github.com/YOUR_USERNAME/blueprintr
-- **Issues**: https://github.com/YOUR_USERNAME/blueprintr/issues
+- **Documentation**: https://rafitajaen.github.io/blueprintr/
+- **GitHub Repo**: https://github.com/rafitajaen/blueprintr
+- **Issues**: https://github.com/rafitajaen/blueprintr/issues
 
 ## 💡 Key Concepts
 

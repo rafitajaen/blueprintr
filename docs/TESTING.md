@@ -1,10 +1,10 @@
 # Testing Guide
 
-This document explains the testing strategy and CI/CD pipeline for Blueprint projects.
+This document explains the testing strategy and CI/CD pipeline for Blueprintr projects.
 
 ## Testing Strategy
 
-Blueprint uses **NUnit** as the testing framework with the following principles:
+Blueprintr uses **NUnit** as the testing framework with the following principles:
 
 ### Test Structure
 
@@ -15,8 +15,8 @@ Blueprint uses **NUnit** as the testing framework with the following principles:
 ### Test Project Naming
 
 ```
-src/Blueprint.LibraryName/          -> Blueprint.LibraryName.csproj
-tests/Blueprint.LibraryName.Tests/  -> Blueprint.LibraryName.Tests.csproj
+src/Blueprintr.LibraryName/          -> Blueprintr.LibraryName.csproj
+tests/Blueprintr.LibraryName.Tests/  -> Blueprintr.LibraryName.Tests.csproj
 ```
 
 ### Test File Naming
@@ -327,18 +327,18 @@ When creating a new library:
 
 ```bash
 # Create test project
-dotnet new nunit -n Blueprint.NewLibrary.Tests -o tests/Blueprint.NewLibrary.Tests -f net10.0
+dotnet new nunit -n Blueprintr.NewLibrary.Tests -o tests/Blueprintr.NewLibrary.Tests -f net10.0
 
 # Remove version numbers from PackageReferences in .csproj
 # Add project reference to the library being tested
 
 # Add to solution
-dotnet sln add tests/Blueprint.NewLibrary.Tests/Blueprint.NewLibrary.Tests.csproj
+dotnet sln add tests/Blueprintr.NewLibrary.Tests/Blueprintr.NewLibrary.Tests.csproj
 ```
 
 ### 2. Configure Test Project
 
-Edit `tests/Blueprint.NewLibrary.Tests/Blueprint.NewLibrary.Tests.csproj`:
+Edit `tests/Blueprintr.NewLibrary.Tests/Blueprintr.NewLibrary.Tests.csproj`:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -356,7 +356,7 @@ Edit `tests/Blueprint.NewLibrary.Tests/Blueprint.NewLibrary.Tests.csproj`:
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Blueprint.NewLibrary\Blueprint.NewLibrary.csproj" />
+    <ProjectReference Include="..\..\src\Blueprintr.NewLibrary\Blueprintr.NewLibrary.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -367,7 +367,7 @@ Edit `tests/Blueprint.NewLibrary.Tests/Blueprint.NewLibrary.Tests.csproj`:
 
 ### 3. Write First Test
 
-Create `tests/Blueprint.NewLibrary.Tests/MyClassTests.cs`:
+Create `tests/Blueprintr.NewLibrary.Tests/MyClassTests.cs`:
 
 ```csharp
 namespace Blueprintr.NewLibrary.Tests;

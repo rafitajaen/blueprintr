@@ -1,6 +1,6 @@
 # Getting Started
 
-This guide will help you get started with Blueprint libraries.
+This guide will help you get started with Blueprintr libraries.
 
 ## Prerequisites
 
@@ -104,5 +104,5 @@ If you encounter build errors:
 ## Getting Help
 
 - Check the [API documentation](api/index.md)
-- Search [GitHub Issues](https://github.com/YOUR_USERNAME/blueprintr/issues)
-- Ask in [GitHub Discussions](https://github.com/YOUR_USERNAME/blueprintr/discussions)
+- Search [GitHub Issues](https://github.com/rafitajaen/blueprintr/issues)
+- Ask in [GitHub Discussions](https://github.com/rafitajaen/blueprintr/discussions)

@@ -1,8 +1,8 @@
 # Blueprintr Documentation
 
-Welcome to the Blueprint documentation!
+Welcome to the Blueprintr documentation!
 
-Blueprint is a collection of boilerplate code libraries for C# projects. These reusable libraries are automatically published to NuGet, making it easy to add common functionality to your projects.
+Blueprintr is a collection of boilerplate code libraries for C# projects. These reusable libraries are automatically published to NuGet, making it easy to add common functionality to your projects.
 
 ## Available Libraries
 
@@ -44,7 +44,7 @@ dotnet add package Blueprintr.Endpoints
 - **[Getting Started](getting-started.md)** - Step-by-step guides for each library
 - **[API Reference](api/index.md)** - Complete API documentation
 - **[Workflow Guide](xref:../WORKFLOW.md)** - Development and publishing workflow
-- **[Contributing](xref:../CONTRIBUTING.md)** - How to contribute to Blueprint
+- **[Contributing](xref:../CONTRIBUTING.md)** - How to contribute to Blueprintr
 
 ## Features
 
@@ -57,10 +57,10 @@ dotnet add package Blueprintr.Endpoints
 
 ## Support
 
-- 📝 [GitHub Issues](https://github.com/YOUR_USERNAME/blueprintr/issues) - Report bugs or request features
-- 📖 [GitHub Discussions](https://github.com/YOUR_USERNAME/blueprintr/discussions) - Ask questions
-- 🔗 [GitHub Repository](https://github.com/YOUR_USERNAME/blueprintr) - View source code
+- 📝 [GitHub Issues](https://github.com/rafitajaen/blueprintr/issues) - Report bugs or request features
+- 📖 [GitHub Discussions](https://github.com/rafitajaen/blueprintr/discussions) - Ask questions
+- 🔗 [GitHub Repository](https://github.com/rafitajaen/blueprintr) - View source code
 
 ## License
 
-Blueprint is licensed under the [AGPL-3.0 License](https://github.com/YOUR_USERNAME/blueprintr/blob/main/LICENSE).
+Blueprintr is licensed under the [AGPL-3.0 License](https://github.com/rafitajaen/blueprintr/blob/main/LICENSE).
