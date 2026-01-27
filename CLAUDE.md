@@ -7,7 +7,7 @@
 **What is it?** Collection of reusable C# libraries automatically published to NuGet.
 
 **Current Libraries:**
-- `Blueprintr.Endpoints` - Endpoint utilities for ASP.NET Core
+- `Blueprintr` - Endpoint utilities for ASP.NET Core
 
 **Key Features:**
 - ✅ Automated testing (12 passing tests)
@@ -22,12 +22,12 @@
 
 ### Installation
 ```bash
-dotnet add package Blueprintr.Endpoints
+dotnet add package Blueprintr
 ```
 
 ### Usage
 ```csharp
-using Blueprintr.Endpoints;
+using Blueprintr;
 
 var name = "/api/users".GetEndpointName();
 // Returns: "api-users"
@@ -38,9 +38,9 @@ var name = "/api/users".GetEndpointName();
 ```
 blueprintr/
 ├── src/
-│   └── Blueprintr.Endpoints/           # NuGet library
+│   └── Blueprintr/           # NuGet library
 ├── tests/
-│   └── Blueprintr.Endpoints.Tests/     # NUnit tests (12 tests ✅)
+│   └── Blueprintr.Tests/     # NUnit tests (12 tests ✅)
 ├── docs/                               # DocFX documentation
 ├── .github/workflows/                  # CI/CD pipelines
 │   ├── ci.yml                         # PR validation (tests only)
@@ -96,8 +96,8 @@ Branch pattern: main
 git checkout -b feat/new-feature
 
 # 2. Make changes + add tests
-code src/Blueprintr.Endpoints/NewFeature.cs
-code tests/Blueprintr.Endpoints.Tests/NewFeatureTests.cs
+code src/Blueprintr/NewFeature.cs
+code tests/Blueprintr.Tests/NewFeatureTests.cs
 
 # 3. Test locally
 dotnet test
@@ -161,7 +161,7 @@ dotnet test
 dotnet test --collect:"XPlat Code Coverage"
 
 # Specific project
-dotnet test tests/Blueprintr.Endpoints.Tests/
+dotnet test tests/Blueprintr.Tests/
 ```
 
 ### Quality Gates
@@ -217,7 +217,7 @@ All in one workflow! 🚀
 cd src
 dotnet new classlib -n Blueprintr.NewLibrary -f net10.0
 
-# 2. Copy config from Blueprintr.Endpoints.csproj
+# 2. Copy config from Blueprintr.csproj
 #    Update: PackageId, Description, Authors
 
 # 3. Add XML documentation to public APIs
@@ -366,7 +366,7 @@ Versioning: MinVer (Git tags)
 
 ## 🔗 Important Links
 
-- **NuGet Package**: https://www.nuget.org/packages/Blueprintr.Endpoints/
+- **NuGet Package**: https://www.nuget.org/packages/Blueprintr/
 - **Documentation**: https://rafitajaen.github.io/blueprintr/
 - **GitHub Repo**: https://github.com/rafitajaen/blueprintr
 - **Issues**: https://github.com/rafitajaen/blueprintr/issues

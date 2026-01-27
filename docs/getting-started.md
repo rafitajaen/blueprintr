@@ -12,32 +12,32 @@ This guide will help you get started with Blueprintr libraries.
 ### Using .NET CLI
 
 ```bash
-dotnet add package Blueprintr.Endpoints
+dotnet add package Blueprintr
 ```
 
 ### Using Package Manager Console
 
 ```powershell
-Install-Package Blueprintr.Endpoints
+Install-Package Blueprintr
 ```
 
 ### Using Visual Studio
 
 1. Right-click on your project
 2. Select "Manage NuGet Packages"
-3. Search for "Blueprintr.Endpoints"
+3. Search for "Blueprintr"
 4. Click "Install"
 
-## Blueprintr.Endpoints
+## Blueprintr
 
 ### Overview
 
-Blueprintr.Endpoints provides common utilities and patterns for building endpoints in ASP.NET Core applications.
+Blueprintr provides common utilities and patterns for building endpoints in ASP.NET Core applications.
 
 ### Basic Usage
 
 ```csharp
-using Blueprintr.Endpoints;
+using Blueprintr;
 
 public class MyEndpointService
 {
@@ -51,7 +51,7 @@ public class MyEndpointService
 
 ### API Reference
 
-For complete API documentation, see [Blueprintr.Endpoints API](xref:Blueprintr.Endpoints).
+For complete API documentation, see [Blueprintr API](xref:Blueprintr).
 
 ## Next Steps
 
@@ -64,7 +64,7 @@ For complete API documentation, see [Blueprintr.Endpoints API](xref:Blueprintr.E
 ### Example 1: Endpoint Name Conversion
 
 ```csharp
-using Blueprintr.Endpoints;
+using Blueprintr;
 
 var endpoints = new[]
 {

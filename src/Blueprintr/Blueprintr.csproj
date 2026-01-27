@@ -6,12 +6,12 @@
     <Nullable>enable</Nullable>
 
     <!-- NuGet Package Properties -->
-    <PackageId>Blueprintr.Endpoints</PackageId>
+    <PackageId>Blueprintr</PackageId>
     <Authors>Blueprintr Team</Authors>
     <Company>Blueprintr</Company>
-    <Product>Blueprintr.Endpoints</Product>
-    <Description>Boilerplate endpoints library for ASP.NET Core projects</Description>
-    <PackageTags>aspnetcore;endpoints;boilerplate;blueprintr</PackageTags>
+    <Product>Blueprintr</Product>
+    <Description>Production-ready boilerplate utilities library for .NET projects including converters, validators, extensions, and common patterns</Description>
+    <PackageTags>dotnet;boilerplate;utilities;blueprintr;converters;validators;extensions</PackageTags>
     <RepositoryUrl>https://github.com/rafitajaen/blueprintr</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>

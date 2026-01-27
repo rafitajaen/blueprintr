@@ -22,8 +22,8 @@ tests/Blueprintr.LibraryName.Tests/  -> Blueprintr.LibraryName.Tests.csproj
 ### Test File Naming
 
 ```
-src/Blueprintr.Endpoints/EndpointExtensions.cs
-tests/Blueprintr.Endpoints.Tests/EndpointExtensionsTests.cs
+src/Blueprintr/EndpointExtensions.cs
+tests/Blueprintr.Tests/EndpointExtensionsTests.cs
 ```
 
 ## Writing Tests
@@ -31,7 +31,7 @@ tests/Blueprintr.Endpoints.Tests/EndpointExtensionsTests.cs
 ### Basic Test Structure
 
 ```csharp
-namespace Blueprintr.Endpoints.Tests;
+namespace Blueprintr.Tests;
 
 [TestFixture]
 public class EndpointExtensionsTests
@@ -146,7 +146,7 @@ dotnet test --configuration Release
 dotnet test --verbosity detailed
 
 # Run tests for specific project
-dotnet test tests/Blueprintr.Endpoints.Tests/Blueprintr.Endpoints.Tests.csproj
+dotnet test tests/Blueprintr.Tests/Blueprintr.Tests.csproj
 
 # Run tests matching a filter
 dotnet test --filter "FullyQualifiedName~GetEndpointName"

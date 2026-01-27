@@ -1,56 +1,70 @@
-# Blueprintr.Endpoints
+# Blueprintr
 
-Common utilities and patterns for building endpoints in ASP.NET Core applications.
+Production-ready boilerplate utilities library for .NET projects including converters, validators, extensions, and common patterns.
 
 ## Installation
 
 ```bash
-dotnet add package Blueprintr.Endpoints
+dotnet add package Blueprintr
 ```
 
-## Usage
+## Features
 
-This library provides extension methods and utilities for working with endpoints in ASP.NET Core.
+- **Type Converters** - Convert between Guid7, ULID, IP addresses, and more
+- **Validators** - FluentValidation validators for common scenarios
+- **Extensions** - Useful extension methods for strings, collections, and entities
+- **Utilities** - Password hashing, character sets, file detection
+- **Entity Framework** - Base entity classes and interfaces
+- Fully documented with XML comments
+- .NET 10.0 target framework
 
-### Endpoint Name Extension
+## Quick Start
 
-Convert endpoint paths to standardized names:
+### Type Converters
 
 ```csharp
-using Blueprintr.Endpoints;
+using Blueprintr.Converters;
 
-var endpointPath = "/api/users/profile";
-var name = endpointPath.GetEndpointName();
-// Returns: "api-users-profile"
+// Convert Guid7
+var guid7Converter = new Guid7Converter();
+var guid = guid7Converter.ConvertFromProvider("some-value");
+
+// Convert IP addresses
+var ipConverter = new IpAddressConverter();
+var ip = ipConverter.ConvertFromProvider("192.168.1.1");
+
+// Convert ULIDs
+var ulidConverter = new UlidConverter();
+var ulid = ulidConverter.ConvertToProvider(Guid.NewGuid());
+```
+
+### Password Hashing
+
+```csharp
+using Blueprintr.Utils;
+
+// Generate salt and hash password
+var salt = PasswordHasher.GenerateSaltHexString();
+var hash = PasswordHasher.HashHexString("password123", salt);
+
+// Verify password
+bool isValid = PasswordHasher.Verify("password123", hash, salt);
+```
+
+### Character Sets
+
+```csharp
+using Blueprintr.Utils;
+
+// Use predefined character sets
+var alphanumeric = CharSets.Alphanumeric;
+var digits = CharSets.Numeric;
+var lowercase = CharSets.LowerAlphabetic;
 ```
 
 ## API Documentation
 
 For complete API documentation, visit the [Blueprintr Documentation](https://rafitajaen.github.io/blueprintr/).
-
-## Features
-
-- Extension methods for endpoint manipulation
-- Utilities for common endpoint patterns
-- Fully documented with XML comments
-- .NET 10.0 target framework
-
-## Examples
-
-### Basic Usage
-
-```csharp
-using Blueprintr.Endpoints;
-
-public class EndpointRegistry
-{
-    public void RegisterEndpoint(string path)
-    {
-        var name = path.GetEndpointName();
-        Console.WriteLine($"Registering endpoint: {name}");
-    }
-}
-```
 
 ## Contributing
 

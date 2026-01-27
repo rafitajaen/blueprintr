@@ -682,7 +682,7 @@ git push origin feat/test-publish
 - ✅ Changed projects detected
 - ✅ Package published (check workflow logs)
 - ✅ Package appears on nuget.org (5-15 min delay)
-  - Visit: https://www.nuget.org/packages/Blueprintr.Endpoints/
+  - Visit: https://www.nuget.org/packages/Blueprintr/
   - Check version matches MinVer calculation
 
 **If Publishing Fails:**
@@ -1190,7 +1190,7 @@ permissions:
 
 **Solutions:**
 1. Wait 15 minutes
-2. Check direct URL: `https://www.nuget.org/packages/Blueprintr.Endpoints/`
+2. Check direct URL: `https://www.nuget.org/packages/Blueprintr/`
 3. Click "Include prerelease" for alpha versions
 4. Check "Package History" tab for recent versions
 
@@ -1505,7 +1505,7 @@ dotnet test
 ```
 
 **Important URLs:**
-- NuGet Packages: https://www.nuget.org/packages/Blueprintr.Endpoints/
+- NuGet Packages: https://www.nuget.org/packages/Blueprintr/
 - Documentation: https://rafitajaen.github.io/blueprintr/
 - GitHub Repo: https://github.com/rafitajaen/blueprintr
 

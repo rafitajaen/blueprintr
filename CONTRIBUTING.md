@@ -68,7 +68,7 @@ dotnet test
 dotnet test --collect:"XPlat Code Coverage"
 
 # Specific project
-dotnet test tests/Blueprintr.Endpoints.Tests/
+dotnet test tests/Blueprintr.Tests/
 ```
 
 ## 📋 Pull Request Process

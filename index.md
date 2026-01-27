@@ -8,20 +8,20 @@
 
 ### Current Libraries
 
-- **[Blueprintr.Endpoints](xref:Blueprintr.Endpoints)** - Endpoint utilities for ASP.NET Core
+- **[Blueprintr](xref:Blueprintr)** - Endpoint utilities for ASP.NET Core
 
 ## 🚀 Quick Start
 
 ### Installation
 
 ```bash
-dotnet add package Blueprintr.Endpoints
+dotnet add package Blueprintr
 ```
 
 ### Usage
 
 ```csharp
-using Blueprintr.Endpoints;
+using Blueprintr;
 
 var name = "/api/users".GetEndpointName();
 // Returns: "api-users"
@@ -46,7 +46,7 @@ var name = "/api/users".GetEndpointName();
 
 ## 🔗 Links
 
-- **NuGet Package**: [Blueprintr.Endpoints](https://www.nuget.org/packages/Blueprintr.Endpoints/)
+- **NuGet Package**: [Blueprintr](https://www.nuget.org/packages/Blueprintr/)
 - **GitHub Repository**: [rafitajaen/blueprintr](https://github.com/rafitajaen/blueprintr)
 - **Issues**: [Report a bug](https://github.com/rafitajaen/blueprintr/issues)
 

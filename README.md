@@ -1,6 +1,6 @@
 # Blueprintr
 
-[![NuGet](https://img.shields.io/nuget/v/Blueprintr.Endpoints.svg)](https://www.nuget.org/packages/Blueprintr.Endpoints/)
+[![NuGet](https://img.shields.io/nuget/v/Blueprintr.svg)](https://www.nuget.org/packages/Blueprintr/)
 [![Build Status](https://github.com/rafitajaen/blueprintr/workflows/CI%20-%20Build%20and%20Test/badge.svg)](https://github.com/rafitajaen/blueprintr/actions)
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL%203.0-blue.svg)](LICENSE)
 
@@ -8,15 +8,15 @@ Collection of boilerplate code libraries for C# projects. Reusable libraries aut
 
 ## 📚 Available Libraries
 
-### Blueprintr.Endpoints
+### Blueprintr
 Common utilities and patterns for building endpoints in ASP.NET Core applications.
 
 ```bash
-dotnet add package Blueprintr.Endpoints
+dotnet add package Blueprintr
 ```
 
 ```csharp
-using Blueprintr.Endpoints;
+using Blueprintr;
 
 var name = "/api/users".GetEndpointName();
 // Returns: "api-users"

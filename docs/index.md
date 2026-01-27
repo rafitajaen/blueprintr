@@ -6,17 +6,17 @@ Blueprintr is a collection of boilerplate code libraries for C# projects. These 
 
 ## Available Libraries
 
-### Blueprintr.Endpoints
-[![NuGet](https://img.shields.io/nuget/v/Blueprintr.Endpoints.svg)](https://www.nuget.org/packages/Blueprintr.Endpoints/)
+### Blueprintr
+[![NuGet](https://img.shields.io/nuget/v/Blueprintr.svg)](https://www.nuget.org/packages/Blueprintr/)
 
 Common utilities and patterns for building endpoints in ASP.NET Core applications.
 
 **Installation:**
 ```bash
-dotnet add package Blueprintr.Endpoints
+dotnet add package Blueprintr
 ```
 
-**API Documentation:** [Blueprintr.Endpoints API](xref:Blueprintr.Endpoints)
+**API Documentation:** [Blueprintr API](xref:Blueprintr)
 
 ## Getting Started
 
@@ -24,12 +24,12 @@ dotnet add package Blueprintr.Endpoints
 
 1. **Install the package:**
    ```bash
-   dotnet add package Blueprintr.Endpoints
+   dotnet add package Blueprintr
    ```
 
 2. **Use in your code:**
    ```csharp
-   using Blueprintr.Endpoints;
+   using Blueprintr;
 
    var endpointName = "/api/users".GetEndpointName();
    // Returns: "api-users"

@@ -121,7 +121,7 @@ Update `Directory.Build.props` to generate XML docs:
 Document all public APIs:
 
 ```csharp
-namespace Blueprintr.Endpoints;
+namespace Blueprintr;
 
 /// <summary>
 /// Extension methods for endpoint configuration
@@ -193,7 +193,7 @@ Welcome to Blueprintr documentation!
 
 ## Available Libraries
 
-- [Blueprintr.Endpoints](xref:Blueprintr.Endpoints) - Endpoint utilities
+- [Blueprintr](xref:Blueprintr) - Endpoint utilities
 
 ## Quick Links
 
@@ -211,12 +211,12 @@ Create markdown files in `docs/`:
 ## Installation
 
 ```bash
-dotnet add package Blueprintr.Endpoints
+dotnet add package Blueprintr
 ```
 
 ## Usage
 
-See [EndpointExtensions](xref:Blueprintr.Endpoints.EndpointExtensions) for details.
+See [EndpointExtensions](xref:Blueprintr.EndpointExtensions) for details.
 ```
 
 ### Cross-References
@@ -224,7 +224,7 @@ See [EndpointExtensions](xref:Blueprintr.Endpoints.EndpointExtensions) for detai
 Link to API documentation using `xref`:
 
 ```markdown
-See [EndpointExtensions](xref:Blueprintr.Endpoints.EndpointExtensions.GetEndpointName*)
+See [EndpointExtensions](xref:Blueprintr.EndpointExtensions.GetEndpointName*)
 ```
 
 ## Publishing to GitHub Pages

@@ -72,7 +72,7 @@ dotnet minver
 For a specific project:
 
 ```bash
-dotnet minver -t src/Blueprintr.Endpoints/Blueprintr.Endpoints.csproj
+dotnet minver -t src/Blueprintr/Blueprintr.csproj
 ```
 
 ## Recommended Workflow
@@ -133,7 +133,7 @@ git tag 1.0.0
 You can use prefixes in tags for independent versioning:
 
 ```bash
-# For Blueprintr.Endpoints
+# For Blueprintr
 git tag endpoints/1.0.0
 
 # For another library

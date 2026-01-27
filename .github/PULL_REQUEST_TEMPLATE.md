@@ -15,7 +15,7 @@
 
 <!-- Mark the libraries that change in this PR -->
 
-- [ ] Blueprintr.Endpoints
+- [ ] Blueprintr
 - [ ] Other (specify):
 
 ## Checklist

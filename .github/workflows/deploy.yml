@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write  # Required for creating releases
   checks: write
   pull-requests: write
   pages: write
@@ -201,6 +201,47 @@ jobs:
         name: nuget-packages
         path: ./nupkgs/*.nupkg
         retention-days: 30
+
+    # Get version for GitHub Release
+    - name: Get package version
+      if: steps.changes.outputs.projects != ''
+      id: version
+      run: |
+        VERSION=$(dotnet minver -v e)
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+        echo "Package version: $VERSION"
+
+    # Create GitHub Release
+    - name: Create GitHub Release
+      if: steps.changes.outputs.projects != '' && !contains(steps.version.outputs.version, 'alpha')
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ steps.version.outputs.version }}
+        name: Release ${{ steps.version.outputs.version }}
+        body: |
+          ## 📦 NuGet Packages Published
+
+          This release has been published to NuGet.org:
+
+          - [Blueprintr ${{ steps.version.outputs.version }}](https://www.nuget.org/packages/Blueprintr/${{ steps.version.outputs.version }})
+
+          ### Installation
+
+          ```bash
+          dotnet add package Blueprintr --version ${{ steps.version.outputs.version }}
+          ```
+
+          ### Documentation
+
+          - [API Documentation](https://rafitajaen.github.io/blueprintr/)
+          - [GitHub Repository](https://github.com/rafitajaen/blueprintr)
+
+          ---
+          *Automatically generated from commit ${{ github.sha }}*
+        files: ./nupkgs/*.nupkg
+        draft: false
+        prerelease: false
+        generate_release_notes: true
 
   # Step 3: Build and Deploy Documentation
   publish-docs:
