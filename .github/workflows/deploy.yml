@@ -94,14 +94,11 @@ jobs:
       with:
         dotnet-version: '10.0.x'
 
-    - name: Download build artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: build-output
-        path: .
-
     - name: Restore dependencies
       run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
 
     - name: Detect changed projects
       id: changes
@@ -132,34 +129,20 @@ jobs:
           echo "No projects with changes detected - skipping NuGet publish"
         fi
 
-    - name: NuGet Login (Trusted Publishing)
-      if: steps.changes.outputs.projects != ''
-      uses: NuGet/login@v1
-      id: nuget-login
-      with:
-        user: ${{ secrets.NUGET_USERNAME }}
-      continue-on-error: true
-
     - name: Pack and Publish to NuGet
       if: steps.changes.outputs.projects != ''
       env:
-        NUGET_API_KEY_TRUSTED: ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
-        NUGET_API_KEY_LEGACY: ${{ secrets.NUGET_API_KEY }}
+        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
       run: |
-        # Determine which authentication method to use
-        if [ -n "$NUGET_API_KEY_TRUSTED" ]; then
-          echo "✅ Using Trusted Publishing (OIDC - short-lived token)"
-          API_KEY="$NUGET_API_KEY_TRUSTED"
-        elif [ -n "$NUGET_API_KEY_LEGACY" ]; then
-          echo "⚠️  Using legacy API key (consider migrating to Trusted Publishing)"
-          API_KEY="$NUGET_API_KEY_LEGACY"
-        else
-          echo "❌ No NuGet authentication configured!"
-          echo "Configure either:"
-          echo "  1. Trusted Publishing: https://learn.microsoft.com/en-us/nuget/nuget-org/trusted-publishing"
-          echo "  2. API Key secret: NUGET_API_KEY"
+        # Verify API key is configured
+        if [ -z "$NUGET_API_KEY" ]; then
+          echo "❌ NUGET_API_KEY secret not configured!"
+          echo "Configure it in: GitHub Settings → Secrets → Actions → NUGET_API_KEY"
+          echo "Get your API key from: https://www.nuget.org/account/apikeys"
           exit 1
         fi
+
+        echo "✅ Using NuGet API key for authentication"
 
         for PROJECT in ${{ steps.changes.outputs.projects }}; do
           echo "Processing $PROJECT"
@@ -185,7 +168,7 @@ jobs:
 
             # Push to NuGet
             dotnet nuget push "$PACKAGE_FILE" \
-              --api-key "$API_KEY" \
+              --api-key "$NUGET_API_KEY" \
               --source https://api.nuget.org/v3/index.json \
               --skip-duplicate
 
@@ -271,14 +254,11 @@ jobs:
     - name: Setup DocFX
       run: dotnet tool install -g docfx
 
-    - name: Download build artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: build-output
-        path: .
-
     - name: Restore dependencies
       run: dotnet restore
+
+    - name: Build projects
+      run: dotnet build --configuration Release --no-restore
 
     - name: Generate API metadata
       run: docfx metadata docfx.json
