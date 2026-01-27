@@ -127,28 +127,111 @@ git commit -m "docs: update API examples"
 
 ## 📦 Publishing Versions
 
-### Automatic (Pre-release)
+### Automatic Pre-release (Alpha Versions)
+Every push to `main` branch that modifies files in `src/`:
+
 ```bash
-# Every push to main with src/ changes
 git push origin main
-# Publishes: 0.0.0-alpha.0.X
 ```
 
-### Stable Release
+**What happens automatically:**
+- ✅ Runs all tests
+- ✅ Publishes to NuGet as `0.x.x-alpha.0.Y` (pre-release)
+- ✅ Updates documentation on GitHub Pages
+- ❌ **NO GitHub Release created** (alpha versions don't create releases)
+
+**Example:** Pushing changes publishes `Blueprintr 0.1.1-alpha.0.6` to NuGet.
+
+---
+
+### Stable Release (Production Versions)
+To publish a **stable version** and create a **GitHub Release**, create and push a tag:
+
 ```bash
-# Create and push a tag
-git tag 1.0.0
-git push origin 1.0.0
-# Publishes: 1.0.0
+# Create a semantic version tag
+git tag 0.1.0
+
+# Push the tag to GitHub
+git push origin 0.1.0
 ```
+
+**What happens automatically:**
+- ✅ Runs all tests
+- ✅ Publishes to NuGet as `0.1.0` (stable version)
+- ✅ Updates documentation on GitHub Pages
+- ✅ **Creates GitHub Release** with:
+  - Release notes (auto-generated from commits)
+  - NuGet package files (.nupkg and .snupkg)
+  - Installation instructions
+  - Links to documentation
+
+**Example:** Pushing tag `0.1.0` publishes `Blueprintr 0.1.0` to NuGet AND creates a GitHub Release.
+
+---
 
 ### Version Examples
+
 ```bash
-git tag 1.0.1          # Patch (bug fixes)
-git tag 1.1.0          # Minor (new features)
-git tag 2.0.0          # Major (breaking changes)
-git tag 1.0.0-beta.1   # Pre-release
+# Production versions (create GitHub Releases)
+git tag 0.1.0          # First stable release
+git tag 0.1.1          # Patch (bug fixes)
+git tag 0.2.0          # Minor (new features)
+git tag 1.0.0          # Major (breaking changes)
+
+# Pre-release versions (create GitHub Releases)
+git tag 1.0.0-beta.1   # Beta pre-release
+git tag 1.0.0-rc.1     # Release candidate
+
+# Development versions (NO GitHub Releases)
+# Just push to main - auto-publishes as alpha
+git push origin main   # Creates 0.x.x-alpha.0.Y
 ```
+
+---
+
+### When to Use Each
+
+| Scenario | Action | NuGet Version | GitHub Release |
+|----------|--------|---------------|----------------|
+| Development/testing | Push to main | `0.1.1-alpha.0.6` | ❌ No |
+| Bug fix | Create tag `0.1.1` | `0.1.1` | ✅ Yes |
+| New features | Create tag `0.2.0` | `0.2.0` | ✅ Yes |
+| Breaking changes | Create tag `1.0.0` | `1.0.0` | ✅ Yes |
+| Beta testing | Create tag `1.0.0-beta.1` | `1.0.0-beta.1` | ✅ Yes |
+
+---
+
+### First Stable Release (Step-by-Step)
+
+When you're ready to publish your first stable version:
+
+1. **Ensure all changes are committed and tests pass:**
+   ```bash
+   dotnet test
+   git status  # Should be clean
+   ```
+
+2. **Create a version tag following semantic versioning:**
+   ```bash
+   git tag 0.1.0
+   ```
+
+3. **Push the tag to trigger the release workflow:**
+   ```bash
+   git push origin 0.1.0
+   ```
+
+4. **Monitor the workflow:**
+   ```bash
+   gh run watch
+   ```
+
+5. **Verify the release:**
+   - NuGet: https://www.nuget.org/packages/Blueprintr/
+   - GitHub Releases: https://github.com/rafitajaen/blueprintr/releases
+   - Documentation: https://rafitajaen.github.io/blueprintr/
+
+**Done!** Your package is now published and available for everyone to install.
 
 ## 🧪 Testing
 

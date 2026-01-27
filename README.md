@@ -45,6 +45,25 @@ dotnet test
 dotnet pack --configuration Release
 ```
 
+## 📦 Publishing Releases
+
+### Development (Alpha versions)
+Push to main - auto-publishes pre-release versions to NuGet:
+```bash
+git push origin main
+# Publishes: 0.1.1-alpha.0.X to NuGet (no GitHub Release)
+```
+
+### Stable Release
+Create and push a tag - publishes to NuGet **AND** creates GitHub Release:
+```bash
+git tag 0.1.0
+git push origin 0.1.0
+# Publishes: 0.1.0 to NuGet + creates GitHub Release
+```
+
+**See [CLAUDE.md](CLAUDE.md#-publishing-versions)** for complete versioning guide.
+
 ## 📖 Documentation
 
 - **[CLAUDE.md](CLAUDE.md)** - Complete project guide
