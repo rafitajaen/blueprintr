@@ -10,7 +10,7 @@
     <Authors>Blueprintr Team</Authors>
     <Company>Blueprintr</Company>
     <Product>Blueprintr</Product>
-    <Description>Production-ready boilerplate utilities library for .NET projects including converters, validators, extensions, and common patterns</Description>
+    <Description>Production-ready boilerplate utilities library for .NET projects including converters, validators, extensions, and common patterns.</Description>
     <PackageTags>dotnet;boilerplate;utilities;blueprintr;converters;validators;extensions</PackageTags>
     <RepositoryUrl>https://github.com/rafitajaen/blueprintr</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
