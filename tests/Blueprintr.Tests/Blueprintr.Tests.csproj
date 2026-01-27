@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Blueprintr.Endpoints\Blueprintr.Endpoints.csproj" />
+    <ProjectReference Include="..\..\src\Blueprintr\Blueprintr.csproj" />
   </ItemGroup>
 
   <ItemGroup>
