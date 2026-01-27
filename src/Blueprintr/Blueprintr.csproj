@@ -56,5 +56,6 @@
     </PackageReference>
   </ItemGroup>
 
+  <!-- Package version controlled by MinVer from Git tags -->
+
 </Project>
-// Version marker
