@@ -69,7 +69,10 @@ git push origin 0.1.0
 - **[CLAUDE.md](CLAUDE.md)** - Complete project guide
 - **[CONTRIBUTING.md](CONTRIBUTING.md)** - Contribution guidelines
 - **[API Documentation](https://rafitajaen.github.io/blueprintr/)** - Generated from code
-- **[docs/](docs/)** - Additional documentation
+- **[docs/](docs/)** - Additional documentation:
+  - [Getting Started](docs/getting-started.md) - Installation and usage
+  - [Development Guide](docs/development-guide.md) - Testing, versioning, documentation
+  - [Configuration Guide](docs/configuration-guide.md) - GitHub, NuGet, CI/CD setup
 
 ## 🎯 Features
 

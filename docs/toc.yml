@@ -2,7 +2,11 @@
   href: index.md
 - name: Getting Started
   href: getting-started.md
-- name: Workflow Guide
-  href: ../WORKFLOW.md
+- name: Development Guide
+  href: development-guide.md
+- name: Configuration Guide
+  href: configuration-guide.md
+- name: API Reference
+  href: api/
 - name: Contributing
   href: ../CONTRIBUTING.md

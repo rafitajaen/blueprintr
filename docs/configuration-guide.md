@@ -1,6 +1,6 @@
-# GitHub Configuration Guide
+# Configuration Guide
 
-> Complete guide for configuring GitHub repository, NuGet publishing, and CI/CD workflows for Blueprintr.
+> Complete guide for configuring GitHub repository, NuGet publishing, CI/CD workflows, and troubleshooting for Blueprintr.
 
 ## Table of Contents
 

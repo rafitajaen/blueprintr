@@ -1,66 +1,102 @@
 # Blueprintr Documentation
 
-Welcome to the Blueprintr documentation!
+Welcome to the official documentation for Blueprintr - a collection of production-ready boilerplate code libraries for C# projects.
 
-Blueprintr is a collection of boilerplate code libraries for C# projects. These reusable libraries are automatically published to NuGet, making it easy to add common functionality to your projects.
+## What is Blueprintr?
+
+Blueprintr provides reusable, well-tested C# libraries that accelerate development of ASP.NET Core applications. All libraries are automatically published to NuGet with semantic versioning, comprehensive documentation, and quality assurance through CI/CD pipelines.
 
 ## Available Libraries
 
-### Blueprintr
-[![NuGet](https://img.shields.io/nuget/v/Blueprintr.svg)](https://www.nuget.org/packages/Blueprintr/)
+### Blueprintr.Endpoints
+
+[![NuGet](https://img.shields.io/nuget/v/Blueprintr.Endpoints.svg)](https://www.nuget.org/packages/Blueprintr.Endpoints/)
 
 Common utilities and patterns for building endpoints in ASP.NET Core applications.
 
-**Installation:**
+**Quick Installation:**
 ```bash
-dotnet add package Blueprintr
+dotnet add package Blueprintr.Endpoints
 ```
 
-**API Documentation:** [Blueprintr API](xref:Blueprintr)
+**Quick Usage:**
+```csharp
+using Blueprintr.Endpoints;
 
-## Getting Started
+var endpointName = "/api/users".GetEndpointName();
+// Returns: "api-users"
+```
 
-### Quick Start
+**API Documentation:** [Blueprintr.Endpoints API Reference](xref:Blueprintr.Endpoints)
 
-1. **Install the package:**
-   ```bash
-   dotnet add package Blueprintr
-   ```
+## Documentation Overview
 
-2. **Use in your code:**
-   ```csharp
-   using Blueprintr;
+| Guide | Description |
+|-------|-------------|
+| **[Getting Started](getting-started.md)** | Installation, usage examples, and quick start guide |
+| **[Development Guide](development-guide.md)** | Testing, versioning, documentation, and development workflow |
+| **[Configuration Guide](configuration-guide.md)** | GitHub setup, NuGet publishing, CI/CD, and troubleshooting |
+| **[API Reference](api/index.md)** | Complete API documentation generated from source code |
 
-   var endpointName = "/api/users".GetEndpointName();
-   // Returns: "api-users"
-   ```
+## Key Features
 
-3. **Explore the API:**
-   - Browse the [API Reference](api/index.md)
-   - Check out [examples and guides](getting-started.md)
+| Feature | Description |
+|---------|-------------|
+| **Automated NuGet Publishing** | Packages are automatically published on every push to main |
+| **Semantic Versioning** | MinVer automatically calculates versions from git tags |
+| **Quality Gates** | All warnings treated as errors, tests must pass before merge |
+| **CI/CD Pipeline** | GitHub Actions for building, testing, and publishing |
+| **Documentation Website** | DocFX-generated documentation with API reference |
+| **Conventional Commits** | Standardized commit messages for clear history |
+| **Trusted Publishing** | Secure, keyless NuGet authentication via OIDC |
 
-## Documentation Sections
+## Quick Links
 
-- **[Getting Started](getting-started.md)** - Step-by-step guides for each library
-- **[API Reference](api/index.md)** - Complete API documentation
-- **[Workflow Guide](xref:../WORKFLOW.md)** - Development and publishing workflow
-- **[Contributing](xref:../CONTRIBUTING.md)** - How to contribute to Blueprintr
+- **NuGet Package**: https://www.nuget.org/packages/Blueprintr.Endpoints/
+- **GitHub Repository**: https://github.com/rafitajaen/blueprintr
+- **GitHub Issues**: https://github.com/rafitajaen/blueprintr/issues
+- **GitHub Discussions**: https://github.com/rafitajaen/blueprintr/discussions
 
-## Features
+## Project Structure
 
-- ✅ Automatic NuGet publishing
-- ✅ Semantic versioning with MinVer
-- ✅ Multi-project support
-- ✅ .NET 10.0 target framework
-- ✅ Comprehensive documentation
-- ✅ CI/CD with GitHub Actions
+```
+blueprintr/
+├── src/                           # Source code
+│   └── Blueprintr.Endpoints/      # NuGet library
+├── tests/                         # Test projects
+│   └── Blueprintr.Endpoints.Tests/ # NUnit tests
+├── docs/                          # Documentation
+├── .github/workflows/             # CI/CD pipelines
+│   ├── ci.yml                     # Build + Test
+│   ├── publish-nuget.yml          # NuGet publishing
+│   └── documentation.yml          # Docs generation
+└── CLAUDE.md                      # Project overview
+```
 
-## Support
+## Technology Stack
 
-- 📝 [GitHub Issues](https://github.com/rafitajaen/blueprintr/issues) - Report bugs or request features
-- 📖 [GitHub Discussions](https://github.com/rafitajaen/blueprintr/discussions) - Ask questions
-- 🔗 [GitHub Repository](https://github.com/rafitajaen/blueprintr) - View source code
+| Component | Technology |
+|-----------|------------|
+| Framework | .NET 10.0 |
+| Testing | NUnit |
+| Documentation | DocFX |
+| CI/CD | GitHub Actions |
+| Package Registry | NuGet.org |
+| Versioning | MinVer |
+| License | AGPL-3.0-or-later |
+
+## Getting Help
+
+- **Bug Reports**: Open an issue on [GitHub Issues](https://github.com/rafitajaen/blueprintr/issues)
+- **Questions**: Start a discussion on [GitHub Discussions](https://github.com/rafitajaen/blueprintr/discussions)
+- **Documentation Issues**: Found an error? Create a PR or issue
+- **Contributing**: See [Contributing Guidelines](../CONTRIBUTING.md)
 
 ## License
 
-Blueprintr is licensed under the [AGPL-3.0 License](https://github.com/rafitajaen/blueprintr/blob/main/LICENSE).
+Blueprintr is licensed under the [GNU Affero General Public License v3.0 (AGPL-3.0-or-later)](https://github.com/rafitajaen/blueprintr/blob/main/LICENSE).
+
+**Key Points:**
+- Commercial use is allowed
+- Modifications must be shared under the same license
+- Network use (SaaS) requires source code disclosure
