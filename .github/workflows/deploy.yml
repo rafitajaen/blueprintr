@@ -94,6 +94,9 @@ jobs:
       with:
         dotnet-version: '10.0.x'
 
+    - name: Install MinVer CLI
+      run: dotnet tool install --global minver-cli
+
     - name: Restore dependencies
       run: dotnet restore
 
