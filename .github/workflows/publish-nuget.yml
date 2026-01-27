@@ -76,7 +76,7 @@ jobs:
     # Requires: NuGet.org Trusted Publishing policy configured
     # Docs: https://learn.microsoft.com/en-us/nuget/nuget-org/trusted-publishing
     - name: NuGet Login (Trusted Publishing)
-      if: steps.changes.outputs.projects != '' && secrets.NUGET_USERNAME != ''
+      if: steps.changes.outputs.projects != ''
       uses: NuGet/login@v1
       id: nuget-login
       with:
