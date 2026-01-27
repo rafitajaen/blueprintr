@@ -1,0 +1,75 @@
+@use "../base/mixins" as *;
+
+.badge {
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: fit-content;
+    gap: calc(var(--spacing)*1);
+
+    color: var(--primary-foreground);
+    background-color: var(--primary);
+
+    white-space: nowrap;
+    outline-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    padding-block: calc(var(--spacing)*.5);
+    padding-inline: calc(var(--spacing)*2);
+
+    border-radius: calc(var(--radius) - 2px);
+
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--tw-leading,var(--text-sm--line-height));
+
+    box-shadow: var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow);
+
+    --tw-duration: 0s;
+
+    transition-property: all;
+    transition-timing-function: var(--tw-ease,var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration,var(--default-transition-duration));
+
+    & > svg {
+        display: block;
+        flex-shrink: 0;
+        pointer-events: none;
+        width: calc(var(--spacing)*3);
+        height: calc(var(--spacing)*3);
+    }
+
+    &.badge-secondary {
+        color: var(--secondary-foreground);
+        background-color: var(--secondary);
+    }
+
+    &.badge-destructive {
+        color: var(--text-white);
+        background-color: var(--destructive);
+    }
+
+    &.badge-outline, &.badge-with-icon {
+        color: var(--foreground);
+        background-color: var(--background);
+
+        border-color: var(--border);
+        border-style: var(--tw-border-style);
+        border-width: 1px;
+
+        outline-color: color-mix(in oklab,var(--ring)50%,transparent);
+    }
+
+    &.badge-icon {
+        color: var(--foreground);
+        background-color:color-mix(in oklab,var(--secondary)80%,transparent);
+    }
+
+}
+
+
+

@@ -1,0 +1,67 @@
+﻿@using Boilerplatr.Shared
+@using CodeIn.Domain.Jobs
+@using CodeIn.Domain.Companies
+@using CodeIn.Domain.Topics
+@using CodeIn.Web.Views.Jobs
+
+@model JobsController.JobQuestionViewModel
+
+@{
+    Layout = LayoutTargets.Base;
+    ViewData["Robots"] = "noindex, nofollow";
+
+    ViewData["Title"] = $"{Model.Job.Role} - {Model.Job.Company.Name} | {ViewContext?.HttpContext.Items["Tenant:Name"]}";
+
+    var now = SystemClock.Instance.GetCurrentInstant();
+    var jobs = new List<Job>() { Model.Job };
+}
+
+<article class="articles job-question" data-job-id="@Model.Job.Id.ToString()">
+
+    <section class="title">
+        <h1 class="text-4xl">@L["Not sure about something?"]</h1>
+        <p>@L["Ask away — we’re happy to help!"]</p>
+        <CompanyCard Company="@Model.Job.Company" Jobs="@jobs" now="@now" />
+    </section>
+
+    <section class="form">
+        <ActionInput id="email" type="email" icon-type="@IconTypes.MarkEmailRead" label="@L["Your email"]" placeholder="alex@gmail.com" required="true">
+            <ActionInputError type="InvalidEmail">@L["Hmm... that doesn’t look like a valid email."]</ActionInputError>
+            <p class="text-muted-sm">@L["Email where we can contact you."]</p>
+        </ActionInput>
+        <ActionArea id="description" label="@L["Your question"]" placeholder="@L["Write your question about this position..."]" required="true">
+            <p class="text-muted-sm">@L["The clearer your question, the better we can help."]</p>
+            <ActionInputError type="TooLong">@L["Your message is too long. Please keep it under"] 2000 @L["characters"].</ActionInputError>
+        </ActionArea>
+    </section>
+
+    <section class="content">
+        <IconButton id="submit" class="w-full" icon="@IconTypes.Inbox" include-loader="true">
+            @L["Submit question"]
+        </IconButton>
+    </section>
+
+</article>
+
+<Modal id="submit-failed">
+
+    <ModalHeader>
+        <ModalTitle>@L["Submit unavailable"]</ModalTitle>
+        <ModalDescription>
+            @L["The submit service is temporarily disabled"].
+            <br />
+            @L["If you have any questions, please contact us at"]
+            <AnchorButton class="button-link" href="mailto:@Model.SupportEmail"><strong>@Model.SupportEmail</strong></AnchorButton>.
+        </ModalDescription>
+    </ModalHeader>
+
+    <ModalFooter>
+        <ModalAction>@L["I understand"]</ModalAction>
+    </ModalFooter>
+
+</Modal>
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/questions.js" asp-append-version="true" defer></script>
+}

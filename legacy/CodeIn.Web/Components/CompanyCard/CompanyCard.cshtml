@@ -1,0 +1,41 @@
+@using CodeIn.Web.Components.CompanyCard
+@model CompanyCardComponent
+
+@{
+    var jobs = Model.Jobs is not null && Model.Jobs.Any() ? Model.Jobs : Model.Company.Jobs;
+}
+
+<Card class="company @Model.Class" hide-id="@Model.HideId">
+            
+    <CardHeader class="flex">
+        <CompanyHeader class="@Model.HeaderClass" company="@Model.Company" show-excerpt="true" />
+    </CardHeader>
+
+    @if (jobs.Any())
+    {
+        var max = 2;
+        var counter = 0;
+
+        var id = RandomString.Generate(5, CharSets.Alphabetic);
+
+        <CardContent>
+
+            @foreach (var job in jobs)
+            {
+                counter++;
+                var hide = counter > max ? "hide" : string.Empty;
+                var hideable = counter > max ? "hideable" : string.Empty;
+
+                <JobItem class="@hideable @hide" hide-id="@id" job="@job" now="@Model.Now" href="@PageRoutes.GetJobUrl(Model.Company, job)"/>
+            }
+
+            @if (counter > max)
+            {
+                @* var diff = counter - max; *@
+                <IconButton id="@id" class="button button-link" on-click="showMore('@id')">+ @L["Show more"]</IconButton>
+            }
+
+        </CardContent>
+    }
+
+</Card>

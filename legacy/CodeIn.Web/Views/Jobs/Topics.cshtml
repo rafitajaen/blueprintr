@@ -1,0 +1,43 @@
+﻿@using CodeIn.Domain.Jobs
+@using CodeIn.Domain.Companies
+@using CodeIn.Domain.Topics
+@using CodeIn.Web.Views.Jobs
+
+@model JobsController.JobsByTopicViewModel
+
+@{
+    Layout = LayoutTargets.Base;
+
+    ViewData["MainClass"] = "jobs-by-topic";
+    ViewData["Page"] = L[Model.Topic.Name];
+    ViewData["Title"] = $"{ViewData["Page"]} - {ViewContext?.HttpContext.Items["Tenant:Name"]}";
+
+    var now = SystemClock.Instance.GetCurrentInstant();
+}
+
+<article class="jobs">
+
+    <section class="title">
+        <h1>@L[Model.Topic.Name].</h1>
+    </section>
+    
+    <section class="info">
+        <h2>@Model.FilterCount @L["positions available"]</h2>
+        <div class="chips"></div>
+    </section>
+
+    <section class="content">
+
+        @foreach (var company in Model.Companies)
+        {
+            <CompanyCard Company="@company" now="@now" />
+        }
+
+    </section>
+
+</article>
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/empty.js" asp-append-version="true" defer></script>
+}

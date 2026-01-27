@@ -1,0 +1,354 @@
+﻿@using CodeIn.Domain.Companies
+@using CodeIn.Web.Views.Companies
+@using Humanizer
+@using Markdig
+@using NodaTime
+@using System.Globalization
+
+@model CompaniesController.CompaniesViewModel
+@{
+    Layout = LayoutTargets.Base;
+
+    ViewData["MainClass"] = "companies";
+    ViewData["Page"] = L["The team you’ve been looking for is here"];
+    ViewData["Title"] = $"{ViewData["Page"]} - {ViewContext?.HttpContext.Items["Tenant:Name"]}";
+
+}
+
+<article class="companies">
+
+    <section class="title">
+        <h1>@ViewData["Page"].</h1>
+    </section>
+
+    <section class="featured">
+        <h2>
+            <IconButton class="button button-leading" icon="@IconTypes.Award" />
+            @L["Featured companies"]
+        </h2>
+        <p class="text-muted">@L["FeaturedParagraph"]</p>
+        <CompanyTable companies="@Model.Featured" />
+    </section>
+
+    @if (Model.Transparent.Any())
+    {
+        <section class="compensation">
+
+            <h2>
+                <IconButton class="button button-leading" icon="@IconTypes.Banknote" />
+                @L["Transparent compensation"]
+            </h2>
+            <p class="text-muted">@L["TransparentParagraph"]</p>
+            <CompanyTable companies="@Model.Transparent" />
+        </section>
+    }
+
+    @if (Model.Remote.Any())
+    {
+        <section class="remote">
+            <h2>
+                <IconButton class="button button-leading" icon="@IconTypes.Earth" />
+                @L["Fully remote"]
+            </h2>
+            <p class="text-muted">@L["RemoteParagraph"]</p>
+            <CompanyTable companies="@Model.Remote" />
+        </section>
+    }
+
+    @if (Model.International.Any())
+    {
+        <section class="international">
+            <h2>
+                <IconButton class="button button-leading" icon="@IconTypes.Globe" />
+                @L["Hires internationally"]
+            </h2>
+            <p class="text-muted">@L["InternationalParagraph"]</p>
+            <CompanyTable companies="@Model.International" />
+        </section>
+    }
+
+    <div class="columns">
+
+        @if (Model.AI.Any())
+        {
+            <section class="ai">
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.Brain" />
+                    @L["Artificial Intelligence (AI)"]
+                </h2>
+                <p class="text-muted">@L["AIParagraph"]</p>
+                <CompanyTable companies="@Model.AI" />
+            </section>
+        }
+
+        @if(Model.Entertainment.Any())
+        {
+            <section class="entertainment">
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.Film" />
+                    @L["Arts & Entertainment"]
+                </h2>
+                <p class="text-muted">@L["EntertainmentParagraph"]</p>
+                <CompanyTable companies="@Model.Entertainment" />
+            </section>
+        }
+
+        @if (Model.Automotive.Any())
+        {
+            <section class="automotive">
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.Car" />
+                    @L["Automotive"]
+                </h2>
+                <p class="text-muted">@L["AutomotiveParagraph"]</p>
+                <CompanyTable companies="@Model.Automotive" />
+            </section>
+        }
+
+        @if (Model.Aviation.Any())
+        {
+            <section class="aviation">
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.Plane" />
+                    @L["Aviation & Aerospace"]
+                </h2>
+                <p class="text-muted">@L["AviationParagraph"]</p>
+                <CompanyTable companies="@Model.Aviation" />
+            </section>
+        }
+
+        @if (Model.Blockchain.Any())
+        {
+            <section class="crypto">
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.Bitcoin" />
+                    @L["Blockchain & Cryptocurrency"]
+                </h2>
+                <p class="text-muted">@L["BlockchainParagraph"]</p>
+                <CompanyTable companies="@Model.Blockchain" />
+            </section>
+        }
+
+        @if (Model.Construction.Any())
+        {
+            <section>
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.Building2" />
+                    @L["Construction"]
+                </h2>
+                <p class="text-muted">@L["ConstructionParagraph"]</p>
+                <CompanyTable companies="@Model.Construction" />
+            </section>
+        }
+
+        @if (Model.Consulting.Any())
+        {
+            <section>
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.BotMessageSquare" />
+                    @L["Consulting & Services"]
+                </h2>
+                <p class="text-muted">@L["ConsultingParagraph"]</p>
+                <CompanyTable companies="@Model.Consulting" />
+            </section>
+        }
+
+        @if (Model.DataManagement.Any())
+        {
+            <section>
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.Database" />
+                    @L["Data Management & Tools"]
+                </h2>
+                <p class="text-muted">@L["DataManagementParagraph"]</p>
+                <CompanyTable companies="@Model.DataManagement" />
+            </section>
+        }
+
+        @if (Model.DevTools.Any())
+        {
+            <section>
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.SquareTerminal" />
+                    @L["Developer Tools & APIs"]
+                </h2>
+                <p class="text-muted">@L["DevToolsParagraph"]</p>
+                <CompanyTable companies="@Model.DevTools" />
+            </section>
+        }
+
+        @if (Model.Ecommerce.Any())
+        {
+            <section>
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.ShopppingBag" />
+                    @L["Ecommerce & Retail"]
+                </h2>
+                <p class="text-muted">@L["EcommerceParagraph"]</p>
+                <CompanyTable companies="@Model.Ecommerce" />
+            </section>
+        }
+
+        @if (Model.Education.Any())
+        {
+            <section>
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.GraduationCap" />
+                    @L["Education"]
+                </h2>
+                <p class="text-muted">@L["EducationParagraph"]</p>
+                <CompanyTable companies="@Model.Education" />
+            </section>
+        }
+
+        @if (Model.Enterprise.Any())
+        {
+            <section>
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.Cpu" />
+                    @L["Enterprise Software"]
+                </h2>
+                <p class="text-muted">@L["EnterpriseParagraph"]</p>
+                <CompanyTable companies="@Model.Enterprise" />
+            </section>
+        }
+
+        @if (Model.Events.Any())
+        {
+            <section>
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.Ticket" />
+                    @L["Events & Ticketing"]
+                </h2>
+                <p class="text-muted">@L["EventsParagraph"]</p>
+                <CompanyTable companies="@Model.Events" />
+            </section>
+        }
+
+        @if (Model.Gaming.Any())
+        {
+            <section>
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.Gamepad2" />
+                    @L["Gaming"]
+                </h2>
+                <p class="text-muted">@L["GamingParagraph"]</p>
+                <CompanyTable companies="@Model.Gaming" />
+            </section>
+        }
+
+        @if (Model.Manufacturing.Any())
+        {
+            <section>
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.Factory" />
+                    @L["Manufacturing"]
+                </h2>
+                <p class="text-muted">@L["ManufacturingParagraph"]</p>
+                <CompanyTable companies="@Model.Manufacturing" />
+            </section>
+        }
+
+        @if (Model.Marketing.Any())
+        {
+            <section>
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.ChartNoAxesCombined" />
+                    @L["Marketing"]
+                </h2>
+                <p class="text-muted">@L["MarketingParagraph"]</p>
+                <CompanyTable companies="@Model.Marketing" />
+            </section>
+        }
+
+        @if (Model.Marketplace.Any())
+        {
+            <section>
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.Store" />
+                    @L["Marketplaces"]
+                </h2>
+                <p class="text-muted">@L["MarketplaceParagraph"]</p>
+                <CompanyTable companies="@Model.Marketplace" />
+            </section>
+        }
+
+        @if (Model.RealState.Any())
+        {
+            <section>
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.MapPinHouse" />
+                    @L["Real State"]
+                </h2>
+                <p class="text-muted">@L["RealStateParagraph"]</p>
+                <CompanyTable companies="@Model.RealState" />
+            </section>
+        }
+
+        @if (Model.Robotics.Any())
+        {
+            <section>
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.Bot" />
+                    @L["Robotics"]
+                </h2>
+                <p class="text-muted">@L["RoboticsParagraph"]</p>
+                <CompanyTable companies="@Model.Robotics" />
+            </section>
+        }
+
+        @if (Model.Saas.Any())
+        {
+            <section>
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.AppWindow" />
+                    @L["SaaS (Software as a Service)"]
+                </h2>
+                <p class="text-muted">@L["SaaSParagraph"]</p>
+                <CompanyTable companies="@Model.Saas" />
+            </section>
+        }
+
+        @if (Model.Security.Any())
+        {
+            <section>
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.ShieldUser" />
+                    @L["Security"]
+                </h2>
+                <p class="text-muted">@L["SecurityParagraph"]</p>
+                <CompanyTable companies="@Model.Security" />
+            </section>
+        }
+
+        @if (Model.SocialNetworking.Any())
+        {
+            <section>
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.Globe" />
+                    @L["Social Networking"]
+                </h2>
+                <p class="text-muted">@L["SocialNetworkingParagraph"]</p>
+                <CompanyTable companies="@Model.SocialNetworking" />
+            </section>
+        }
+
+        @if (Model.Translations.Any())
+        {
+            <section>
+                <h2>
+                    <IconButton class="button button-leading" icon="@IconTypes.ClosedCaption" />
+                    @L["Translations"]
+                </h2>
+                <p class="text-muted">@L["TranslationsParagraph"]</p>
+                <CompanyTable companies="@Model.Translations" />
+            </section>
+        }
+    </div>
+
+</article>
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/empty.js" asp-append-version="true" defer></script>
+}

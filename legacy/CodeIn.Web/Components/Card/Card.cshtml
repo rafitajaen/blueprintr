@@ -1,0 +1,12 @@
+@if(string.IsNullOrWhiteSpace(Model.Href))
+{
+    <div id="@Model.Id" class="card @Model.Class" data-id="@Model.EntityId" data-hide="@Model.HideId">
+        @Model.ChildContent
+    </div>
+}
+else
+{
+    <a id="@Model.Id" class="card @Model.Class" href="@Model.Href" data-id="@Model.EntityId" data-hide="@Model.HideId">
+        @Model.ChildContent
+    </a>
+}

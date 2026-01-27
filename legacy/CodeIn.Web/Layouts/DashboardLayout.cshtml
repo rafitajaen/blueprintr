@@ -1,0 +1,77 @@
+﻿@{
+    Layout = LayoutTargets.Empty;
+    ViewData["BodyClass"] = "dashboard";
+}
+
+<header class="dashboard" role="banner">
+
+    <IconButton class="button button-ghost menu-toggle" icon="@IconTypes.Hamburger" />
+
+    <Logo class="root" type="@LogoTypes.Root" href="/"/>
+
+    <div class="profile">
+        <Avatar>
+            <AvatarImage  alt="profile picture" initials="P" />
+        </Avatar>
+    </div>
+
+</header>
+
+<aside class="dashboard">
+
+    <nav class="menu">
+
+        <ul class="sections">
+
+            <div class="items">
+
+                <h5>GENERAL</h5>
+
+                <li class="item">
+                    <AnchorButton class="button button-sidebar text-md" href="@PageRoutes.Dashboard.Base">
+                        <Icon class="skeleton" type="@IconTypes.LayoutDashboard" />
+                        <span>@L["Overview"]</span>
+                    </AnchorButton>
+                </li>
+
+                <li class="item">
+                    <AnchorButton class="button button-sidebar text-md" href="@PageRoutes.Dashboard.Jobs">
+                        <Icon class="skeleton" type="@IconTypes.BriefcaseBusiness" />
+                        <span>@L["Job Offers"]</span>
+                    </AnchorButton>
+                </li>
+
+                <h5>RESUME</h5>
+
+                <li class="item">
+                    <AnchorButton class="button button-sidebar text-md" href="@PageRoutes.Dashboard.Profile">
+                        <Icon class="skeleton" type="@IconTypes.ContactRound" />
+                        <span>@L["Profile"]</span>
+                    </AnchorButton>
+                </li>
+
+            </div>
+
+        </ul>
+
+    </nav>
+
+</aside>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li><Icon type="@IconTypes.PanelLeft" /></li>
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li><Icon type="@IconTypes.ChevronRight" /></li>
+    <li aria-current="page">@ViewData["CurrentBreadcumb"]</li>
+  </ol>
+</nav>
+
+<main>
+    @RenderBody()
+</main>
+
+<TheFooter />
+
+@await RenderSectionAsync("Scripts", required: false)
+

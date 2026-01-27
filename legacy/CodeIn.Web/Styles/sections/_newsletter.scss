@@ -1,0 +1,37 @@
+@use "../base/mixins" as *;
+@use "../base/breakpoints" as *;
+
+section.newsletter {
+
+    grid-area: newsletter;
+
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing) * 3);
+    width: 100%;
+    padding-inline: calc(var(--spacing) * 1);
+
+    border-radius: calc(var(--radius) * 2);
+
+    padding-inline: calc(var(--spacing) * 6);
+    padding-block: calc(var(--spacing) * 8);
+
+    color: var(--background);
+    background-color: var(--foreground);
+
+    h2 {
+        font-family: 'Albert Sans';
+        // @include font-semibold;
+    }
+
+    .action-input > .content {
+        color: var(--foreground);
+        background-color: var(--border);
+    }
+    
+}
+
+.dark section.newsletter {
+    color: var(--foreground);
+    background-color: var(--border);
+}

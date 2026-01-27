@@ -1,0 +1,62 @@
+﻿@using Boilerplatr.Shared
+@using CodeIn.Domain.Jobs
+@using CodeIn.Domain.Companies
+@using CodeIn.Domain.Topics
+@using CodeIn.Web.Views.Jobs
+
+@model JobsController.JobQuestionSubmittedViewModel
+
+@{
+    Layout = LayoutTargets.Base;
+    ViewData["Robots"] = "noindex, nofollow";
+
+    ViewData["Title"] = $"{Model.Job.Role} - {Model.Job.Company.Name} | {ViewContext?.HttpContext.Items["Tenant:Name"]}";
+
+    var now = SystemClock.Instance.GetCurrentInstant();
+    var jobs = new List<Job>() { Model.Job };
+}
+
+<article class="articles job-question" data-job-id="@Model.Job.Id.ToString()">
+
+    <section class="title">
+        <h1 class="text-4xl">@L["Thank you for your question!"]</h1>
+        <p>
+            @L["We've received your question and will get back to you as soon as possible"] 
+            @if(!string.IsNullOrWhiteSpace(Model.Email))
+            {
+                @L["at "] <strong>@Model.Email</strong>
+            }
+        </p>
+        <CompanyCard Company="@Model.Job.Company" Jobs="@jobs" now="@now" />
+    </section>
+
+    <section class="title">
+        <h2>¿Ya conoces nuestra newsletter?</h2>
+        <p>
+            Cada semana seleccionamos cuidadosamente las mejores ofertas de empleo (remotas o no)
+            <br />y te las enviamos directo a tu bandeja de entrada. Sin spam.
+        </p>
+
+        <ActionInput id="suscribe" class="suscribe" icon-type="@IconTypes.MarkEmailRead" placeholder="@L["SuscribeInputPlaceholder"]" action-text="@L["Suscribe"] ➜" />
+
+    </section>
+
+    @if (Model.Related?.Any() == true)
+    {
+        <section class="title">
+            <h2>@L["You might also be interested in..."]</h2>
+
+            @foreach (var company in Model.Related)
+            {
+                <CompanyCard Company="@company" now="@now" />
+            }
+        </section>
+    }
+
+</article>
+
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/empty.js" asp-append-version="true" defer></script>
+}

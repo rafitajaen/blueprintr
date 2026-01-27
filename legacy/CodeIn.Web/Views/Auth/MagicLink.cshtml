@@ -1,0 +1,21 @@
+@using Boilerplatr.Mvc
+@using CodeIn.Web.Views.Auth
+
+@model AuthController.MagicLinkViewModel;
+
+@{
+    Layout = LayoutTargets.Base;
+    ViewData["Robots"] = "noindex, nofollow";
+    ViewData["Title"] = $"Magic Link | {ViewContext?.HttpContext.Items["Tenant:Name"]}";
+}
+
+<section class="magic-link" data-redirect-url="@Model.RedirectUrl">
+
+    <h1>@L["Redirecting"]...</h1>
+
+</section>
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/magic-link.js" asp-append-version="true" defer></script>
+}

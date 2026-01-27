@@ -1,0 +1,166 @@
+﻿@using CodeIn.Web.Views.Hire
+@model HireController.HireViewModel
+
+@{
+    Layout = LayoutTargets.Base;
+
+    ViewData["MainClass"] = "articles";
+    
+    ViewData["Page"] = @L["Hire"];
+    ViewData["Title"] = $"{ViewData["Page"]} - {ViewContext?.HttpContext.Items["Tenant:Name"]}";
+}
+
+<article class="articles hire">
+
+    <section class="title">
+        <h1>La mejor forma de contratar talento tech en España.</h1>
+        <p>Haz llegar tus ofertas a perfiles que valoran la calidad, la cultura y el impacto.</p>
+    </section>
+
+    <section class="cta">
+
+        <Card class="text-start first" href="@PageRoutes.Hire.LeadSubmission">
+
+            <CardHeader class="flex">
+                <IconButton class="button button-leading" icon="@IconTypes.ChartNoAxesCombined" />
+                <h2>Tu primera oferta, sin riesgo</h2>
+                @* <h2>Empieza sin comprosimo</h2> *@
+            </CardHeader>
+
+            <CardContent>
+                <p class="text-muted-sm">
+                    Publica tu primera oferta sin compromiso y comprueba si somos el canal ideal para tu equipo.
+                </p>
+            </CardContent>
+        </Card>
+
+        <Card class="text-start second" href="@PageRoutes.Hire.LeadSubmission">
+
+            <CardHeader class="flex">
+                <IconButton class="button button-leading" icon="@IconTypes.Handshake" />
+                <h2>Más visibilidad, mejores candidatos</h2>
+            </CardHeader>
+
+            <CardContent>
+                <p class="text-muted-sm">
+                    Destacamos tu oferta 30 días para que llegue antes —y mejor— a los perfiles que buscas.
+                </p>
+            </CardContent>
+        </Card>
+
+        <Card class="text-start third" href="@PageRoutes.Hire.LeadSubmission">
+
+            <CardHeader class="flex">
+                <IconButton class="button button-leading" icon="@IconTypes.Router" />
+                <h2>Integración sin complicaciones</h2>
+            </CardHeader>
+
+            <CardContent>
+                <p class="text-muted-sm">
+                    Nos conectamos con tus herramientas para que solo te centres en elegir al mejor talento.
+                </p>
+            </CardContent>
+        </Card>
+
+    </section>
+
+    <section class="features">
+
+        <div class="left">
+            <h2>Haz que tus ofertas lleguen donde deben</h2>
+            <p class="text-muted-md">
+            Nuestra plataforma está diseñada para que tus ofertas lleguen justo a los profesionales que quieres atraer en España. Sin complicaciones, sin ruido: solo resultados reales y candidatos de calidad que pueden impulsar tu equipo desde el primer día.
+            </p>
+            <AnchorButton class="button full-w first" href="@PageRoutes.Hire.LeadSubmission">Lanza tu primera oferta</AnchorButton>
+        </div>
+
+        <div class="right">
+            <div class="feature">
+                <Icon type="@IconTypes.MonitorUp"/>
+                <h3>Visibilidad en la portada</h3>
+                <p class="text-muted-sm">Tu oferta se muestra en un lugar preferente de nuestra página principal durante 30 días. Una manera efectiva de atraer visibilidad desde el primer momento y aumentar el número de candidaturas.</p>
+            </div>
+            <div class="feature">
+                <Icon type="@IconTypes.Send"/>
+                <h3>Compartimos tu oferta cada semana</h3>
+                <p class="text-muted-sm">Tu publicación se incluye en el email semanal con las nuevas oportunidades, enfocado en perfiles tech que siguen de cerca el mercado en España.</p>
+            </div>
+            <div class="feature">
+                <Icon type="@IconTypes.Waypoints"/>
+                <h3>Movimiento en redes</h3>
+                <p class="text-muted-sm">Tu publicación se comparte en nuestros canales sociales, llegando a una comunidad en crecimiento de profesionales tech con interés en nuevas oportunidades en España.</p>
+            </div>
+            <div class="feature">
+                <Icon type="@IconTypes.BookOpenCheck"/>
+                <h3>Casos de éxito y contenido relevante</h3>
+                <p class="text-muted-sm">Comparte tu experiencia y éxito en nuestra plataforma a través de nuestro blog y entrevistas con desarrolladores que han encontrado oportunidades contigo. Una forma auténtica de conectar con talento y mostrar lo que hace única a tu empresa.</p>
+            </div>
+            <AnchorButton class="button full-w last" href="@PageRoutes.Hire.LeadSubmission">
+            <Icon type="@IconTypes.Rocket" />
+            Lanza tu primera oferta
+            </AnchorButton>
+        </div>
+    </section>
+
+    <section class="faq">
+
+        <div class="left">
+            <h2>¿Tienes preguntas?</h2>
+            <p class="text-muted-md">
+                Publicar en nuestra plataforma es fácil, pero por si acaso, aquí tienes las respuestas a las preguntas que suelen surgir.
+            </p>
+        </div>
+
+        <div class="right">
+            
+            <Accordion>
+                <AccordionItem>
+                    <AccordionTrigger>¿Cuántas personas pueden apuntarse a cada oferta?</AccordionTrigger>
+                    <AccordionContent>
+                        <p class="text-muted-sm">
+                            No hay límite. Cada oferta puede recibir tantas candidaturas como genere de forma natural. Nuestro objetivo es ayudarte a recibir perfiles relevantes, no solo volumen.
+                        </p>
+                    </AccordionContent>
+                </AccordionItem>
+                <AccordionItem>
+                    <AccordionTrigger>¿Qué tipo de puestos puedo publicar?</AccordionTrigger>
+                    <AccordionContent>
+                        <p class="text-muted-sm">
+                            Cualquier posición relacionada con el mundo tech: desarrollo de software, diseño, producto, QA, data, IA, soporte técnico... Si el perfil que buscas forma parte de un equipo digital o tecnológico, esta plataforma es un buen canal para ti.
+                        </p>
+                    </AccordionContent>
+                </AccordionItem>
+                <AccordionItem>
+                    <AccordionTrigger>¿Cómo publico una oferta?</AccordionTrigger>
+                    <AccordionContent>
+                        <p class="text-muted-sm">
+                            El proceso es muy sencillo. Solo tienes que completar un pequeño formulario con los detalles de la oferta o pasarnos el enlace a tu página de empleo. Nos encargamos de que se publique correctamente, con buen formato y visibilidad.
+                        </p>
+                    </AccordionContent>
+                </AccordionItem>
+                <AccordionItem>
+                    <AccordionTrigger>¿Cómo recibiré las candidaturas?</AccordionTrigger>
+                    <AccordionContent>
+                        <p class="text-muted-sm">
+                            Podemos enlazar directamente con tu ATS, tu web o un email de contacto. Nos adaptamos a tu flujo actual para que no tengas que cambiar nada en tu proceso de selección.
+                        </p>
+                    </AccordionContent>
+                </AccordionItem>
+            </Accordion>
+        </div>
+
+    </section>
+
+    <section class="contact">
+    <h5>@L["Still have a question? Reach out to us via email"]</h5>
+    <p class="text-muted-md">
+        <AnchorButton href="mailto:@Model.ContactEmail">@Model.ContactEmail</AnchorButton>
+    </p>
+    </section>
+
+</article>
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/empty.js" asp-append-version="true" defer></script>
+}

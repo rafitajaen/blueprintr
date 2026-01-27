@@ -1,0 +1,79 @@
+@use "../base/mixins" as *;
+@use "../base/breakpoints" as *;
+
+.icon, .logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    pointer-events: none;
+    
+    & > svg {
+        width: calc(var(--spacing)*4);
+        height: calc(var(--spacing)*4);
+    }
+}
+
+svg.logo-icon {
+
+    display: block;
+
+    animation-duration: .3s;
+    --tw-duration: .3s;
+    transition-duration: .3s;
+
+    user-select: none;
+    will-change: transform;
+
+    width: 9rem;
+    height: 3.5rem;
+
+    pointer-events: all;
+
+    border-radius: 5px;
+    padding: 7px;
+
+    .background { fill: var(--foreground); }
+    .foreground { fill: var(--background); }
+    .accent { fill: var(--primary); }
+}
+
+.dark {
+    svg.logo-icon {
+        .background { fill: var(--border); }
+        .foreground { fill: var(--foreground); }
+        // .accent { fill: var(--foreground); }
+    }
+}
+
+svg.hamburger-icon {
+
+    animation-duration: .3s;
+    --tw-duration: .3s;
+    transition-duration: .3s;
+
+    user-select: none;
+    will-change: transform;
+
+    width: 3rem;
+    height: 3rem;
+
+    rotate: 0deg;
+
+    & > path {
+        fill: none;
+
+        stroke: currentColor;
+        stroke-width: 5px;
+        stroke-linecap: round;
+        stroke-dasharray: 40 121;
+        
+        --tw-duration: .3s;
+        transition-duration: .3s;
+    }
+    
+    &.open {
+        rotate: 45deg;
+        stroke-dashoffset: -68px;
+    }
+}

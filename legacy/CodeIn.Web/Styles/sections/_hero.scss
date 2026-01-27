@@ -1,0 +1,111 @@
+@use "../base/mixins" as *;
+@use "../base/breakpoints" as *;
+
+section.hero {
+
+    grid-area: hero; 
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 2rem auto;
+    text-align: center;
+    max-width: var(--container-3xl);
+
+    padding-block: calc(var(--spacing)*2);
+    padding-inline: calc(var(--spacing)*4);
+
+    & > a {
+        padding-inline: 0.4rem;
+        padding-block: 0.2rem;
+
+        .text {
+            @include onMobile {
+                @include font-normal;
+                opacity: .5;
+            }
+        }
+
+        .blob {
+            display: none;
+            --pulse-size: .5rem;
+    
+            @include onMobile {
+                display: block;
+            }
+        }
+
+        .badge {
+            @include onMobile {
+                display: none;
+            }
+        }
+    }
+
+    h1 {
+        font-family: 'Outfit';
+        @include text-5xl;
+
+        @include onMobile {
+            @include text-3xl;
+            @include font-semibold;
+            text-align:start;
+        }
+    }
+
+    p { 
+        opacity: .7;
+        font-family: 'Outfit';
+        @include text-lg; 
+        @include font-normal;
+
+        // padding-block: calc(var(--spacing)*3);
+
+        @include onMobile {
+            @include text-md;
+            --tw-leading: var(--text-md--line-height);
+            letter-spacing: var(--tracking-tighter);
+            padding-block: calc(var(--spacing));
+        }
+    }
+
+    .quick-filters {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        gap: calc(var(--spacing)*4);
+        padding-block: calc(var(--spacing)*6);
+
+        @include onMobile {
+            align-items: start;
+            justify-content: start;
+            gap: calc(var(--spacing)*1);
+
+            .button {
+                padding-inline: calc(var(--spacing)*3);
+                padding-block: calc(var(--spacing)*1);
+            }
+        }
+    }
+
+    @include onMobile {
+        margin: 0;
+        text-align:start;
+        align-items: start;
+        padding-block: calc(var(--spacing)*2);
+        padding-inline: calc(var(--spacing)*3);
+
+        .button-hero, .button-second-hero {
+            padding-block: calc(var(--spacing) * 1.5);
+        padding-inline: calc(var(--spacing) * 3);
+            svg {
+                width: calc(var(--spacing)*5);
+                height: calc(var(--spacing)*5);
+            }
+        }
+    }
+}

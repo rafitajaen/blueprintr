@@ -1,0 +1,62 @@
+@using CodeIn.Web.Components.ActionFile
+@model ActionFileComponent
+
+@{
+    var autocomplete = string.IsNullOrWhiteSpace(Model.Autocomplete) ? "off" : Model.Autocomplete;
+}
+
+<div class="action-file @Model.Class" data-input-id="@Model.Id" data-required="@Model.Required">
+
+    <div class="content">
+
+        @if (string.IsNullOrWhiteSpace(Model.PreText) is false)
+        {
+            <span class="pre-text">@Model.PreText</span>
+        }
+
+        @if (Model.IconType is IconTypes icon)
+        {
+            <Icon class="pre-icon" type="@icon" />
+        }
+
+        @if (Model.Label is not null)
+        {
+            <label for="@Model.Id">@Model.Label</label>
+        }
+
+        @if (string.IsNullOrWhiteSpace(Model.Value))
+        {
+            <input id="@Model.Id" type="file" accept="@Model.Accept" placeholder="@Model.Placeholder" autocomplete="@autocomplete" />
+        }
+        else
+        {
+            <input id="@Model.Id" type="file" accept="@Model.Accept" placeholder="@Model.Placeholder" autocomplete="@autocomplete" value="@Model.Value" />
+        }
+
+
+        @if (Model.InnerButton is true && string.IsNullOrWhiteSpace(Model.ActionText) is false)
+        {
+            <IconButton class="inner-button uppercase">@Model.ActionText</IconButton>
+        }
+    </div>
+
+    @if (Model.InnerButton is not true && string.IsNullOrWhiteSpace(Model.ActionText) is false)
+    {
+        <IconButton class="outter-button uppercase">@Model.ActionText</IconButton>
+    }
+
+    @if (Model.ChildContent is not null || Model.Required is true)
+    {
+        <div class="footer">
+
+            @if (Model.Required is true)
+            {
+                <ActionInputError type="Empty">@L["Required – please enter a value."]</ActionInputError>
+            }
+
+            @Model.ChildContent
+
+        </div>
+    }
+
+</div>

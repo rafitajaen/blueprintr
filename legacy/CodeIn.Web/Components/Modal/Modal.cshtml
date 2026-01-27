@@ -1,0 +1,12 @@
+<dialog id="@Model.Id" class="dialog @Model.Class">
+
+    @if (Model.ShowClose is true)
+    {
+        <button class="close" >
+            <Icon type="@IconTypes.X" />
+        </button>
+    }
+
+    @Model.ChildContent
+
+</dialog>

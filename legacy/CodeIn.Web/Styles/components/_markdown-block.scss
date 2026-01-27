@@ -1,0 +1,8 @@
+@use "../base/mixins" as *;
+@use "../base/breakpoints" as *;
+
+.markdown-block {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing) * 4);
+}

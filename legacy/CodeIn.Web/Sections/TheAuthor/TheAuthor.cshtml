@@ -1,0 +1,32 @@
+@model CodeIn.Web.Sections.TheAuthor.TheAuthorComponent;
+@{
+    var hasName = !string.IsNullOrWhiteSpace(Model.Author?.FullName);
+    var hasBio = !string.IsNullOrWhiteSpace(Model.Author?.Bio);
+}
+@if (Model.Author is not null && (hasName || hasBio))
+{
+    <section class="author">
+        <Card>
+            <CardHeader>
+                <Avatar class="avatar-rounded-sm">
+                    <AvatarImage src="@Model.Author.AvatarUrl" alt="@Model.Author.FullName profile picture" initials="@Model.Author.GetInitials()" />
+                </Avatar>
+
+                @if(!string.IsNullOrWhiteSpace(Model.Author.FullName))
+                {
+                    <div class="flex-col">
+                            <span>@L["Written by"] @Model.Author.FullName</span>
+                        <SocialGroup social="@Model.Author.Social" />
+                    </div>
+                }
+            </CardHeader>
+
+            @if (!string.IsNullOrWhiteSpace(Model.Author.Bio))
+            {
+                <CardContent>
+                    @Html.Raw(Markdowner.ToHtml(Model.Author.Bio))
+                </CardContent>
+            }
+        </Card>
+    </section>
+}

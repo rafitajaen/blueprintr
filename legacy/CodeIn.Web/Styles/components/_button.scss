@@ -1,0 +1,284 @@
+@use "../base/mixins" as *;
+
+.button {
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--spacing)*2);
+
+    color: var(--primary-foreground);
+    fill: var(--primary-foreground);
+    background-color: var(--primary);
+
+    cursor: pointer;
+    white-space: nowrap;
+    outline-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+
+    padding-block: calc(var(--spacing)*2);
+    padding-inline: calc(var(--spacing)*4);
+
+    border-radius: calc(var(--radius) - 2px);
+
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--tw-leading,var(--text-sm--line-height));
+
+    box-shadow: var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow);
+
+    --tw-duration: 0s;
+
+    transition-property: all;
+    transition-timing-function: var(--tw-ease,var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration,var(--default-transition-duration));
+
+    & svg {
+        display: block;
+        flex-shrink: 0;
+        pointer-events: none;
+        width: calc(var(--spacing)*4);
+        height: calc(var(--spacing)*4);
+
+        rotate: calc(var(--rotation) * -1);
+
+        &.loader {
+            display: none;
+        }
+    }
+
+    &:hover {
+        color: var(--primary-foreground);
+        fill: var(--primary-foreground);
+        background-color: color-mix(in oklab,var(--primary)90%,transparent);
+    }
+
+    &.button-secondary {
+        color: var(--secondary-foreground);
+        fill: var(--secondary-foreground);
+        background-color: var(--secondary);
+
+        &:hover {
+            background-color: color-mix(in oklab,var(--secondary)80%,transparent);
+        }
+    }
+
+    &.button-destructive {
+        color: var(--text-white);
+        fill: var(--text-white);
+        background-color: var(--destructive);
+
+        &:hover {
+            background-color: color-mix(in oklab,var(--destructive)90%,transparent);
+        }
+    }
+
+    &.button-outline, &.button-with-icon {
+        color: var(--foreground);
+        fill: var(--foreground);
+        background-color: var(--background);
+
+        border-color: var(--ring);
+        border-style: var(--tw-border-style);
+        border-width: 1px;
+
+        outline-color: color-mix(in oklab,var(--ring)50%,transparent);
+
+        &:hover {
+            color: var(--accent-foreground);
+            background-color: var(--accent);
+        }
+    }
+
+    &.button-ghost {
+        color: var(--foreground);
+        fill: var(--foreground);
+        background-color: var(--background);
+
+        &:hover {
+            color: var(--accent-foreground);
+            fill: var(--accent-foreground);
+            background-color: var(--accent);
+        }
+    }
+
+    &.button-link  {
+        color: var(--foreground);
+        background-color: transparent;
+
+        &:hover {
+            text-decoration-line: underline;
+        }
+    }
+
+    &.button-footer  {
+        font-family: 'Geist Mono';
+        color: var(--muted);
+        background-color: transparent;
+        padding: 0;
+
+        &:hover {
+            // color: var(--dark-foreground);
+            text-decoration-line: underline;
+        }
+    }
+
+    &.button-option  {
+        color: var(--foreground);
+        background-color: transparent;
+        padding-inline: 0;
+
+        &.destructive {
+            color: var(--destructive);
+        }
+
+        &:hover {
+            text-decoration-line: underline;
+        }
+    }
+
+    &.button-icon {
+        color: var(--foreground);
+        fill: var(--foreground);
+        background-color:color-mix(in oklab,var(--secondary)80%,transparent);
+    }
+
+    &.button-loading {
+        color: var(--primary-foreground);
+        background-color: var(--primary);
+        opacity: .5;
+        pointer-events: none;
+
+        & > svg:not(.loader) {
+            display: none;
+        }
+
+        & > svg.loader {
+            display: inline-flex;
+            animation:var(--animate-spin);
+        }
+    }
+
+    &.button-sidebar  {
+        color: var(--foreground);
+        fill: var(--foreground);
+        background-color: transparent;
+        font-weight: var(--font-weight-normal);
+
+        & > .skeleton {
+            color: var(--primary);
+            fill: var(--primary);
+            background-color:var(--secondary);
+        }
+
+        &:hover {
+            color: var(--primary-foreground);
+            fill: var(--primary-foreground);
+            font-weight: var(--font-weight-medium);
+            background-color:color-mix(in oklab,var(--primary)40%,white);
+            // text-decoration: underline;
+
+            .skeleton {
+                background-color: var(--primary);
+                color:color-mix(in oklab,var(--primary-foreground)100%,transparent);
+            }
+            // font-weight: var(--font-weight-medium);
+        }
+    }
+
+    &.button-leading {
+        color: var(--primary-foreground);
+        fill: var(--primary-foreground);
+        font-weight: var(--font-weight-medium);
+        background-color:color-mix(in oklab,var(--primary)60%,white);
+        // text-decoration: underline;
+        rotate: calc(var(--rotation) * -1);
+
+        .skeleton {
+            background-color: var(--primary);
+            color:color-mix(in oklab,var(--primary-foreground)100%,white);
+        }
+    }
+
+    &.button-dense {
+        padding-block: calc(var(--spacing) * 1.7);
+        padding-inline: calc(var(--spacing) * 2);
+        border-radius: calc(var(--radius) - 6px);
+        opacity: 0.9;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    &.button-compensation {
+        color: var(--success-foreground);
+        fill: var(--success-foreground);
+        background-color: var(--success);
+    }
+
+    &.button-featured {
+        color: var(--success-foreground);
+        fill: var(--success-foreground);
+        background-color: var(--success);
+    }
+
+    &.button-requeriment {
+        color: var(--accent);
+        background-color: var(--accent-foreground);
+    }
+
+    &.button-skill {
+        color: var(--secondary-foreground);
+        background-color: var(--secondary);
+    }
+
+    &.button-hero {
+        color: oklch(26.982% 0.00553 285.95);
+        background-color: oklch(0.8571 0.1593 162.65);
+
+        rotate: calc(var(--rotation) * 1);
+        svg {
+            width: calc(var(--spacing)*8);
+            height: calc(var(--spacing)*8);
+            rotate: calc(var(--rotation) * -1);
+        }
+    }
+
+    &.button-second-hero {
+        color: oklch(97% 0 0);
+        background-color: oklch(64.586% 0.23797 331.644);
+
+        rotate: calc(var(--rotation) * 1);
+        svg {
+            width: calc(var(--spacing)*8);
+            height: calc(var(--spacing)*8);
+            rotate: calc(var(--rotation) * -1);
+        }
+    }
+
+    &.active {
+        font-weight: var(--font-weight-semibold);
+        background-color: color-mix(in oklab,var(--primary)10%,transparent);
+        
+        &:hover {
+            text-decoration: none;
+            font-weight: var(--font-weight-semibold);
+            background-color: color-mix(in oklab,var(--primary)20%,transparent);
+        }
+    }
+
+}
+
+.tag  {
+    color: var(--code-number);
+    background-color: transparent;
+
+    &:hover {
+        text-decoration-line: underline;
+    }
+}
+
+
+

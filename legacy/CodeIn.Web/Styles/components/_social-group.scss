@@ -1,0 +1,13 @@
+@use "../base/mixins" as *;
+@use "../base/breakpoints" as *;
+
+.social-group {
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: calc(var(--spacing)*1);
+
+    .button {
+        padding: calc(var(--spacing)*1);
+    }
+}

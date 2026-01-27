@@ -1,0 +1,135 @@
+﻿@using CodeIn.Domain.Jobs
+@using CodeIn.Web.Views.Hire
+
+@model HireController.LeadSubmissionViewModel
+
+@{
+    Layout = LayoutTargets.Landing;
+    ViewData["Robots"] = "noindex, nofollow";
+
+    ViewData["MainClass"] = "articles";
+    ViewData["Page"] = @L["Hire Form"];
+    ViewData["Title"] = $"{ViewData["Page"]} - {ViewContext?.HttpContext.Items["Tenant:Name"]}";
+
+    var options = Enum.GetNames(typeof(WorkArrangement))
+                      .ToDictionary(key => key, value => L[value].ToString());
+
+    var salaries = Enum.GetNames(typeof(SalaryRange))
+                      .ToDictionary(key => key, value => L[value].ToString());
+}
+
+<article class="articles hire">
+
+    <section class="title">
+        <h1>Publica tu primera oferta</h1>
+        <p>Cuéntanos qué perfil estás buscando. Nosotros nos encargamos del resto.</p>
+    </section>
+
+    <section class="company">
+
+        <div class="left">
+
+            <h2>Primero, háblanos de tu empresa</h2>
+            <p class="text-muted-md">
+                Proporciónanos la información básica sobre tu empresa para presentarla adecuadamente a los candidatos.
+            </p>
+        </div>
+
+        <div class="right">
+            <ActionInput id="company" type="text" icon-type="@IconTypes.BriefcaseBusiness" label="Nombre de la empresa" placeholder="Acme Technologies" required="true">
+                <p class="text-muted-sm">No incluyas SL, S.L., u otras formas legales en el nombre.</p>
+            </ActionInput>
+            <ActionInput id="hq" type="text" icon-type="@IconTypes.MapPinned" label="Sede de la empresa" placeholder="Madrid, Comunidad de Madrid" required="true">
+                <p class="text-muted-sm">Indica la ciudad y la provincia donde se encuentra la sede principal de la empresa.</p>
+            </ActionInput>
+            <ActionInput id="website" type="text" icon-type="@IconTypes.Globe" label="Página web" placeholder="https://tusitio.com" required="true">
+                <p class="text-muted-sm">URL oficial de la empresa para que los candidatos puedan conocer más sobre vosotros.</p>
+            </ActionInput>
+        </div>
+    </section>
+
+    <section class="job">
+
+        <div class="left">
+
+            <h2>Ahora sobre el puesto vacante</h2>
+            <p class="text-muted-md">
+                Detalla el perfil profesional que buscas para que los candidatos entiendan bien la oferta.
+            </p>
+        </div>
+
+        <div class="right">
+            <ActionInput id="role" class="email-action" type="text" icon-type="@IconTypes.UserCheck" label="Puesto" placeholder="Desarrollador Frontend" required="true">
+                <p class="text-muted-sm">Indica el título del puesto que deseas cubrir.</p>
+            </ActionInput>
+
+            <ActionSelect id="arrangement" class="email-action" type="text" label="Modalidad de trabajo" options="@options">
+                <p class="text-muted-sm">Selecciona si el puesto es remoto, presencial o híbrido.</p>
+            </ActionSelect>
+
+            <ActionInput id="location" class="email-action" type="text" icon-type="@IconTypes.Globe" label="Ubicación del puesto" placeholder="Barcelona, Cataluña" required="true">
+                <p class="text-muted-sm">Especifica ciudad y provincia solo si el puesto es presencial o híbrido.</p>
+            </ActionInput>
+
+            <ActionSelect id="salary" label="Rango salarial" options="@salaries">
+                <p class="text-muted-sm">Indica la horquilla salarial estimada para el puesto.</p>
+            </ActionSelect>
+
+            <ActionArea id="description" label="Descripción del puesto" placeholder="Responsabilidades, tecnologías, experiencia, idiomas y titulación requerida" required="true">
+                <p class="text-muted-sm">Proporciona una descripción completa del puesto, incluyendo las responsabilidades, tecnologías requeridas, años de experiencia, idiomas y titulación necesaria.</p>
+            </ActionArea>
+        </div>
+    </section>
+
+    <section class="user">
+
+        <div class="left">
+            <h2>Y por último, sobre ti</h2>
+
+            <p class="text-muted-md">
+                Queremos saber quién está detrás de esta publicación para contactarte fácilmente.
+            </p>
+        </div>
+
+        <div class="right">
+            <ActionInput id="name" type="text" icon-type="@IconTypes.Users" label="Tu nombre" placeholder="Alex García" required="true">
+                <p class="text-muted-sm">Persona de contacto para esta oferta.</p>
+            </ActionInput>
+            <ActionInput id="email" type="email" icon-type="@IconTypes.MarkEmailRead" label="@L["Your email"]" placeholder="alex@empresa.com" required="true">
+                <ActionInputError type="InvalidEmail">@L["Hmm... that doesn’t look like a valid email."]</ActionInputError>
+                <ActionInputError type="AlreadyInUse">@L["Email already in use. Please sign in into your account."]</ActionInputError>
+                <p class="text-muted-sm">@L["Email where we can contact you."]</p>
+            </ActionInput>
+        </div>
+    </section>
+
+    <section class="content">
+        <IconButton id="submit" class="w-full" icon="@IconTypes.Inbox" include-loader="true">
+            Enviar detalles del puesto
+        </IconButton>
+    </section>
+
+</article>
+
+<Modal id="submit-failed">
+
+    <ModalHeader>
+        <ModalTitle>@L["Submit unavailable"]</ModalTitle>
+        <ModalDescription>
+            @L["The submit service is temporarily disabled"].
+            <br />
+            @L["If you have any questions, please contact us at"]
+            <AnchorButton class="button-link" href="mailto:@Model.SupportEmail"><strong>@Model.SupportEmail</strong></AnchorButton>.
+        </ModalDescription>
+    </ModalHeader>
+
+    <ModalFooter>
+        <ModalAction>@L["I understand"]</ModalAction>
+    </ModalFooter>
+
+</Modal>
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/hire.js" asp-append-version="true" defer></script>
+}

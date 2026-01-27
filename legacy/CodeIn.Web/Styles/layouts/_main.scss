@@ -1,0 +1,12 @@
+@use "../base/mixins" as *;
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+
+    width: 100%;
+
+    // @include max-width-by-screen;
+}

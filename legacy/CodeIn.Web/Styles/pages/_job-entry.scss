@@ -1,0 +1,119 @@
+@use "../base/mixins" as *;
+@use "../base/breakpoints" as *;
+
+article.job-entry {
+    display: grid;
+    grid-template-columns: 7fr 4fr;
+    grid-template-rows: auto;
+    gap: calc(var(--spacing)*4);
+    align-items: start;
+
+    grid-template-areas:
+    "role role"
+    "info application"
+    "content company"
+    "content newsletter"
+    "application-footer newsletter"
+    "detail newsletter"
+    "related newsletter"
+    "others newsletter";
+
+    margin: 0 auto;
+    max-width: var(--container-5xl);
+
+    padding-block: calc(var(--spacing)*2);
+    padding-inline: calc(var(--spacing)*4);
+
+    @include onTablet {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "role"
+        "info"
+        "application"
+        "company"
+        "content"
+        "application-footer"
+        "detail"
+        "related"
+        "newsletter"
+        "others";
+    }
+
+    & > * {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--spacing)*6);
+        width: 100%;
+        align-self: start;
+    }
+
+    .role { 
+        grid-area: role; 
+        align-items: start;
+    }
+
+    .info { 
+        grid-area: info;
+
+        .company {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            flex-wrap: nowrap;
+
+            gap: calc(var(--spacing)*2);
+        }
+
+        .skeleton-logo {
+            --image-container: 1.5rem;
+            font-size: var(--text-sm);
+        }
+
+        .highlights {
+            display: grid;
+            grid-auto-flow: column; /* ← Aquí la clave */
+            grid-template-rows: repeat(3, auto); /* 3 filas */
+            gap: calc(var(--spacing)*2);
+            width: 100%;
+
+            @include onTablet {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+    .company { 
+        grid-area: company;
+    }
+
+    .application, .application-footer { 
+        grid-area: application;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+
+        gap: calc(var(--spacing)*1);
+        padding-block:calc(var(--spacing)*4);
+
+        hr {
+            position: absolute;
+            top: 49%;
+            width: 100%;
+            transform: translateY(-50%);
+        }
+        
+        span {
+            z-index: 2;
+            background-color: var(--background);
+            padding-inline:calc(var(--spacing)*2);
+            @include text-muted-sm;
+        }
+    }
+
+    .application-footer { grid-area: application-footer; }
+    .detail { grid-area: detail; }
+    .content { grid-area: content; }
+    .others { grid-area: others; }
+    .related { grid-area: related; }
+    
+}

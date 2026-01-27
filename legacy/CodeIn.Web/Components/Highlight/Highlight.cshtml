@@ -1,0 +1,23 @@
+@using CodeIn.Web.Components.Highlight
+@model HighlightComponent
+
+<div id="@Model.Id" class="highlight @Model.Class">
+
+    @if (Model.Icon is IconTypes icon)
+    {
+        <Icon type="@icon" />
+    }
+
+    @if(!string.IsNullOrWhiteSpace(Model.Text))
+    {
+        <span class="relative">
+
+            <span class="background"></span>
+            <span class="text">@Model.Text</span>
+            
+        </span>
+    }
+
+    @Model.ChildContent
+
+</div>

@@ -1,0 +1,1011 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, ...</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, ...</value>
+  </resheader>
+
+  <data name="Why" xml:space="preserve">
+    <value>¿Por qué</value>
+  </data>
+  <data name="Up to" xml:space="preserve">
+    <value>Hasta</value>
+  </data>
+  <data name="Remote policy" xml:space="preserve">
+    <value>Modalidad</value>
+  </data>
+  <data name="from" xml:space="preserve">
+    <value>de</value>
+  </data>
+  <data name="pre ago" xml:space="preserve">
+    <value>hace </value>
+  </data>
+  <data name="post ago" xml:space="preserve">
+    <value></value>
+  </data>
+
+  <!-- Application Page -->
+  <data name="Interested in this role?" xml:space="preserve">
+    <value>¿Interesado en este puesto?</value>
+  </data>
+  <data name="Apply now — we’d love to hear from you!" xml:space="preserve">
+    <value>¡Postúlate ahora! Nos encantaría saber de ti.</value>
+  </data>
+  <data name="Cover letter or message" xml:space="preserve">
+    <value>Carta de presentación o mensaje</value>
+  </data>
+  <data name="Write a short message about why you're a good fit for this position..." xml:space="preserve">
+    <value>Escribe un breve mensaje sobre por qué encajas bien en este puesto...</value>
+  </data>
+  <data name="CoverLetterFieldDescription" xml:space="preserve">
+    <value>En un par de párrafos, demuestra tu entusiasmo por la empresa o el puesto, y explica por qué encajas con lo que están buscando. Un mensaje personalizado y bien escrito puede marcar la diferencia entre conseguir una entrevista o no.</value>
+  </data>
+  <data name="Full name" xml:space="preserve">
+    <value>Nombre completo</value>
+  </data>
+  <data name="Please enter your full name." xml:space="preserve">
+    <value>Por favor, introduce tu nombre completo.</value>
+  </data>
+  <data name="This helps us know who you are." xml:space="preserve">
+    <value>Esto nos ayuda a saber quién eres.</value>
+  </data>
+  <data name="We'll use this to get back to you." xml:space="preserve">
+    <value>Usaremos este correo para ponernos en contacto contigo.</value>
+  </data>
+  <data name="Resume — PDF Only" xml:space="preserve">
+    <value>CV — En formato PDF</value>
+  </data>
+  <data name="No file selected." xml:space="preserve">
+    <value>Ningún archivo seleccionado.</value>
+  </data>
+  <data name="Please, upload a resume in a valid PDF format." xml:space="preserve">
+    <value>Por favor, sube un currículum en formato PDF válido.</value>
+  </data>
+  <data name="Upload your resume in PDF format. This helps us evaluate your experience." xml:space="preserve">
+    <value>Sube tu currículum en formato PDF. Esto nos ayuda a evaluar tu experiencia.</value>
+  </data>
+  <data name="Submit application" xml:space="preserve">
+    <value>Enviar solicitud</value>
+  </data>
+
+  <!-- Question Page -->
+  <data name="Submit question" xml:space="preserve">
+    <value>Enviar pregunta</value>
+  </data>
+
+  <data name="The clearer your question, the better we can help." xml:space="preserve">
+    <value>Cuanto más clara sea tu pregunta, mejor podremos ayudarte.</value>
+  </data>
+
+  <data name="Your question" xml:space="preserve">
+    <value>Tu pregunta</value>
+  </data>
+
+  <data name="Write your question about this position..." xml:space="preserve">
+    <value>Escribe tu pregunta sobre este puesto...</value>
+  </data>
+
+  <data name="Ask away — we’re happy to help!" xml:space="preserve">
+    <value>¡Pregúntanos, estaremos encantados de ayudarte!</value>
+  </data>
+
+  <data name="Not sure about something?" xml:space="preserve">
+    <value>¿Tienes dudas?</value>
+  </data>
+
+  <data name="Your message is too long. Please keep it under" xml:space="preserve">
+    <value>Tu mensaje es demasiado largo. Por favor, mantenlo por debajo de</value>
+  </data>
+
+  <data name="characters" xml:space="preserve">
+    <value>caracteres</value>
+  </data>
+
+  <data name="Hmm... that doesn’t look like a valid email." xml:space="preserve">
+    <value>Hmm... eso no parece un correo electrónico válido.</value>
+  </data>
+
+  <data name="Your email" xml:space="preserve">
+    <value>Tu correo electrónico</value>
+  </data>
+
+  <data name="Email where we can contact you." xml:space="preserve">
+    <value>Correo electrónico donde te podamos contactar.</value>
+  </data>
+
+  <!-- NotFound Page -->
+  <data name="Oops... we couldn't find what you're looking for" xml:space="preserve">
+    <value>Ups... no encontramos lo que buscas</value>
+  </data>
+  <data name="The link might be broken, the page has been moved, or it simply doesn't exist anymore." xml:space="preserve">
+    <value>Puede que el enlace esté roto, la página haya sido movida, o simplemente ya no exista.</value>
+  </data>
+  <data name="Why not head back to the homepage or explore other sections?" xml:space="preserve">
+    <value>¿Por qué no vuelves a la página principal o exploras otras secciones?</value>
+  </data>
+
+  <!-- Login Page -->
+  <data name="Check your inbox" xml:space="preserve">
+    <value>Revisa tu bandeja de entrada</value>
+  </data>
+
+  <data name="We've sent you a magic link to verify your email" xml:space="preserve">
+    <value>Te hemos enviado un enlace mágico para verificar tu correo</value>
+  </data>
+
+  <data name="Please click the link to confirm your address" xml:space="preserve">
+    <value>Haz clic en el enlace para confirmar tu dirección</value>
+  </data>
+
+  <data name="We've sent you a magic link to" xml:space="preserve">
+    <value>Te hemos enviado un enlace mágico a</value>
+  </data>
+
+  <data name="No email in your inbox? Check your spam folder or" xml:space="preserve">
+    <value>¿No ves el correo? Revisa tu carpeta de spam o</value>
+  </data>
+
+  <data name="try a different email address" xml:space="preserve">
+    <value>prueba con otra dirección de correo</value>
+  </data>
+
+  <data name="Required – please enter a value." xml:space="preserve">
+    <value>Campo obligatorio: por favor, introduce un valor.</value>
+  </data>
+
+  <!-- Login -->
+  <data name="Log in" xml:space="preserve">
+    <value>Iniciar sesión</value>
+  </data>
+  <data name="Wellcome!" xml:space="preserve">
+    <value>¡Bienvenido!</value>
+  </data>
+  <data name="Your next opportunity starts with your profile" xml:space="preserve">
+    <value>Tu próxima oportunidad comienza con tu perfil</value>
+  </data>
+  <data name="Enter your email address" xml:space="preserve">
+    <value>Introduce tu dirección de correo electrónico</value>
+  </data>
+  <data name="Please enter a valid email address" xml:space="preserve">
+    <value>Por favor, introduce una dirección de correo electrónico válida</value>
+  </data>
+  <data name="Send me a Magic Link" xml:space="preserve">
+    <value>Envíame un enlace mágico</value>
+  </data>
+  <data name="Sign in unavailable" xml:space="preserve">
+    <value>Inicio de sesión no disponible</value>
+  </data>
+  <data name="The login service is temporarily disabled" xml:space="preserve">
+    <value>El servicio de inicio de sesión está temporalmente deshabilitado</value>
+  </data>
+  <data name="If you have any questions, please contact us at" xml:space="preserve">
+    <value>Si tienes alguna pregunta, contáctanos en</value>
+  </data>
+  <data name="I understand" xml:space="preserve">
+    <value>Entiendo</value>
+  </data>
+
+  <!-- LeadSubmissions -->
+  <data name="Still have a question? Reach out to us via email" xml:space="preserve">
+    <value>¿Tienes alguna otra pregunta? Escríbenos por correo electrónico</value>
+  </data>
+  <data name="Submit unavailable" xml:space="preserve">
+    <value>Envío no disponible</value>
+  </data>
+
+  <data name="The submit service is temporarily disabled" xml:space="preserve">
+    <value>El servicio de envío está temporalmente deshabilitado</value>
+  </data>
+
+  <!-- Sidebar -->
+  <data name="Jobs" xml:space="preserve">
+    <value>Trabajos</value>
+  </data>
+  <data name="Companies" xml:space="preserve">
+    <value>Empresas</value>
+  </data>
+  <data name="Blog" xml:space="preserve">
+    <value>Blog</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>Nuevo</value>
+  </data>
+  <data name="jobs added this week" xml:space="preserve">
+    <value>empleos añadidos esta semana</value>
+  </data>
+  <data name="Europe" xml:space="preserve">
+    <value>Europa</value>
+  </data>
+  <data name="English required" xml:space="preserve">
+    <value>Inglés requerido</value>
+  </data>
+  <data name="3+ Years Of Experience" xml:space="preserve">
+    <value>Más de 3 años de experiencia</value>
+  </data>
+  <data name="SuscribeInputPlaceholder" xml:space="preserve">
+    <value>Un email cada miércoles. Empleos seleccionados a mano.</value>
+  </data>
+  <data name="Suscribe" xml:space="preserve">
+    <value>Suscribirse</value>
+  </data>
+  <data name="Join" xml:space="preserve">
+    <value>Únete</value>
+  </data>
+  <data name="readers" xml:space="preserve">
+    <value>lectores</value>
+  </data>
+  <data name="and get our free" xml:space="preserve">
+    <value>y recibe gratis nuestra</value>
+  </data>
+  <data name="Developer Salary Guide" xml:space="preserve">
+    <value>Guía de salarios para desarrolladores</value>
+  </data>
+  <data name="Submit a job" xml:space="preserve">
+    <value>Publicar empleo</value>
+  </data>
+  <data name="Get job alerts" xml:space="preserve">
+    <value>Alertas de empleo</value>
+  </data>
+  <data name="positions available" xml:space="preserve">
+    <value>posiciones disponibles</value>
+  </data>
+  <data name="Last update on" xml:space="preserve">
+    <value>Última actualización el</value>
+  </data>
+  <data name="View all jobs" xml:space="preserve">
+    <value>Ver todos los empleos</value>
+  </data>
+
+  <data name="SuscribeSectionTitle" xml:space="preserve">
+    <value>Avanza hacia tu próximo desafío</value>
+  </data>
+
+  <data name="SuscribeSection1" xml:space="preserve">
+    <value>
+    Cada semana selecciono manualmente las mejores oportunidades para desarrolladores.
+    </value>
+  </data>
+  <data name="SuscribeSection2" xml:space="preserve">
+    <value>
+    Nada de algoritmos ni listas masivas: solo empleos en empresas que apuestan por la calidad y el talento.
+    </value>
+  </data>
+  <data name="SuscribeSection3" xml:space="preserve">
+    <value>
+    Sin spam, sin ruido. Tu correo está seguro, siempre.
+    </value>
+  </data>
+
+  <data name="Browse by speciality" xml:space="preserve">
+    <value>Explorar por especialidad</value>
+  </data>
+
+  <data name="Show more" xml:space="preserve">
+    <value>Mostrar más</value>
+  </data>
+
+  <data name="offers" xml:space="preserve">
+    <value>ofertas</value>
+  </data>
+
+  <data name="Trusted tech jobs in Spain, curated for developers who care about where they work." xml:space="preserve">
+    <value>Ofertas tech de confianza en España, seleccionadas a mano para quienes se preocupan por dónde trabajan.</value>
+  </data>
+  <data name="Every role is handpicked from companies that value quality, team well-being, and real opportunities for growth." xml:space="preserve">
+    <value>Con empresas que apuestan por la calidad, el buen ambiente y el crecimiento real del equipo.</value>
+  </data>
+
+  <data name="Talents" xml:space="preserve">
+    <value>Talentos</value>
+  </data>
+  <data name="Latest jobs" xml:space="preserve">
+    <value>Empleos recientes</value>
+  </data>
+  <data name="Top companies" xml:space="preserve">
+    <value>Empresas destacadas</value>
+  </data>
+  <data name="Search jobs" xml:space="preserve">
+    <value>Buscador de ofertas</value>
+  </data>
+  <data name="Stories" xml:space="preserve">
+    <value>Historias de éxito</value>
+  </data>
+  <data name="Newsletter" xml:space="preserve">
+    <value>Newsletter</value>
+  </data>
+  <data name="Employers Login" xml:space="preserve">
+    <value>Login empleadores</value>
+  </data>
+  <data name="Hire" xml:space="preserve">
+    <value>Contratar</value>
+  </data>
+  <data name="CodeInSpain" xml:space="preserve">
+    <value>CodeInSpain</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>Feedback</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contacto</value>
+  </data>
+  <data name="Take action today and discover new opportunities" xml:space="preserve">
+    <value>Empieza hoy y descubre nuevas oportunidades</value>
+  </data>
+  <data name="Overview" xml:space="preserve">
+    <value>Resumen</value>
+  </data>
+  <data name="Policies" xml:space="preserve">
+    <value>Políticas</value>
+  </data>
+  <data name="PoliciesPre" xml:space="preserve">
+    <value>Políticas de </value>
+  </data>
+  <data name="PoliciesPost" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Open positions at" xml:space="preserve">
+    <value>Posiciones abiertas en</value>
+  </data>
+  <data name="Apply for this position" xml:space="preserve">
+    <value>Postularse para este puesto</value>
+  </data>
+  <data name="do you need more info?" xml:space="preserve">
+    <value>¿Necesitas más información?</value>
+  </data>
+  <data name="Ask a question" xml:space="preserve">
+    <value>Haz una pregunta</value>
+  </data>
+  <data name="at" xml:space="preserve">
+    <value>a</value>
+  </data>
+  <data name="You might also be interested in..." xml:space="preserve">
+    <value>Quizás también te interese...</value>
+  </data>
+
+  <!-- Job Info -->
+  <data name="No salary range given" xml:space="preserve">
+    <value>No se indicó rango salarial</value>
+  </data>
+  <data name="No experience required" xml:space="preserve">
+    <value>No se requiere experiencia</value>
+  </data>
+  <data name="years of experience required" xml:space="preserve">
+    <value>años de experiencia requeridos</value>
+  </data>
+  <data name="Residents only applications" xml:space="preserve">
+    <value>Solo residentes pueden postular</value>
+  </data>
+  <data name="Open to applicants from abroad" xml:space="preserve">
+    <value>Se aceptan postulaciones desde el extranjero</value>
+  </data>
+
+  <!-- WorkArrangement enum -->
+  <data name="Onsite" xml:space="preserve">
+    <value>Presencial</value>
+  </data>
+  <data name="Remote" xml:space="preserve">
+    <value>Remoto</value>
+  </data>
+  <data name="Hybrid" xml:space="preserve">
+    <value>Híbrido</value>
+  </data>
+  <data name="Flexible" xml:space="preserve">
+    <value>Flexible</value>
+  </data>
+
+  <!-- Language enum -->
+  <data name="Spanish" xml:space="preserve">
+    <value>Español</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>Inglés</value>
+  </data>
+  <data name="German" xml:space="preserve">
+    <value>Alemán</value>
+  </data>
+  <data name="French" xml:space="preserve">
+    <value>Francés</value>
+  </data>
+  <data name="Italian" xml:space="preserve">
+    <value>Italiano</value>
+  </data>
+
+  <!-- LanguageLevel enum -->
+  <data name="NotRequired" xml:space="preserve">
+    <value>No requerido</value>
+  </data>
+  <data name="Conversational" xml:space="preserve">
+    <value>Conversacional</value>
+  </data>
+  <data name="BusinessLevel" xml:space="preserve">
+    <value>Nivel empresarial</value>
+  </data>
+  <data name="Fluent" xml:space="preserve">
+    <value>Fluido</value>
+  </data>
+
+  <data name="More about" xml:space="preserve">
+    <value>Más sobre</value>
+  </data>
+  <data name="Remote work" xml:space="preserve">
+    <value>Trabajo remoto</value>
+  </data>
+  <data name="Holidays" xml:space="preserve">
+    <value>Vacaciones</value>
+  </data>
+  <data name="Working hours" xml:space="preserve">
+    <value>Horario laboral</value>
+  </data>
+  <data name="Related jobs" xml:space="preserve">
+    <value>Trabajos relacionados</value>
+  </data>
+
+  <!-- Application -->
+  <data name="Apply from Abroad" xml:space="preserve">
+    <value>Postular desde el extranjero</value>
+  </data>
+  <data name="Residents Only" xml:space="preserve">
+    <value>Solo residentes</value>
+  </data>
+
+  <!-- Filter Titles -->
+  <data name="The best tech opportunities, carefully selected" xml:space="preserve">
+    <value>Las mejores oportunidades en tecnología, elegidas con lupa.</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filtros</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Filtrar</value>
+  </data>
+  <data name="Apply filters" xml:space="preserve">
+    <value>Aplicar filtros</value>
+  </data>
+  <data name="Remote policty" xml:space="preserve">
+    <value>Modalidad</value>
+  </data>
+  <data name="Seniority" xml:space="preserve">
+    <value>Experiencia</value>
+  </data>
+  <data name="Salary" xml:space="preserve">
+    <value>Salario</value>
+  </data>
+  <data name="Technologies" xml:space="preserve">
+    <value>Tecnologías</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Localización</value>
+  </data>
+
+  <!-- Roles -->
+  <data name="Frontend" xml:space="preserve">
+    <value>Frontend</value>
+  </data>
+  <data name="Backend" xml:space="preserve">
+    <value>Backend</value>
+  </data>
+  <data name="FullStack" xml:space="preserve">
+    <value>FullStack</value>
+  </data>
+  <data name="QA" xml:space="preserve">
+    <value>QA</value>
+  </data>
+  <data name="Blockchain Engineer" xml:space="preserve">
+    <value>Ingeniero Blockchain</value>
+  </data>
+  <data name="Cloud Engineer" xml:space="preserve">
+    <value>Ingeniero Cloud</value>
+  </data>
+  <data name="Data Analyst" xml:space="preserve">
+    <value>Analista de Datos</value>
+  </data>
+  <data name="Data Engineer" xml:space="preserve">
+    <value>Ingeniero de Datos</value>
+  </data>
+  <data name="Data Scientist" xml:space="preserve">
+    <value>Científico de Datos</value>
+  </data>
+  <data name="DevOps" xml:space="preserve">
+    <value>DevOps</value>
+  </data>
+  <data name="MLOps" xml:space="preserve">
+    <value>MLOps</value>
+  </data>
+  <data name="Database Administrator" xml:space="preserve">
+    <value>Administrador de Bases de Datos</value>
+  </data>
+  <data name="UX Designer" xml:space="preserve">
+    <value>Diseñador UX</value>
+  </data>
+  <data name="Mobile Developer" xml:space="preserve">
+    <value>Desarrollador Mobile</value>
+  </data>
+  <data name="Machine Learning" xml:space="preserve">
+    <value>Aprendizaje Automático</value>
+  </data>
+  <data name="Natural Language Processing" xml:space="preserve">
+    <value>Procesamiento de Lenguaje Natural</value>
+  </data>
+  <data name="Product Designer" xml:space="preserve">
+    <value>Diseñador de Producto</value>
+  </data>
+  <!-- <data name="Product Manager" xml:space="preserve">
+    <value>Gerente de Producto</value>
+  </data>
+  <data name="Project Manager" xml:space="preserve">
+    <value>Gerente de Proyecto</value>
+  </data> -->
+  <data name="Software Architect" xml:space="preserve">
+    <value>Arquitecto de Software</value>
+  </data>
+  <!-- <data name="Site Reliability Engineer" xml:space="preserve">
+    <value>Ingeniero de Confiabilidad del Sitio</value>
+  </data> -->
+  <data name="Technical Support" xml:space="preserve">
+    <value>Soporte Técnico</value>
+  </data>
+  <data name="Test Automation" xml:space="preserve">
+    <value>Automatización de Pruebas</value>
+  </data>
+
+  <!-- Benefits -->
+  <data name="Benefits" xml:space="preserve">
+    <value>Beneficios</value>
+  </data>
+  <data name="Unlimited PTO" xml:space="preserve">
+    <value>Días libres ilimitados</value>
+  </data>
+  <data name="Equipment Budget" xml:space="preserve">
+    <value>Presupuesto para equipo</value>
+  </data>
+  <data name="Learning Budget" xml:space="preserve">
+    <value>Presupuesto para aprendizaje</value>
+  </data>
+  <data name="Childcare Support" xml:space="preserve">
+    <value>Apoyo para cuidado infantil</value>
+  </data>
+  <data name="Health Insurance" xml:space="preserve">
+    <value>Seguro médico</value>
+  </data>
+  <data name="Coworking Stipend" xml:space="preserve">
+    <value>Subsidio para coworking</value>
+  </data>
+  <data name="4-Day Workweek" xml:space="preserve">
+    <value>Semana laboral de 4 días</value>
+  </data>
+  <data name="Stock Options" xml:space="preserve">
+    <value>Opciones sobre acciones</value>
+  </data>
+  <data name="Wellness Programs" xml:space="preserve">
+    <value>Programas de bienestar</value>
+  </data>
+  <data name="Paid Parental Leave" xml:space="preserve">
+    <value>Licencia parental remunerada</value>
+  </data>
+  <data name="Retirement Plan" xml:space="preserve">
+    <value>Plan de jubilación</value>
+  </data>
+  <data name="Gym Membership" xml:space="preserve">
+    <value>Membresía de gimnasio</value>
+  </data>
+
+  <!-- Salary Range -->
+  <data name="From0" xml:space="preserve">
+    <value>Cualquiera</value>
+  </data>
+  <data name="From20k" xml:space="preserve">
+    <value>+20k €</value>
+  </data>
+  <data name="From30k" xml:space="preserve">
+    <value>+30k €</value>
+  </data>
+  <data name="From40k" xml:space="preserve">
+    <value>+40k €</value>
+  </data>
+  <data name="From50k" xml:space="preserve">
+    <value>+50k €</value>
+  </data>
+
+  <!-- Experience Level -->
+  <data name="Entry level" xml:space="preserve">
+    <value>Sin experiencia</value>
+  </data>
+  <data name="Junior" xml:space="preserve">
+    <value>Junior</value>
+  </data>
+  <data name="Intermediate" xml:space="preserve">
+    <value>Intermedio</value>
+  </data>
+  <data name="Expert" xml:space="preserve">
+    <value>Experto</value>
+  </data>
+
+  <!-- Companies Page -->
+  <data name="The team you’ve been looking for is here" xml:space="preserve">
+    <value>El equipo que has estado buscando está aquí</value>
+  </data>
+  <data name="Featured companies" xml:space="preserve">
+    <value>Empresas destacadas</value>
+  </data>
+
+  <data name="Transparent compensation" xml:space="preserve">
+    <value>Compensación transparente</value>
+  </data>
+
+  <data name="Fully remote" xml:space="preserve">
+    <value>100% remoto</value>
+  </data>
+
+  <data name="Hires internationally" xml:space="preserve">
+    <value>Contrata internacionalmente</value>
+  </data>
+
+  <data name="Artificial Intelligence (AI)" xml:space="preserve">
+    <value>Inteligencia Artificial (IA)</value>
+  </data>
+
+  <data name="Arts &amp; Entertainment" xml:space="preserve">
+    <value>Artes y entretenimiento</value>
+  </data>
+
+  <data name="Automotive" xml:space="preserve">
+    <value>Automotriz</value>
+  </data>
+
+  <data name="Aviation &amp; Aerospace" xml:space="preserve">
+    <value>Aviación y aeroespacial</value>
+  </data>
+
+  <data name="Blockchain &amp; Cryptocurrency" xml:space="preserve">
+    <value>Blockchain y criptomonedas</value>
+  </data>
+
+  <data name="Construction" xml:space="preserve">
+    <value>Construcción</value>
+  </data>
+
+  <data name="Consulting &amp; Services" xml:space="preserve">
+    <value>Consultoría y servicios</value>
+  </data>
+
+  <data name="Data Management &amp; Tools" xml:space="preserve">
+    <value>Gestión de datos y herramientas</value>
+  </data>
+
+  <data name="Developer Tools &amp; APIs" xml:space="preserve">
+    <value>Herramientas para desarrolladores y APIs</value>
+  </data>
+
+  <data name="Ecommerce &amp; Retail" xml:space="preserve">
+    <value>Comercio electrónico y retail</value>
+  </data>
+
+  <data name="Education" xml:space="preserve">
+    <value>Educación</value>
+  </data>
+
+  <data name="Enterprise Software" xml:space="preserve">
+    <value>Software empresarial</value>
+  </data>
+
+  <data name="Events &amp; Ticketing" xml:space="preserve">
+    <value>Eventos y venta de entradas</value>
+  </data>
+
+  <data name="Gaming" xml:space="preserve">
+    <value>Videojuegos</value>
+  </data>
+
+  <data name="Manufacturing" xml:space="preserve">
+    <value>Manufactura</value>
+  </data>
+
+  <data name="Marketing" xml:space="preserve">
+    <value>Marketing</value>
+  </data>
+
+  <data name="Marketplaces" xml:space="preserve">
+    <value>Mercados en línea</value>
+  </data>
+
+  <data name="Real State" xml:space="preserve">
+    <value>Bienes raíces</value>
+  </data>
+
+  <data name="Robotics" xml:space="preserve">
+    <value>Robótica</value>
+  </data>
+
+  <data name="SaaS (Software as a Service)" xml:space="preserve">
+    <value>SaaS (Software como servicio)</value>
+  </data>
+
+  <data name="Security" xml:space="preserve">
+    <value>Seguridad</value>
+  </data>
+
+  <data name="Social Networking" xml:space="preserve">
+    <value>Redes sociales</value>
+  </data>
+
+  <data name="Translations" xml:space="preserve">
+    <value>Traducciones</value>
+  </data>
+
+  <data name="FeaturedParagraph" xml:space="preserve">
+    <value>Una selección de empresas que destacan, ya sea por su cultura de trabajo o por lo que construyen.</value>
+  </data>
+  <data name="TransparentParagraph" xml:space="preserve">
+    <value>Estas empresas dicen claramente cuánto pagan, sin rodeos ni negociaciones a ciegas.</value>
+  </data>
+  <data name="RemoteParagraph" xml:space="preserve">
+    <value>Equipos que trabajan 100% online — desde un café, una cabaña en el bosque o tu sofá, todo vale.</value>
+  </data>
+  <data name="InternationalParagraph" xml:space="preserve">
+    <value>Contratan personas en distintos países y zonas horarias. Aquí, lo global es lo normal.</value>
+  </data>
+  <data name="AIParagraph" xml:space="preserve">
+    <value>Desde asistentes inteligentes hasta chatbots extraños, estas empresas hacen cosas con IA de todo tipo.</value>
+  </data>
+  <data name="EntertainmentParagraph" xml:space="preserve">
+    <value>Empresas que crean videojuegos, apps de música, plataformas de streaming y otros proyectos divertidos.</value>
+  </data>
+  <data name="AutomotiveParagraph" xml:space="preserve">
+    <value>Desde autos eléctricos hasta apps para compartir coche, aquí se mueven en el mundo de las ruedas.</value>
+  </data>
+  <data name="AviationParagraph" xml:space="preserve">
+    <value>Ya sea construyendo drones o gestionando datos de vuelos, estas empresas están con la mirada en el cielo.</value>
+  </data>
+  <data name="BlockchainParagraph" xml:space="preserve">
+    <value>Sí, el cripto sigue vivo. Estas empresas trabajan en wallets, NFTs, DeFi y otras cosas (algunas útiles, de verdad).</value>
+  </data>
+  <data name="ConstructionParagraph" xml:space="preserve">
+    <value>Edificios, puentes o herramientas digitales para obras: todo lo que ayuda a quienes construyen el mundo.</value>
+  </data>
+  <data name="ConsultingParagraph" xml:space="preserve">
+    <value>No son los típicos de traje y corbata — son equipos pequeños que ayudan a otros a resolver problemas o trabajar mejor.</value>
+  </data>
+  <data name="DataManagementParagraph" xml:space="preserve">
+    <value>Empresas que se enfrentan al caos de los datos: recolectarlos, organizarlos y hacer que tengan sentido.</value>
+  </data>
+  <data name="DevToolsParagraph" xml:space="preserve">
+    <value>APIs, SDKs, CLIs y demás siglas que hacen la vida de los desarrolladores un poco más llevadera (o entretenida).</value>
+  </data>
+  <data name="EcommerceParagraph" xml:space="preserve">
+    <value>Tiendas, carritos, envíos... Si se vende por internet, estas empresas están detrás haciendo que funcione.</value>
+  </data>
+  <data name="EducationParagraph" xml:space="preserve">
+    <value>Apps y plataformas para aprender cosas nuevas — ya sea matemáticas, idiomas o a programar mejor.</value>
+  </data>
+  <data name="EnterpriseParagraph" xml:space="preserve">
+    <value>Herramientas grandes para equipos grandes. Estas plataformas ayudan a que todo fluya sin caos.</value>
+  </data>
+  <data name="EventsParagraph" xml:space="preserve">
+    <value>Vender entradas, hacer eventos online o montar festivales: estas empresas hacen que los eventos sucedan.</value>
+  </data>
+  <data name="GamingParagraph" xml:space="preserve">
+    <value>Desde estudios indie hasta plataformas, estas empresas viven y respiran videojuegos en todas sus formas.</value>
+  </data>
+  <data name="ManufacturingParagraph" xml:space="preserve">
+    <value>No todo es digital. Estas empresas hacen cosas reales: productos, fábricas, cadenas de producción.</value>
+  </data>
+  <data name="MarketingParagraph" xml:space="preserve">
+    <value>Las marcas necesitan contar historias, crear contenido y saber a quién le hablan. Estas empresas lo hacen posible.</value>
+  </data>
+  <data name="MarketplaceParagraph" xml:space="preserve">
+    <value>Plataformas que conectan compradores y vendedores — desde artesanías hasta servicios súper específicos.</value>
+  </data>
+  <data name="RealStateParagraph" xml:space="preserve">
+    <value>Ayudan a la gente a comprar, alquilar o gestionar propiedades. Algunas hacen herramientas muy pro, otras solo simplifican el lío.</value>
+  </data>
+  <data name="RoboticsParagraph" xml:space="preserve">
+    <value>Empresas que crean máquinas que se mueven, detectan o piensan (aunque sea un poco). No todo son robots, pero casi.</value>
+  </data>
+  <data name="SaaSParagraph" xml:space="preserve">
+    <value>Software sin instalar. Lo usas desde el navegador, pagas al mes, y listo (si todo sale bien).</value>
+  </data>
+  <data name="SecurityParagraph" xml:space="preserve">
+    <value>Empresas que se encargan de proteger: desde seguridad digital hasta vigilancia o control de accesos.</value>
+  </data>
+  <data name="SocialNetworkingParagraph" xml:space="preserve">
+    <value>Plataformas donde la gente se conecta, comparte cosas y habla con personas de todo el mundo.</value>
+  </data>
+  <data name="TranslationsParagraph" xml:space="preserve">
+    <value>Soluciones para traducir texto, voz o contenido entre idiomas. Incluye traducción automática y plataformas de localización.</value>
+  </data>
+
+
+  <data name="NesletterPageTitle" xml:space="preserve">
+    <value>Únete a nuestra comunidad de desarrolladores</value>
+  </data>
+  <data name="NesletterPageSubtitle" xml:space="preserve">
+    <value>Recibe oportunidades exclusivas, recursos prácticos y conecta con profesionales que valoran la calidad, la innovación y el impacto en su trabajo.</value>
+  </data>
+  <data name="TelegramCardTitle" xml:space="preserve">
+    <value>Canal de Telegram</value>
+  </data>
+  <data name="TelegramCardText" xml:space="preserve">
+    <value>Únete a nuestro canal de Telegram y recibe en tiempo real las mejores oportunidades tech y recursos útiles para profesionales del sector.</value>
+  </data>
+  <data name="TelegramCardButton" xml:space="preserve">
+    <value>Ir a Telegram</value>
+  </data>
+  <data name="LinkedinCardTitle" xml:space="preserve">
+    <value>Grupo de LinkedIn</value>
+  </data>
+  <data name="LinkedinCardText" xml:space="preserve">
+    <value>Únete a nuestra comunidad de profesionales tech en LinkedIn. Comparte oportunidades, conecta con talento y sigue tendencias del sector.</value>
+  </data>
+  <data name="LinkedinCardButton" xml:space="preserve">
+    <value>Ir a Linkedin</value>
+  </data>
+  <data name="WhatsappCardTitle" xml:space="preserve">
+    <value>Canal de WhatsApp</value>
+  </data>
+  <data name="WhatsappCardText" xml:space="preserve">
+    <value>Recibe alertas directas de nuevas oportunidades y recursos útiles en tu móvil. Todo en tiempo real, sin complicaciones.</value>
+  </data>
+  <data name="WhatsappCardButton" xml:space="preserve">
+    <value>Ir a Whatsapp</value>
+  </data>
+
+  <!-- NEWSLETTER CONFIRMATION EMAIL -->
+  <data name="Almost there! Confirm your newsletter subscription" xml:space="preserve">
+    <value>Casi listo! Confirma tu suscripción a la newsletter</value>
+  </data>
+  <data name="You're about to receive our weekly newsletter with the best job opportunities in development and tech." xml:space="preserve">
+    <value>Estás a punto de recibir nuestra newsletter semanal con las mejores oportunidades de trabajo en desarrollo y tecnología.</value>
+  </data>
+  <data name="Yes, subscribe me" xml:space="preserve">
+    <value>Sí, suscríbeme</value>
+  </data>
+  <data name="If you received this email by mistake, you can ignore it." xml:space="preserve">
+    <value>Si recibiste este correo por error, puedes ignorarlo.</value>
+  </data>
+  <data name="All rights reserved" xml:space="preserve">
+    <value>Todos los derechos reservados</value>
+  </data>
+  <data name="You received this email because you signed up for our newsletter. If you did not request this subscription, please ignore this email." xml:space="preserve">
+    <value>Recibiste este correo porque te suscribiste a nuestra newsletter. Si no solicitaste esta suscripción, ignora este correo.</value>
+  </data>
+  <data name="This newsletter is completely free. No payment required." xml:space="preserve">
+    <value>Esta newsletter es completamente gratuito. No se requiere ningún pago.</value>
+  </data>
+  <data name="Privacy Policy" xml:space="preserve">
+    <value>Política de privacidad</value>
+  </data>
+  <data name="Please confirm your subscription to the newsletter" xml:space="preserve">
+    <value>Por favor, confirma tu suscripción a la newsletter</value>
+  </data>
+
+  <!-- NEWSLETTER CONFIRMATION PAGE -->
+  <data name="Your subscription has been confirmed!" xml:space="preserve">
+    <value>¡Hemos confirmado tu suscripción!</value>
+  </data>
+  <data name="Your journey to finding the best developer opportunities starts here." xml:space="preserve">
+    <value>Tu camino para encontrar las mejores oportunidades para desarrolladores comienza aquí.</value>
+  </data>
+  <data name="Every week, I personally handpick the latest job opportunities for developers and send them directly to you." xml:space="preserve">
+    <value>Cada semana selecciono personalmente las últimas oportunidades de trabajo para desarrolladores y te las envío directamente.</value>
+  </data>
+  <data name="In the meantime, here are some resources to get you started" xml:space="preserve">
+    <value>Mientras tanto, aquí tienes algunos recursos para comenzar</value>
+  </data>
+  <data name="Articles on finding a job as a developer" xml:space="preserve">
+    <value>Artículos sobre cómo encontrar trabajo como desarrollador</value>
+  </data>
+  <data name="Insights from community (salary trends, popular technologies, etc.)" xml:space="preserve">
+    <value>Información de la comunidad de CodeInSpain (tendencias salariales, tecnologías populares, etc.)</value>
+  </data>
+  <data name="Fill out your profile so companies can scout you" xml:space="preserve">
+    <value>Completa tu perfil para que las empresas puedan encontrarte</value>
+  </data>
+  <data name="You can also stay updated with the latest job opportunities by joining" xml:space="preserve">
+    <value>También puedes mantenerte actualizado con las últimas ofertas de trabajo uniéndote a</value>
+  </data>
+  <data name="Telegram channel" xml:space="preserve">
+    <value>Canal de Telegram</value>
+  </data>
+  <data name="Whatsapp group" xml:space="preserve">
+    <value>Grupo de Whatsapp</value>
+  </data>
+  <data name="Linkedin community" xml:space="preserve">
+    <value>Comunidad de LinkedIn</value>
+  </data>
+  <data name="If you have any questions, feel free to contact me directly at" xml:space="preserve">
+    <value>Si tienes alguna pregunta, no dudes en contactarme directamente en</value>
+  </data>
+  <data name="Coming soon" xml:space="preserve">
+    <value>Próximamente</value>
+  </data>
+
+  <!-- NEWSLETTER SUCCESS DIALOG -->
+  <data name="Newsletter suscription" xml:space="preserve">
+    <value>Suscripción al boletín</value>
+  </data>
+  <data name="A confirmation email has been sent to your inbox." xml:space="preserve">
+    <value>Se ha enviado un correo de confirmación a tu bandeja de entrada.</value>
+  </data>
+  <data name="If you don't see it, please check your spam folder and add" xml:space="preserve">
+    <value>Si no lo ves, revisa tu carpeta de correo no deseado y añade</value>
+  </data>
+  <data name="to your contacts." xml:space="preserve">
+    <value>a tus contactos.</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+
+  <!-- LEAD SUBMISSION EMAIL -->
+  <data name="Please verify your email to post your job" xml:space="preserve">
+    <value>Por favor, confirma tu correo para publicar tu oferta</value>
+  </data>
+  <data name="Almost there! Confirm your job post submission" xml:space="preserve">
+    <value>¡Ya casi! Confirma el envío de tu oferta de empleo</value>
+  </data>
+  <data name="You submitted a job offer form on our platform. Please confirm your email to complete the submission. After verification, our team will review your offer and contact you with the next steps." xml:space="preserve">
+    <value>Has enviado un formulario de oferta de empleo en nuestra plataforma. Por favor, confirma tu correo electrónico para completar el envío. Tras la verificación, nuestro equipo revisará tu oferta y se pondrá en contacto contigo para indicarte los siguientes pasos.</value>
+  </data>
+  <data name="Yes, confirm my post" xml:space="preserve">
+    <value>Sí, confirmar publicación</value>
+  </data>
+  <data name="If you didn't submit this form, you can safely ignore this email." xml:space="preserve">
+    <value>Si no has enviado este formulario, puedes ignorar este correo.</value>
+  </data>
+  <data name="You received this email because you submitted a job post form. If this wasn't you, please ignore this email." xml:space="preserve">
+    <value>Has recibido este correo porque enviaste un formulario para publicar una oferta de empleo. Si no fuiste tú, ignora este mensaje.</value>
+  </data>
+  <data name="Posting a job is completely free. No payment required." xml:space="preserve">
+    <value>Publicar una oferta de empleo es completamente gratuito. No se requiere ningún pago.</value>
+  </data>
+  <data name="Please confirm your job post submission" xml:space="preserve">
+    <value>Por favor, confirma el envío de tu oferta de empleo</value>
+  </data>
+
+  <!-- LEAD SUBMISSION PAGE -->
+  <data name="Application Status" xml:space="preserve">
+    <value>Estado de la solicitud</value>
+  </data>
+  <data name="We have received your submission successfully!" xml:space="preserve">
+    <value>¡Hemos recibido tu solicitud correctamente!</value>
+  </data>
+  <data name="Your email verification has been successfully completed." xml:space="preserve">
+    <value>La verificación de tu correo electrónico se ha completado con éxito.</value>
+  </data>
+  <data name="Thank you for submitting your job offer. Our team is reviewing it and will get in touch via email soon to explain the next steps." xml:space="preserve">
+    <value>Gracias por enviarnos tu oferta de empleo. Nuestro equipo la está revisando y pronto nos pondremos en contacto contigo por correo electrónico para explicarte los siguientes pasos.</value>
+  </data>
+  <data name="If you have any questions in the meantime, feel free to write to us at" xml:space="preserve">
+    <value>Si tienes alguna pregunta mientras tanto, no dudes en escribirnos a</value>
+  </data>
+  <data name="There was a problem processing your submission" xml:space="preserve">
+    <value>Hubo un problema al procesar tu solicitud</value>
+  </data>
+  <data name="We were unable to verify your email or complete the process of submitting your job offer." xml:space="preserve">
+    <value>No hemos podido verificar tu correo electrónico ni completar el proceso de envío de tu oferta de empleo.</value>
+  </data>
+  <data name="Please try again later. If the problem persists, feel free to contact us at" xml:space="preserve">
+    <value>Por favor, intenta nuevamente más tarde. Si el problema persiste, no dudes en ponerte en contacto con nosotros a través de</value>
+  </data>
+
+
+
+
+
+
+
+</root>

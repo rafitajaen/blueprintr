@@ -1,0 +1,90 @@
+@using CodeIn.Web.Components.SocialGroup
+@model SocialGroupComponent
+
+<div id="@Model.Id" class="social-group @Model.Class">
+
+    @if (!string.IsNullOrWhiteSpace(Model.Social?.Website))
+    {
+        <AnchorButton class="button button-link" href="@Model.Social.Website" rel="nofollow ugc noopener noreferrer">
+            <Icon type="@IconTypes.Language" />
+        </AnchorButton>
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.Social?.Linkedin))
+    {
+        <AnchorButton class="button button-link" href="@Model.Social.Linkedin" rel="nofollow ugc noopener noreferrer">
+            <Icon type="@IconTypes.Linkedin" />
+        </AnchorButton>
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.Social?.Instagram))
+    {
+        <AnchorButton class="button button-link" href="@Model.Social.Instagram" rel="nofollow ugc noopener noreferrer">
+            <Icon type="@IconTypes.Instagram" />
+        </AnchorButton>
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.Social?.Github))
+    {
+        <AnchorButton class="button button-link" href="@Model.Social.Github" rel="nofollow ugc noopener noreferrer">
+            <Icon type="@IconTypes.Github" />
+        </AnchorButton>
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.Social?.Gitlab))
+    {
+        <AnchorButton class="button button-link" href="@Model.Social.Gitlab" rel="nofollow ugc noopener noreferrer">
+            <Icon type="@IconTypes.Gitlab" />
+        </AnchorButton>
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.Social?.Medium))
+    {
+        <AnchorButton class="button button-link" href="@Model.Social.Medium" rel="nofollow ugc noopener noreferrer">
+            <Icon type="@IconTypes.Medium" />
+        </AnchorButton>
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.Social?.Medium))
+    {
+        <AnchorButton class="button button-link" href="@Model.Social.Medium" rel="nofollow ugc noopener noreferrer">
+            <Icon type="@IconTypes.Medium" />
+        </AnchorButton>
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.Social?.DevTo))
+    {
+        <AnchorButton class="button button-link" href="@Model.Social.DevTo" rel="nofollow ugc noopener noreferrer">
+            <Icon type="@IconTypes.DevTo" />
+        </AnchorButton>
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.Social?.Youtube))
+    {
+        <AnchorButton class="button button-link" href="@Model.Social.Youtube" rel="nofollow ugc noopener noreferrer">
+            <Icon type="@IconTypes.Youtube" />
+        </AnchorButton>
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.Social?.Discord))
+    {
+        <AnchorButton class="button button-link" href="@Model.Social.Discord" rel="nofollow ugc noopener noreferrer">
+            <Icon type="@IconTypes.Discord" />
+        </AnchorButton>
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.Social?.Telegram))
+    {
+        <AnchorButton class="button button-link" href="@Model.Social.Telegram" rel="nofollow ugc noopener noreferrer">
+            <Icon type="@IconTypes.Telegram" />
+        </AnchorButton>
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.Social?.Facebook))
+    {
+        <AnchorButton class="button button-link" href="@Model.Social.Facebook" rel="nofollow ugc noopener noreferrer">
+            <Icon type="@IconTypes.Facebook" />
+        </AnchorButton>
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.Social?.Tiktok))
+    {
+        <AnchorButton class="button button-link" href="@Model.Social.Tiktok" rel="nofollow ugc noopener noreferrer">
+            <Icon type="@IconTypes.Tiktok" />
+        </AnchorButton>
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.Social?.Whatsapp))
+    {
+        <AnchorButton class="button button-link" href="@Model.Social.Whatsapp" rel="nofollow ugc noopener noreferrer">
+            <Icon type="@IconTypes.Whatsapp" />
+        </AnchorButton>
+    }
+</div>

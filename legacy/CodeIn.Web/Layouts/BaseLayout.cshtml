@@ -1,0 +1,14 @@
+﻿@{
+    Layout = LayoutTargets.Empty;
+    ViewData["BodyClass"] = "base";
+}
+
+<TheHeader />
+
+<main class="@ViewData["MainClass"]">
+    @RenderBody()
+</main>
+
+<TheFooter />
+
+@await RenderSectionAsync("Scripts", required: false)

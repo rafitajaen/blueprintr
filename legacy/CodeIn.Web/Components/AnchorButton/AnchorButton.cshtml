@@ -1,0 +1,22 @@
+@{
+    var active = Model.TrackActive is true && !string.IsNullOrWhiteSpace(Model.Href) && string.Equals
+    (
+        a: ViewContext?.HttpContext.Items["Request:Path"]?.ToString(),
+        b: Model.Href,
+        comparisonType: StringComparison.OrdinalIgnoreCase
+    ) ? "active" : string.Empty;
+
+}
+
+@if (string.IsNullOrWhiteSpace(Model.Href))
+{
+    <span id="@Model.Id" class="anchor @Model.Class @active" rel="@Model.Rel">
+        @Model.ChildContent
+    </span>
+}
+else
+{
+    <a id="@Model.Id" class="anchor @Model.Class @active" href="@Model.Href" rel="@Model.Rel">
+        @Model.ChildContent
+    </a>
+}

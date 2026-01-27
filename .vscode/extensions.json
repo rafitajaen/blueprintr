@@ -1,0 +1,17 @@
+{
+  "recommendations": [
+    "ms-dotnettools.csharp",
+    "ms-dotnettools.csdevkit",
+    "ms-dotnettools.vscode-dotnet-runtime",
+    "formulahendry.dotnet-test-explorer",
+    "eamodio.gitlens",
+    "github.vscode-pull-request-github",
+    "yzhang.markdown-all-in-one",
+    "davidanson.vscode-markdownlint",
+    "redhat.vscode-yaml",
+    "editorconfig.editorconfig",
+    "sonarsource.sonarlint-vscode",
+    "github.vscode-github-actions",
+    "ms-azuretools.vscode-docker"
+  ]
+}

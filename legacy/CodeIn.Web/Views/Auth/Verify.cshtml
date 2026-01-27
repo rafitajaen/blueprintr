@@ -1,0 +1,58 @@
+@using Boilerplatr.Mvc
+@using CodeIn.Web.Views.Auth
+
+@model AuthController.VerifyViewModel;
+
+@{
+    Layout = LayoutTargets.Base;
+    ViewData["Robots"] = "noindex, nofollow";
+
+    ViewData["Page"] = @L["Check your inbox"];
+    ViewData["Title"] = $"{ViewData["Page"]} - {ViewContext?.HttpContext.Items["Tenant:Name"]}";
+}
+
+<section class="verify">
+
+    <Card class="size-lg inverse">
+
+        <CardHeader>
+            <CardTitle>
+                @ViewData["Page"]
+            </CardTitle>
+        </CardHeader>
+
+        <CardContent>
+
+            @if (string.IsNullOrWhiteSpace(Model.Email))
+            {
+                <p>
+                    @L["We've sent you a magic link to verify your email"].
+                    @L["Please click the link to confirm your address"].
+                </p>
+            }
+            else
+            {
+                <p>
+                    @L["We've sent you a magic link to"] <strong>@Model.Email</strong>.
+                    @L["Please click the link to confirm your address"].
+                </p>
+            }
+
+        </CardContent>
+
+        <CardFooter>
+            <CardDescription>
+                <p class="text-muted">
+                    @L["No email in your inbox? Check your spam folder or"]
+                    <AnchorButton class="button-link" href="@PageRoutes.Auth.Login"><strong>@L["try a different email address"].</strong></AnchorButton>
+                </p>
+            </CardDescription>
+        </CardFooter>
+    </Card>
+
+</section>
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/empty.js" asp-append-version="true" defer></script>
+}

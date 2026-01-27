@@ -1,0 +1,25 @@
+@use "../base/mixins" as *;
+@use "../base/breakpoints" as *;
+
+section.title {
+    grid-area: title;
+
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing) * 2);
+    width: 100%;
+
+    text-align: center;
+    align-items: center;
+    padding-top: calc(var(--spacing) * 12);
+
+    & > p {
+        @include text-muted-sm;
+    }
+
+    & > .suscribe {
+        padding-top: calc(var(--spacing) * 8);
+        width: 100%;
+        max-width: var(--container-md);
+    }
+}

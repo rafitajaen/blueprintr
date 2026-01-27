@@ -1,0 +1,8 @@
+@using CodeIn.Web.Components.MarkdownBlock
+@model MarkdownBlockComponent
+
+<div id="@Model.Id" class="markdown-block @Model.Class">
+
+    @Html.Raw(Markdowner.ToHtml(Model.Text?.Value))
+
+</div>

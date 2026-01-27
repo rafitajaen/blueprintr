@@ -1,0 +1,109 @@
+﻿@using CodeIn.Web.Views.Pages
+@model PagesController.AboutViewModel
+
+@{
+    Layout = LayoutTargets.Base;
+
+    ViewData["MainClass"] = "articles";
+    ViewData["Page"] = L["About"];
+    ViewData["Title"] = $"{ViewData["Page"]} - {ViewContext?.HttpContext.Items["Tenant:Name"]}";
+    var host = @ViewContext?.HttpContext.Items["Tenant:Host"]?.ToString() ?? string.Empty;
+}
+
+<article class="articles">
+
+    @if (host.Contains("codeinremote") is true)
+    {
+        <section class="title">
+            <h1>A space to discover meaningful tech opportunities</h1>
+            <p>Carefully selected tech jobs. <br />Good companies, fair conditions, and no wasted time.</p>
+        </section>
+
+        <section class="content">
+            <p>
+            This project comes from my direct experience in the tech industry. I’m a software engineer and full stack developer, and I know firsthand what usually goes wrong when looking for a tech job.
+            </p>
+
+            <p>
+            For years, most job portals were full of unclear, poorly written, or irrelevant listings. Finding something that really fits often meant hours of searching through repeated ads, opaque consultancies, and unrealistic conditions.
+            </p>
+
+            <p>
+            Here, I do things differently: less quantity, more quality. I only post positions in companies that value their team, take care of their culture, and offer conditions that are truly worth considering.
+            </p>
+
+            <p>
+            I review every single listing <strong>manually</strong> before publishing it. Only opportunities that meet clear criteria of transparency, purpose, and feasibility make the cut.
+            </p>
+
+            <p>
+            There’s a lot of talent in Spain, and there are also companies that recognize it. My goal is to make that connection easier, directly and without unnecessary intermediaries.
+            </p>
+
+            <p>
+            Each week, I send a <strong>newsletter</strong> with the latest opportunities and useful resources for tech professionals. No spam, no distractions.
+            </p>
+
+            <p>
+            This isn’t a traditional job portal. It’s a tool designed for those who value their time and their career.
+            </p>
+
+            <p>
+            Welcome.
+            </p>
+        </section>
+
+    }
+    else
+    {
+        <section class="title">
+            <h1>Un espacio para descubrir oportunidades tech con sentido</h1>
+            <p>Ofertas tech seleccionadas con criterio. <br />Buenas empresas, buenas condiciones y sin que pierdas el tiempo.</p>
+        </section>
+
+        <section class="content">
+            <p>
+            Este proyecto nace de mi experiencia directa en el sector. Soy ingeniero de software y desarrollador full stack, y conozco de primera mano lo que suele fallar al buscar trabajo en tecnología.
+            </p>
+
+            <p>
+            Durante años, la mayoría de portales estaban llenos de ofertas poco claras, mal redactadas o irrelevantes. Encontrar algo que realmente encaje implicaba horas de búsqueda entre anuncios repetidos, consultoras opacas y condiciones poco realistas.
+            </p>
+
+            <p>
+            Aquí hago las cosas de manera diferente: menos cantidad, más calidad. Solo publico posiciones en empresas que valoran a su equipo, cuidan su cultura y ofrecen condiciones que realmente merecen la pena.
+            </p>
+
+            <p>
+            Cada oferta la reviso <strong>manualmente</strong> antes de publicarla. Solo entran aquellas que cumplen criterios claros de transparencia, propósito y viabilidad.
+            </p>
+
+            <p>
+            Hay mucho talento en España, y también hay empresas que lo reconocen. Mi objetivo es facilitar ese encuentro, de forma directa y sin intermediarios innecesarios.
+            </p>
+
+            <p>
+            Además, cada semana envío una <strong>newsletter</strong> con las ofertas más recientes y recursos útiles para profesionales tech. Sin spam, sin distracciones.
+            </p>
+
+            <p>
+            Esto no es un portal de empleo tradicional. Es una herramienta pensada para quienes valoran su tiempo y su carrera.
+            </p>
+
+            <p>
+            Bienvenido/a.
+            </p>
+        </section>
+
+    }
+
+    <TheNewsletter metric="@Model.SuscribersMetric" />
+
+    <TheAuthor author="@Model.Author" />
+
+</article>
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/empty.js" asp-append-version="true" defer></script>
+}

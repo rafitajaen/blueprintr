@@ -1,0 +1,262 @@
+﻿@using CodeIn.Domain.Jobs
+@using CodeIn.Domain.Companies
+@using CodeIn.Domain.Topics
+@using CodeIn.Web.Views.Jobs
+@using Org.BouncyCastle.Math.EC.Rfc7748
+
+@model JobsController.JobsViewModel
+
+@{
+    Layout = LayoutTargets.Base;
+
+    ViewData["MainClass"] = "jobs";
+    ViewData["Page"] = L["The best tech opportunities, carefully selected"];
+    ViewData["Title"] = $"{ViewData["Page"]} - {ViewContext?.HttpContext.Items["Tenant:Name"]}";
+
+    var max = 4;
+    var now = SystemClock.Instance.GetCurrentInstant();
+    var jobs = Model.Companies.SelectMany(c => c.Jobs).ToList();
+
+    var technologies = Model.Topics.Where(t => t.Kind == TopicKind.Technology).OrderBy(x => x.Name);
+    var roles = Model.Topics.Where(t => t.Kind == TopicKind.Role).OrderBy(x => L[x.Name].ToString());
+    var benefits = Model.Topics.Where(t => t.Kind == TopicKind.Benefit).OrderBy(x => L[x.Name].ToString());
+    var locations = Model.Topics.Where(t => t.Kind == TopicKind.Location).OrderBy(x => x.Order == null).ThenBy(x => x.Order).ThenBy(x => x.Name);
+}
+
+<article class="jobs">
+
+    @if (Model.ShowTitle)
+    {
+        <section class="title">
+            <h1>@ViewData["Page"].</h1>
+        </section>
+    }
+
+    <section class="info">
+        <h2>@Model.FilterCount @L["positions available"]</h2>
+        <div class="chips"></div>
+    </section>
+
+    <section class="content">
+
+        @foreach (var company in Model.Companies)
+        {
+            <CompanyCard Company="@company" now="@now" />
+        }
+
+    </section>
+
+    <aside class="filters">
+
+        <section class="header">
+            <h3>@L["Filters"]</h3>
+            <div class="flex">
+                <AnchorButton href="@PageRoutes.Jobs.Base" class="button button-link uppercase">@L["Reset"]</AnchorButton>
+                <IconButton id="apply" class="button-secondary uppercase">@L["Apply"]</IconButton>
+            </div>
+        </section>
+
+        <div class="body">
+
+            <section>
+                <h4>@L["Remote policy"]</h4>
+                @foreach (var policy in Model.Topics.Where(t => t.Kind == TopicKind.Modality).OrderBy(x => x.Order))
+                {
+                    var isChecked = Model.Checked.Contains(policy.Slug.Value) ? "checked" : string.Empty;
+
+                    <label>
+                        <input type="checkbox" name="@policy.Slug.Value" @isChecked data-kind="@TopicKind.Modality.ToString()"/>
+                        <span>@L[policy.Name]</span>
+                    </label>
+                }
+            </section>
+
+            <section>
+                <h4>@L["Seniority"]</h4>
+                @foreach (var level in Model.Topics.Where(t => t.Kind == TopicKind.Seniority).OrderBy(x => x.Order))
+                {
+                    var isChecked = Model.Checked.Contains(level.Slug.Value) ? "checked" : string.Empty;
+
+                    <label>
+                        <input type="checkbox" name="@level.Slug.Value" @isChecked data-kind="@TopicKind.Seniority.ToString()"/>
+                        <span>@L[level.Name]</span>
+                    </label>
+                }
+            </section>
+
+            <section>
+                <h4>@L["Salary"]</h4>
+
+                <select id="salaries">
+                    @foreach (var range in Enum.GetNames(typeof(SalaryRange)))
+                    {
+                        @if (Model.Checked.Contains(range))
+                        {
+                            <option value="@range" selected>@L[range]</option>
+                        }
+                        else
+                        {
+                            <option value="@range">@L[range]</option>
+                        }
+                    }
+                </select>
+
+            </section>
+
+            @if (technologies.Any() && jobs.Any(x => x.Topics.Any(t => t.Kind == TopicKind.Technology)))
+            {
+                var counter = 0;
+                var id = RandomString.Generate(5, CharSets.Alphabetic);
+
+                <section>
+                    <h4>@L["Technologies"]</h4>
+
+                    @foreach (var tech in technologies.OrderByDescending(x => Model.Checked.Contains(x.Slug.Value)))
+                    {
+                        if(jobs.Any(x => x.Topics.Any(t => t.Slug == tech.Slug)) is true)
+                        {
+                            var @checked = Model.Checked.Contains(tech.Slug.Value);
+                            var isChecked =  @checked? "checked" : string.Empty;
+
+                            counter++;
+                            var hide = !@checked && counter > max ? "hide" : string.Empty;
+                            var hideable = counter > max ? "hideable" : string.Empty;
+
+                            <label class="@hide @hideable" data-hide="@id">
+                                <input type="checkbox" name="@tech.Slug.Value" @isChecked data-kind="@TopicKind.Technology.ToString()"/>
+                                <span>@tech.Name</span>
+                            </label>
+                        }
+                    }
+
+                    @if (counter > max)
+                    {
+                        @* var diff = counter - max; *@
+                        <IconButton id="@id" class="button button-link" on-click="showMore('@id')">+ @L["Show more"]</IconButton>
+                    }
+
+                </section>
+            }
+
+            @if (roles.Any() && jobs.Any(x => x.Topics.Any(t => t.Kind == TopicKind.Role)))
+            {
+                var counter = 0;
+                var id = RandomString.Generate(5, CharSets.Alphabetic);
+
+                <section>
+                    <h4>@L["Roles"]</h4>
+
+                    @foreach (var role in roles.OrderByDescending(x => Model.Checked.Contains(x.Slug.Value)))
+                    {
+                        if(jobs.Any(x => x.Topics.Any(t => t.Slug == role.Slug)) is true)
+                        {
+                            var @checked = Model.Checked.Contains(role.Slug.Value);
+                            var isChecked =  @checked? "checked" : string.Empty;
+
+                            counter++;
+                            var hide = !@checked && counter > max ? "hide" : string.Empty;
+                            var hideable = counter > max ? "hideable" : string.Empty;
+
+                            <label class="@hide @hideable" data-hide="@id">
+                                <input type="checkbox" name="@role.Slug.Value" @isChecked data-kind="@TopicKind.Role.ToString()"/>
+                                <span>@L[role.Name]</span>
+                            </label>
+                            }
+                    }
+
+                    @if (counter > max)
+                    {
+                        @* var diff = counter - max; *@
+                        <IconButton id="@id" class="button button-link" on-click="showMore('@id')">+ @L["Show more"]</IconButton>
+                    }
+
+                </section>
+            }
+
+            @if (locations.Any() && jobs.Any(x => x.Topics.Any(t => t.Kind == TopicKind.Location)))
+            {
+                var counter = 0;
+                var id = RandomString.Generate(5, CharSets.Alphabetic);
+
+                <section>
+                    <h4>@L["Location"]</h4>
+
+                    @foreach (var location in locations.OrderByDescending(x => Model.Checked.Contains(x.Slug.Value)))
+                    {
+                        if(jobs.Any(x => x.Topics.Any(t => t.Slug == location.Slug)) is true)
+                        {
+                            var @checked = Model.Checked.Contains(location.Slug.Value);
+                            var isChecked =  @checked? "checked" : string.Empty;
+
+                            counter++;
+                            var hide = !@checked && counter > max ? "hide" : string.Empty;
+                            var hideable = counter > max ? "hideable" : string.Empty;
+
+                            <label class="@hide @hideable" data-hide="@id">
+                                <input type="checkbox" name="@location.Slug.Value" @isChecked data-kind="@TopicKind.Location.ToString()"/>
+                                <span>@location.Name</span>
+                            </label>
+                            }
+                    }
+
+                    @if (counter > max)
+                    {
+                        @* var diff = counter - max; *@
+                        <IconButton id="@id" class="button button-link" on-click="showMore('@id')">+ @L["Show more"]</IconButton>
+                    }
+
+                </section>
+            }
+
+            @if (benefits.Any() && jobs.Any(x => x.Topics.Any(t => t.Kind == TopicKind.Benefit)))
+            {
+                var counter = 0;
+                var id = RandomString.Generate(5, CharSets.Alphabetic);
+
+                <section>
+                    <h4>@L["Benefits"]</h4>
+
+                    @foreach (var benefit in benefits.OrderByDescending(x => Model.Checked.Contains(x.Slug.Value)))
+                    {
+                        if(jobs.Any(x => x.Topics.Any(t => t.Slug == benefit.Slug)) is true)
+                        {
+                            var @checked = Model.Checked.Contains(benefit.Slug.Value);
+                            var isChecked =  @checked? "checked" : string.Empty;
+
+                            counter++;
+                            var hide = !@checked && counter > max ? "hide" : string.Empty;
+                            var hideable = counter > max ? "hideable" : string.Empty;
+
+                            <label class="@hide @hideable" data-hide="@id">
+                                <input type="checkbox" name="@benefit.Slug.Value" @isChecked data-kind="@TopicKind.Benefit.ToString()"/>
+                                <span>@L[benefit.Name]</span>
+                            </label>
+                        }
+                    }
+
+                    @if (counter > max)
+                    {
+                        @* var diff = counter - max; *@
+                        <IconButton id="@id" class="button button-link" on-click="showMore('@id')">+ @L["Show more"]</IconButton>
+                    }
+
+                </section>
+            }
+
+        </div>
+
+        <div class="footer">
+            <IconButton id="apply-filters" class="button-secondary uppercase">@L["Apply filters"]</IconButton>
+        </div>
+
+    </aside>
+
+    <FloatingFooter class="on-tablet">
+        <IconButton id="show-filters" class="button-secondary uppercase full-w">@L["Show filters"]</IconButton>
+    </FloatingFooter>
+</article>
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/jobs.js" asp-append-version="true" defer></script>
+}

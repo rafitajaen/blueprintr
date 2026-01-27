@@ -1,0 +1,10 @@
+@keyframes spin {
+  to {
+    transform:rotate(1turn)
+  }
+}
+
+.animate-spin {
+    animation:var(--animate-spin)
+}
+

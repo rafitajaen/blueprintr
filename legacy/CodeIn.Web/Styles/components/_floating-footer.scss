@@ -1,0 +1,34 @@
+@use "../base/mixins" as *;
+@use "../base/breakpoints" as *;
+
+.floating-footer {
+
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+
+    width: 100%;
+    // height: var(--container-2xs);
+    background-color: var(--primary);
+
+    border-radius: calc(var(--radius));
+    padding: calc(var(--spacing) * 2);
+
+    @include onTablet {
+        &.on-tablet {
+            display: flex;
+        }
+    }
+
+    @include onPortrait {
+        &.on-portrait {
+            display: flex;
+        }
+    }
+
+    @include onMobile {
+        display: flex;
+    }
+}

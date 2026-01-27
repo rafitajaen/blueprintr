@@ -1,0 +1,107 @@
+@use "../base/mixins" as *;
+@use "../base/breakpoints" as *;
+
+.company-header {
+
+    --image-container: 3.5rem;
+
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    gap: calc(var(--spacing) * 1.5);
+
+    // @include onMobile {
+    //     flex-wrap: wrap;
+    // }
+
+    & > .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: calc(var(--spacing) * 1);
+    }
+
+    .title {
+        font-family: 'Outfit';
+        text-align: start;
+        @include font-semibold;
+        @include text-lg;
+        line-height: var(--tw-leading, var(--text-md--line-height));
+
+        & > a /* Company Title*/ {
+            padding-block: 0;
+            @include font-semibold;
+            @include text-lg;
+        }
+    }
+
+    .subtitle /* Company Excerpt or Location */{
+        @include text-muted-sm;
+        display: flex;
+        gap: calc(var(--spacing) * 2);
+    }
+
+    &.company-header-sm {
+
+        --image-container: 1.5rem;
+
+        .title, .title > a /* Company Title*/ {
+            @include font-semibold;
+            @include text-md;
+        }
+
+        .subtitle /* Company Excerpt or Location */{
+            @include text-muted-sm;
+        }
+    }
+
+    &.company-header-md {
+
+        --image-container: 3rem;
+
+        .title, .title > a /* Company Title*/ {
+            @include font-semibold;
+            @include text-md;
+        }
+
+        .subtitle /* Company Excerpt or Location */{
+            @include text-muted-sm;
+        }
+    }
+
+    &.company-header-lg {
+
+        --image-container: 3rem;
+
+        .title, .title > a /* Company Title*/ {
+            @include font-semibold;
+            @include text-md;
+        }
+
+        .subtitle /* Company Excerpt or Location */{
+            @include text-muted-sm;
+        }
+    }
+
+    &.company-header-xl {
+
+        --image-container: 4.5rem;
+
+        .title, .title > a /* Company Title*/ {
+            @include text-3xl;
+            @include font-semibold;
+        }
+    }
+
+    &.inline {
+        & > .container {
+            flex-direction: row;
+            justify-content: start;
+            align-items: center;
+            
+            & > * {
+                display: inline-flex;
+            }
+        }
+    }
+}

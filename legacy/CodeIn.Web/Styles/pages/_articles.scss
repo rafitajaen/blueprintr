@@ -1,0 +1,63 @@
+@use "../base/mixins" as *;
+@use "../base/breakpoints" as *;
+
+article.articles {
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: calc(var(--spacing)*4);
+    padding-inline: calc(var(--spacing) * 1);
+
+    max-width: var(--container-2xl);
+
+    aside, section, .body, .footer {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--spacing));
+        width: 100%;
+    }
+
+    .meta {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: calc(var(--spacing));
+        padding-block: calc(var(--spacing) * 6);
+    }
+
+    section.title {
+        p {
+            @include text-md;
+            color: var(--muted-foreground);
+        }
+    }
+
+    section.content {
+
+        @include text-lg;
+
+        gap: calc(var(--spacing)*3);
+        padding-block: calc(var(--spacing) * 6);
+        
+        h1,h2,h3,h4 {
+            padding-top: calc(var(--spacing) * 4);
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: calc(var(--spacing) * 3);
+
+            li {
+                @include text-lg;
+                padding-block: calc(var(--spacing) * 1);
+            }
+
+            li::before {
+                content: "-";
+                margin-right: calc(var(--spacing) * 3);
+            }
+        }
+    }
+    
+}

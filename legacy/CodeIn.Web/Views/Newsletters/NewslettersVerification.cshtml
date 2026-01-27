@@ -1,0 +1,70 @@
+﻿@using CodeIn.Web.Views.Newsletters
+@model NewslettersController.NewslettersVerificationViewModel
+@{
+    Layout = LayoutTargets.Base;
+    ViewData["Robots"] = "noindex, nofollow";
+
+    ViewData["MainClass"] = "articles";
+    ViewData["Page"] = L["Newsletter Suscription"];
+    ViewData["Title"] = $"{ViewData["Page"]} - {ViewContext?.HttpContext.Items["Tenant:Name"]}";
+
+    var support = $"mailto:{Model.Tenant.SupportEmail}";
+}
+
+<article class="articles">
+
+    <section class="title">
+        <h1>@L["Your subscription has been confirmed!"]</h1>
+        <p>
+            @L["Your journey to finding the best developer opportunities starts here."]
+        </p>
+    </section>
+
+    <section class="content">
+        <p>@L["Every week, I personally handpick the latest job opportunities for developers and send them directly to you."]</p>
+        <p>@L["In the meantime, here are some resources to get you started"]:</p>
+        <ul>
+            <li><Badge>@L["Coming soon"]</Badge> @L["Articles on finding a job as a developer"].</li>
+            <li><Badge>@L["Coming soon"]</Badge> @L["Insights from community (salary trends, popular technologies, etc.)"].</li>
+            <li><Badge>@L["Coming soon"]</Badge> @L["Fill out your profile so companies can scout you"].</li>
+        </ul>
+        <br />
+        <p>@L["You can also stay updated with the latest job opportunities by joining"]:</p>
+
+        <div class="flex-center full-w">
+            @if (!string.IsNullOrWhiteSpace(Model.Tenant.Social.Telegram))
+            {
+                <AnchorButton class="button button-secondary" href="@Model.Tenant.Social.Telegram">
+                    <Icon type="@IconTypes.Telegram" />
+                    @L["Telegram channel"]
+                </AnchorButton>
+            }
+            @if (!string.IsNullOrWhiteSpace(Model.Tenant.Social.Whatsapp))
+            {
+                <AnchorButton class="button button-secondary" href="@Model.Tenant.Social.Whatsapp">
+                    <Icon type="@IconTypes.Whatsapp" />
+                    @L["Whatsapp group"]
+                </AnchorButton>
+            }
+            @if (!string.IsNullOrWhiteSpace(Model.Tenant.Social.Linkedin))
+            {
+                <AnchorButton class="button button-secondary" href="@Model.Tenant.Social.Linkedin">
+                    <Icon type="@IconTypes.Linkedin" />
+                    @L["Linkedin community"]
+                </AnchorButton>
+            }
+        </div>
+
+        <br />
+        <p>
+        @L["If you have any questions, feel free to contact me directly at"]: 
+            <AnchorButton class="button button-link" href="@support">@Model.Tenant.SupportEmail</AnchorButton>
+        </p>
+    </section>
+
+</article>
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/empty.js" asp-append-version="true" defer></script>
+}

@@ -1,0 +1,30 @@
+@using CodeIn.Web.Sections.TheFeatured
+@using System.Globalization
+
+@model TheFeaturedComponent
+@{
+    var now = SystemClock.Instance.GetCurrentInstant();
+}
+
+<section class="featured">
+
+    <div class="header">
+        <div class="positions">@Model.PublishedJobsCount @L["positions available"]</div>
+        @if (Model.LastUpdateAt is Instant lastUpdate)
+        {
+            <div class="updated">@L["Last update on"] @lastUpdate.ToString("MMMM d, yyyy", CultureInfo.InvariantCulture)</div>
+        }
+        <hr />
+    </div>
+
+    @foreach (var company in Model.Featured)
+    {
+        <CompanyCard Company="@company" now="@now" />
+    }
+
+    <AnchorButton class="button button-featured text-sm uppercase" href="@PageRoutes.Jobs.Base">
+        <Icon type="@IconTypes.PropertySearch" />
+        @L["View all jobs"] (@Model.PublishedJobsCount)
+    </AnchorButton>
+
+</section>

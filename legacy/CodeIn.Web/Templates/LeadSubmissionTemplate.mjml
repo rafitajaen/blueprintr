@@ -1,0 +1,64 @@
+<mjml>
+
+  <mj-head>
+    <mj-attributes>
+      <mj-all font-family="'Albert Sans', 'Helvetica', 'Arial', sans-serif"></mj-all>
+    </mj-attributes>
+    <mj-font href="https://fonts.googleapis.com/css?family=Albert Sans:normal,italic,bold&display=swap" name="Albert Sans"></mj-font>
+    <mj-style inline="inline">
+      a,
+      a[x-apple-data-detectors],
+      a[href^="tel"],
+      a[href^="mailto"] {
+        color: #707070ff !important;
+        text-decoration: undeline !important;
+        font-weight: 500 !important;
+      }
+    </mj-style>
+  </mj-head>
+
+  <mj-body background-color="#18181B">
+    
+    <mj-section  border-bottom="none" border-left="none" border-right="none" border-top="10px solid #46E7A8" padding-bottom="0px" padding-left="40px" padding-right="40px" padding-top="20px" padding="40px">
+      <mj-column padding="0">
+        <mj-text align="center" color="#46E7A8" font-size="24px" line-height="1.25" padding="10px" font-weight="600">
+          @Model.ProjectName
+        </mj-text>
+        <mj-spacer height="5px"></mj-spacer>
+        <mj-spacer height="30px"></mj-spacer>
+        <mj-text align="center" color="#fff" font-family="'Albert Sans', 'Helvetica', 'Arial', sans-serif" font-size="30px" line-height="1.25" padding="10px">
+          <strong>@Model.TitleText</strong>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section  border-radius="0px 0px 0px 0px" padding-bottom="0px" padding-left="50px" padding-right="50px" padding-top="0px" padding="40px">
+      <mj-column padding="0">
+        <mj-text align="center" color="#fff" font-size="20px" line-height="1.5" padding="10px">
+          <span style="word-spacing: normal;">@Model.ContentText</span><br />
+        </mj-text>
+
+        <mj-spacer height="50px"></mj-spacer>
+        <mj-button href="@Model.ConfirmationUrl" background-color="#46E7A8" border-radius="10px" color="#18181B" font-size="20px" line-height="1.75" padding="0px" width="100%">
+          <span style="color: #18181B !important; text-decoration: none !important;">
+            <strong style="color: #18181B !important; text-decoration: none !important;">
+              @Model.ButtonText
+            </strong>
+          </span>
+        </mj-button>
+        <mj-text align="center" color="#fff" font-size="14px" line-height="1.5" padding="10px">
+          <span style="word-spacing: normal;">@Model.DisclaimerText</span><br />
+        </mj-text>
+
+        <mj-text align="center" color="#acacac" font-size="12px" line-height="1.5" padding-left="50px" padding-right="50px" padding-top="20px">
+          @Model.CopyrightText
+        </mj-text>
+
+        <mj-text align="center" color="#acacac" font-size="12px" line-height="1" padding-bottom="10px">
+          <a href="@Model.PrivacyUrl" target="_blank" style="color:#acacac; text-decoration:none;">@Model.PrivacyText</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+
+</mjml>

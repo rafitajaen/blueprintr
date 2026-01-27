@@ -1,0 +1,42 @@
+@using CodeIn.Web.Sections.TheSpecialityBrowser
+@model TheSpecialityBrowserComponent
+
+@{
+    var max = 10;
+    var counter = 0;
+
+    var id = RandomString.Generate(5, CharSets.Alphabetic);
+}
+
+<section class="specialities">
+
+    @if (Model.Specialities.Count() > 0)
+    {
+        <h2>@L["Browse by speciality"]</h2>
+        <ul>
+            @foreach (var tag in Model.Specialities.OrderByDescending(x => x.Count))
+            {
+                if (tag.Count <= 0)
+                {
+                    continue;
+                }
+
+                counter++;
+                var hide = counter > max ? "hide" : string.Empty;
+                var hideable = counter > max ? "hideable" : string.Empty;
+
+                <li class="@hideable @hide" data-hide="@id">
+                    <AnchorButton class="button button-sidebar" href="@tag.Slug">
+                        <span>@tag.Name</span>
+                        <span>@tag.Count @L["offers"]</span>
+                    </AnchorButton>
+                </li>
+            }
+        </ul>
+
+        @if (counter > max)
+        {
+            <IconButton id="@id" class="button button-link uppercase" on-click="showMore('@id')">+ @L["Show more"]</IconButton>
+        }
+    }
+</section>

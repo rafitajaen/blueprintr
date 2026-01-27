@@ -1,0 +1,106 @@
+@using CodeIn.Web.Sections.TheHeader
+@model TheHeaderComponent;
+
+@{
+    var logo =  ViewContext?.HttpContext.Items["Tenant:Logo"]?.ToString();
+
+    if (!Enum.TryParse<LogoTypes>(logo, out var logoType))
+    {
+        logoType = LogoTypes.Root;
+    }
+}
+
+<header role="banner">
+
+    <IconButton class="button button-ghost menu-toggle" icon="@IconTypes.Hamburger" />
+
+    <Logo class="Tenant:Logo" type="@logoType" href="@PageRoutes.Home"/>
+
+    <nav class="menu">
+
+        <ul class="sections">
+
+            <div class="items">
+
+                <li class="item">
+                    <AnchorButton class="button button-sidebar text-md" href="/jobs">
+                        <Icon class="skeleton" type="@IconTypes.ContactRound" />
+                        <span>@L["Jobs"]</span>
+                        <Icon class="trailing-icon" type="@IconTypes.ChevronRight" />
+                    </AnchorButton>
+                </li>
+                <li class="item">
+                    <AnchorButton class="button button-sidebar text-md" href="/companies">
+                        <Icon class="skeleton" type="@IconTypes.Handshake" />
+                        <span>@L["Companies"]</span>
+                        <Icon class="trailing-icon" type="@IconTypes.ChevronRight" />
+                    </AnchorButton>
+                </li>
+                @* <li class="item">
+                    <AnchorButton class="button button-sidebar text-md" href="/blog">
+                        <Icon class="skeleton" type="@IconTypes.NotebookText" />
+                        <span>@L["Blog"]</span>
+                        <Icon class="trailing-icon" type="@IconTypes.ChevronRight" />
+                    </AnchorButton>
+                </li> *@
+                
+            </div>
+
+            <div class="cta">
+                <span class="title">@L["Take action today and discover new opportunities"]</span>
+                <div class="group">
+                    <li>
+                        <AnchorButton class="button button-outline text-sm" href="@PageRoutes.Hire.Base">+ @L["Submit a job"]</AnchorButton>
+                    </li>
+                    <li>
+                        <AnchorButton class="button text-sm" href="@PageRoutes.Newsletters.Base">
+                        <Icon type="@IconTypes.BellRing" />
+                        @L["Get job alerts"]
+                        </AnchorButton>
+                    </li>
+                </div>
+            </div>
+
+        </ul>
+
+    </nav>
+
+    <div class="actions">
+        @if(ViewContext?.HttpContext.Items["IsAuthenticated"] is true)
+        {
+            <AnchorButton class="button button-ghost text-md" href="/auth/logout">@L["Logout"]</AnchorButton>
+        }
+        else
+        {
+            @* <AnchorButton class="button" href="/auth/login">Log In</AnchorButton> *@
+            @* <AnchorButton href="/auth/signup">Sign Up</AnchorButton> *@
+        }
+    </div>
+
+    <div class="options">
+
+        @if (ViewContext?.HttpContext.Items["ThemeEnabled"] is true)
+        {
+            <button id="toggle-theme" class="button button-ghost">
+                <Icon type="@IconTypes.Theme" />
+            </button>
+        }
+        @if (ViewContext?.HttpContext.Items["LanguageEnabled"] is true)
+        {
+            <button id="toggle-lang" class="button button-ghost">
+                <Icon type="@IconTypes.Language" />
+            </button> 
+        }
+    </div>
+
+    <div class="profile">
+
+        @if(ViewContext?.HttpContext.Items["IsAuthenticated"] is true)
+        {
+            <Avatar>
+                <AvatarImage alt="profile picture" initials="P" />
+            </Avatar>
+        }
+    </div>
+
+</header>

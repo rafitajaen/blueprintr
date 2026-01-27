@@ -1,0 +1,29 @@
+$xs-breakpoint: 480px;
+$sm-breakpoint: 640px;
+$md-breakpoint: 768px;
+$lg-breakpoint: 1024px;
+$xl-breakpoint: 1280px;
+
+@mixin onMobile {
+    @media (max-width: $xs-breakpoint) {
+        @content;
+    }
+}
+
+@mixin onPortrait {
+    @media (max-width: $sm-breakpoint) {
+        @content;
+    }
+}
+
+@mixin onTablet {
+    @media (max-width: $md-breakpoint) {
+        @content;
+    }
+}
+
+@mixin onDesktop {
+    @media (max-width: $lg-breakpoint) {
+        @content;
+    }
+}

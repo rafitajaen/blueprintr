@@ -1,0 +1,110 @@
+@use "../base/breakpoints" as *;
+
+@mixin truncate {
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+}
+
+@mixin max-width-by-screen {
+    width: 100%;
+    max-width: $xl-breakpoint;
+
+    @include onDesktop {
+        max-width: $lg-breakpoint;
+    }
+    @include onTablet {
+        max-width: $md-breakpoint;
+    }
+    @include onPortrait {
+        max-width: $md-breakpoint;
+    }
+    @include onMobile {
+        max-width: $sm-breakpoint;
+    }
+}
+
+@mixin text-muted-xs {
+    @include text-xs;
+    color: var(--muted-foreground);
+    font-weight: var(--font-weight-normal);
+}
+
+@mixin text-muted-sm {
+    @include text-sm;
+    color: var(--muted-foreground);
+    font-weight: var(--font-weight-normal);
+}
+
+@mixin text-muted-md {
+    @include text-md;
+    color: var(--muted-foreground);
+    font-weight: var(--font-weight-normal);
+}
+
+@mixin text-xs {
+    font-size: var(--text-xs);
+    line-height: var(--tw-leading,var(--text-2xs--line-height));
+}
+@mixin text-sm {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading,var(--text-xs--line-height));
+}
+@mixin text-md {
+    font-size: var(--text-md);
+    line-height: var(--tw-leading,var(--text-sm--line-height));
+}
+@mixin text-lg {
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading,var(--text-md--line-height));
+}
+@mixin text-xl {
+    font-size: var(--text-xl);
+    line-height: var(--tw-leading,var(--text-lg--line-height));
+}
+@mixin text-2xl {
+    font-size: var(--text-2xl);
+    line-height: var(--tw-leading,var(--text-xl--line-height));
+}
+@mixin text-3xl {
+    font-size: var(--text-3xl);
+    line-height: var(--tw-leading,var(--text-2xl--line-height));
+}
+@mixin text-4xl {
+    font-size: var(--text-4xl);
+    line-height: var(--tw-leading,var(--text-3xl--line-height));
+}
+@mixin text-5xl {
+    font-size: var(--text-5xl);
+    line-height: var(--tw-leading,var(--text-4xl--line-height));
+}
+@mixin text-6xl {
+    font-size: var(--text-6xl);
+    line-height: var(--tw-leading,var(--text-5xl--line-height));
+}
+@mixin text-7xl {
+    font-size: var(--text-7xl);
+    line-height: var(--tw-leading,var(--text-6xl--line-height));
+}
+
+@mixin font-normal {
+    --tw-font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-normal);
+}
+
+@mixin font-medium {
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
+}
+@mixin font-semibold {
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+}
+@mixin font-bold {
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+}
+@mixin font-extrabold {
+    --tw-font-weight: var(--font-weight-extrabold);
+    font-weight: var(--font-weight-extrabold);
+}

@@ -1,0 +1,85 @@
+﻿@using CodeIn.Web.Views.Newsletters
+@model NewslettersController.NewslettersViewModel;
+@{
+    Layout = LayoutTargets.Base;
+
+    ViewData["MainClass"] = "articles";
+    ViewData["Page"] = L["Career oportunities"];
+    ViewData["Title"] = $"{ViewData["Page"]} - {ViewContext?.HttpContext.Items["Tenant:Name"]}";
+}
+
+<article class="articles hire">
+
+    <section class="title">
+        <h1>@L["NesletterPageTitle"]</h1>
+        <p>@L["NesletterPageSubtitle"]</p>
+    </section>
+
+    <section class="cta">
+
+        <Card class="text-start first">
+
+            <CardHeader class="flex">
+                <IconButton class="button button-leading" icon="@IconTypes.Telegram" />
+                <h2>@L["TelegramCardTitle"]</h2>
+            </CardHeader>
+
+            <CardContent>
+                <p class="text-muted-sm">
+                    @L["TelegramCardText"]
+                </p>
+            </CardContent>
+
+            <CardFooter class="flex-center">
+                <AnchorButton class="button button-link" href="@Model.Social.Telegram">@L["TelegramCardButton"]</AnchorButton>
+            </CardFooter>
+
+        </Card>
+
+        <Card class="text-start third">
+
+            <CardHeader class="flex">
+                <IconButton class="button button-leading" icon="@IconTypes.Linkedin" />
+                <h2>@L["LinkedinCardTitle"]</h2>
+            </CardHeader>
+
+            <CardContent>
+                <p class="text-muted-sm">
+                    @L["LinkedinCardText"]
+                </p>
+            </CardContent>
+
+            <CardFooter class="flex-center">
+                <AnchorButton class="button button-link" href="@Model.Social.Linkedin">@L["LinkedinCardButton"]</AnchorButton>
+            </CardFooter>
+
+        </Card>
+
+        <Card class="text-start second">
+
+            <CardHeader class="flex">
+                <IconButton class="button button-leading" icon="@IconTypes.Whatsapp" />
+                <h2>@L["WhatsappCardTitle"]</h2>
+            </CardHeader>
+
+            <CardContent>
+                <p class="text-muted-sm">
+                    @L["WhatsappCardText"]
+                </p>
+            </CardContent>
+
+            <CardFooter class="flex-center">
+                <AnchorButton class="button button-link" href="@Model.Social.Whatsapp">@L["WhatsappCardButton"]</AnchorButton>
+            </CardFooter>
+        </Card>
+
+    </section>
+
+    <TheNewsletter />
+
+</article>
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/empty.js" asp-append-version="true" defer></script>
+}

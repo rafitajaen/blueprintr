@@ -1,0 +1,149 @@
+﻿@using Boilerplatr.Shared
+@using CodeIn.Domain.Jobs
+@using CodeIn.Domain.Companies
+@using CodeIn.Domain.Topics
+@using CodeIn.Web.Views.Jobs
+
+@model JobsController.JobEntryViewModel
+
+@{
+    Layout = LayoutTargets.Base;
+
+    ViewData["Title"] = $"{Model.Job.Role} - {Model.Company.Name} | {ViewContext?.HttpContext.Items["Tenant:Name"]}";
+
+    var now = SystemClock.Instance.GetCurrentInstant();
+    var url = PageRoutes.GetCompanyUrl(Model.Company);
+
+    var Language = Model.Job.GetHighestPriorityLanguage();
+    var location = Model.Job.Topics.FirstOrDefault(x => x.Kind == TopicKind.Location);
+}
+
+<article class="job-entry">
+
+    <section class="role">
+        <h1 class="text-start text-4xl">@Model.Job.Role</h1>
+    </section>
+
+    <section class="info">
+        <div class="company">
+            <CompanyHeader class="company-header-sm inline" company="@Model.Company">
+                @if (!string.IsNullOrWhiteSpace(location?.Slug.Value))
+                {
+                    <span>@L[location.Slug.Value]</span>
+                }
+                else
+                {
+                    <span>@L["Remote"]</span>
+                }
+
+                @if (Model.Job.PublishedAt is Instant time)
+                {
+                    <span>|</span>
+                    <span class="text-muted"> @TimeAgo.Since(time, now).ToString() ago</span>
+                }
+            </CompanyHeader>
+        </div>
+        <div class="highlights">
+            @if (Model.Job.Compensation is null)
+            {
+                <Highlight icon="@IconTypes.BanknoteX" text="@L["No salary range given"]" />
+            }
+            else
+            {
+                <Highlight icon="@IconTypes.BanknoteX" text="@Model.Job.Compensation.ToString()" />
+            }
+
+            <Highlight icon="@IconTypes.Earth" text="@L[Model.Job.Arrangement.ToString()]" />
+
+            @if (Model.Job.MinimumExperience <= 0)
+            {
+                <Highlight icon="@IconTypes.Award" text="@L["No experience required"]" />
+            }
+            else
+            {
+                <Highlight icon="@IconTypes.Award" text="@Model.Job.MinimumExperience+ @L["years of experience required"]" />
+            }
+
+            @if (Language is not null)
+            {
+                <Highlight icon="@IconTypes.Languages" text="@L[Language.MinimumLevel.ToString()] @L[Language.Language.ToString()]" />
+            }
+
+            @if (Model.Job.ResidentsOnly)
+            {
+                <Highlight icon="@IconTypes.MapPinned" text="@L["Residents only applications"]" />
+            }
+            else
+            {
+                <Highlight icon="@IconTypes.MapPinned" text="@L["Open to applicants from abroad"]" />
+            }
+        </div>
+    </section>
+
+    <section class="application">
+        <AnchorButton class="button full-w" href="@PageRoutes.GetJobApplicationUrl(Model.Company, Model.Job)">@L["Apply for this position"]</AnchorButton>
+        <hr />
+        <span>@L["do you need more info?"]</span>
+        <AnchorButton class="button button-secondary full-w" href="@PageRoutes.GetJobQuestionUrl(Model.Company, Model.Job)">@L["Ask a question"]</AnchorButton>
+    </section>
+
+    <section class="company">
+        <CompanyHeader company="@Model.Company" />
+        <MarkdownBlock class="text-muted" text="@Model.Company.Description" />
+    </section>
+
+    <section class="content">
+        <MarkdownBlock text="@Model.Job.Content" />
+    </section>
+    <TheNewsletter metric="@Model.SuscribersMetric" />
+
+    <section class="application-footer">
+        <AnchorButton class="button full-w" href="@PageRoutes.GetJobApplicationUrl(Model.Company, Model.Job)">@L["Apply for this position"]</AnchorButton>
+        <hr />
+        <span>@L["do you need more info?"]</span>
+        <AnchorButton class="button button-secondary full-w" href="@PageRoutes.GetJobQuestionUrl(Model.Company, Model.Job)">@L["Ask a question"]</AnchorButton>
+    </section>
+    <section class="detail">
+
+        <h2>@L["More about"] @Model.Company.Name</h2>
+        <MarkdownBlock text="@Model.Company.Description"/>
+
+        @if (Model.Company.Policies.RemoteWork is not null)
+        {
+            <h3>@L["Remote work"]</h3>
+            <MarkdownBlock text="@Model.Company.Policies.RemoteWork"/>
+        }
+
+        @if (Model.Company.Policies.Holidays is not null)
+        {
+            <h3>@L["Holidays"]</h3>
+            <MarkdownBlock text="@Model.Company.Policies.Holidays"/>
+        }
+
+        @if (Model.Company.Policies.WorkingHours is not null)
+        {
+            <h3>@L["Working hours"]</h3>
+            <MarkdownBlock text="@Model.Company.Policies.WorkingHours"/>
+        }
+    </section>
+
+    <section class="related">
+
+        @if (Model.Related.Any())
+        {
+            <h2>@L["Related jobs"]</h2>
+            @foreach (var company in Model.Related)
+            {
+                <CompanyCard Company="@company" now="@now" />
+            }
+        }
+
+    </section>
+    @* <section class="others">Others</section> *@
+
+</article>
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/empty.js" asp-append-version="true" defer></script>
+}

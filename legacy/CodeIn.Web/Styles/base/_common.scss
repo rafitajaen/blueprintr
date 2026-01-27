@@ -1,0 +1,65 @@
+@use "../base/mixins" as *;
+
+.hide { display: none !important; }
+.truncate { @include truncate; }
+.uppercase { text-transform: uppercase; }
+.ml-auto { margin-left:auto; }
+
+.bg-fill {
+    fill: var(--background);
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing)*2);
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--spacing)*2);
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing)*2);
+}
+
+.flex-wrap { flex-wrap: wrap; }
+
+.gap-0 { gap: 0; }
+.gap-1 { gap: calc(var(--spacing)*1); }
+
+.justify-between { justify-content: space-between; }
+.full-w, .w-full { width: 100%; }
+.full-h, .h-full { height: 100%; }
+
+.text-start { text-align: start; }
+.text-center { text-align: center; }
+
+.text-xs { @include text-xs; }
+.text-sm { @include text-sm; }
+.text-md { @include text-md; }
+.text-lg { @include text-lg; }
+.text-xl { @include text-xl; }
+.text-2xl { @include text-2xl; }
+.text-3xl { @include text-3xl; }
+.text-4xl { @include text-4xl; }
+.text-5xl { @include text-5xl; }
+.text-6xl { @include text-6xl; }
+.text-7xl { @include text-7xl; }
+
+.font-normal { @include font-normal; }
+.font-medium { @include font-medium; }
+.font-semibold { @include font-semibold; }
+.font-bold { @include font-bold; }
+.font-extrabold { @include font-extrabold; }
+
+.p-0 { padding: 0; }
+.p-4 { padding: calc(var(--spacing)*4); }
+.pt-4 { padding-top: calc(var(--spacing)*4); }
+.px-4 { padding-inline: calc(var(--spacing)*4); }
+.py-2 { padding-block: calc(var(--spacing)*2); }

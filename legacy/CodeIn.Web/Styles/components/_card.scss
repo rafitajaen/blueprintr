@@ -1,0 +1,105 @@
+@use "../base/mixins" as *;
+@use "../base/breakpoints" as *;
+
+a.card {
+    cursor: pointer;
+}
+
+.card {
+
+    --card-spacing: 6;
+    --card-radius: 4px;
+    --card-gap: 2;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: calc(var(--spacing) * var(--card-gap));
+
+    width: 100%;
+    max-width: var(--container-md);
+
+    color: var(--foreground);
+    // background-color: var(--card);
+
+    padding-block: calc(var(--spacing) * var(--card-spacing));
+
+    border-width: 1px;
+    border-color: var(--border);
+    border-style: var(--tw-border-style);
+    border-radius: calc(var(--radius) + var(--card-radius));
+
+    outline-color: color-mix(in oklab,var(--ring)50%,transparent);
+
+    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color,#0000001a),0 1px 2px -1px var(--tw-shadow-color,#0000001a);
+    box-shadow: var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow);
+
+    &.row {
+        flex-direction: row;
+    }
+
+    &.size-lg {
+        max-width: var(--container-lg);
+    }
+
+    &.inverse {
+        color: var(--background);
+        background-color: var(--foreground);
+    }
+
+    & > div {
+        gap: calc(var(--spacing) * var(--card-gap));
+        padding-inline: calc(var(--spacing) * var(--card-spacing));
+    }
+
+    .card-title {
+        --tw-leading: 1.5;
+        line-height: 1.5;
+
+        font-size: var(--text-lg);
+
+        --tw-font-weight: var(--font-weight-semibold);
+        font-weight: var(--font-weight-semibold);
+    }
+
+    .card-description {
+        color: var(--muted-foreground);
+
+        font-size: var(--text-sm);
+        line-height: var(--tw-leading,var(--text-sm--line-height));
+    }
+}
+
+.card.company {
+
+    --card-gap: 2;
+    --card-spacing: 5;
+    --card-radius: 1px;
+
+    width: 100%;
+    min-width: var(--container-2xs);
+    max-width: var(--container-2xl);
+    
+    border: none;
+    user-select: none;
+
+    & > div {
+        padding-inline: 0;
+    }
+
+    .excerpt {
+        font-family: 'Geist';
+        @include text-md;
+    }
+
+    .job-item {
+        border-left-width: 2px;
+        border-color: var(--muted-foreground);
+
+        margin-left: calc(var(--image-container, 4rem) * .35);
+        padding-left: calc(var(--spacing) * var(--card-spacing, 5));
+    }
+
+}

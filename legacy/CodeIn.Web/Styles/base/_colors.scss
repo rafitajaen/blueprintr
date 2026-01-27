@@ -1,0 +1,81 @@
+// Interest Links
+// https://material-foundation.github.io/material-theme-builder/
+// https://m3.material.io/styles/color/roles
+
+@mixin light-shacdn-theme() {
+    --rotation: 4deg;
+    --radius:.625rem;
+    --text-white: var(--color-white);
+    --text-black: var(--color-black);
+    --tw-border-style: solid;
+    --tw-shadow: 0 1px 2px 0 var(--tw-shadow-color,#0000000d);
+    
+    --background:oklch(100% 0 0);
+    --foreground:oklch(26.982% 0.00553 285.95);
+
+    --dark-background:oklch(0.2103 0.0059 285.89);
+    --dark-foreground:oklch(100% 0 0);
+
+    --card:oklch(100% 0 0);
+    --card-foreground:oklch(14.5% 0 0);
+    
+    --popover:oklch(100% 0 0);
+    --popover-foreground:oklch(14.5% 0 0);
+
+    --primary: oklch(0.83 0.16 162.72);
+    --primary-foreground:oklch(0.2103 0.0059 285.89);
+
+    --secondary:oklch(26.982% 0.00553 285.95);
+    --secondary-foreground:oklch(97% 0 0);
+
+    --muted:oklch(86.995% 0.0001 271.152);
+    --muted-foreground:oklch(46.04% 0.00005 271.152);
+
+    --accent:oklch(97% 0 0);
+    --accent-foreground:oklch(20.5% 0 0);
+
+    --destructive:oklch(63.17% 0.19298 21.829);
+
+    --border:oklch(92.2% 0 0);
+    --input:oklch(92.2% 0 0);
+    --ring:oklch(0.5555 0 0);
+
+    --chart-1:var(--color-blue-300);
+    --chart-2:var(--color-blue-500);
+    --chart-3:var(--color-blue-600);
+    --chart-4:var(--color-blue-700);
+    --chart-5:var(--color-blue-800);
+
+    --sidebar:oklch(98.5% 0 0);
+    --sidebar-foreground:oklch(14.5% 0 0);
+    --sidebar-primary:oklch(20.5% 0 0);
+    --sidebar-primary-foreground:oklch(98.5% 0 0);
+    --sidebar-accent:oklch(97% 0 0);
+    --sidebar-accent-foreground:oklch(20.5% 0 0);
+    --sidebar-border:oklch(92.2% 0 0);
+    --sidebar-ring:oklch(70.8% 0 0);
+
+    --surface:oklch(98% 0 0);
+    --surface-foreground:var(--foreground);
+
+    --code:var(--surface);
+    --code-foreground:var(--surface-foreground);
+    --code-highlight:oklch(96% 0 0);
+    --code-number:oklch(0.552 0.0153 285.89);
+
+    --selection:oklch(14.5% 0 0);
+    --selection-foreground:oklch(100% 0 0);
+
+    --success: oklch(0.61 0.13 185.87);
+    --success-foreground: var(--background);
+
+    --warning: var(--color-amber-300);
+    --warning-foreground: var(--color-amber-800);
+
+    --info: var(--color-blue-400);
+    --info-foreground: var(--color-blue-900);
+}
+
+:root {
+    @include light-shacdn-theme();
+}

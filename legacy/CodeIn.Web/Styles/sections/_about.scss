@@ -1,0 +1,17 @@
+@use "../base/mixins" as *;
+@use "../base/breakpoints" as *;
+
+section.about {
+    grid-area: about;
+
+    padding: calc(var(--spacing) * 6);
+    border-radius: calc(var(--radius) * 2);
+
+    color: var(--warning-foreground);
+    background-color: var(--warning);
+
+    strong {
+        @include font-semibold;
+        // color: var(--primary);
+    }
+}

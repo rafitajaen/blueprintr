@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <TargetFramework>net9.0</TargetFramework>
+    
+    <RootNamespace>CodeIn.Web</RootNamespace>
+    <Version>0.0.1</Version>
+
+    <Copyright>rafita.me - 2025</Copyright>
+    <Description>A specialized job board connecting talented programmers with top companies, offering curated opportunities for developers of all levels.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Boilerplatr\Boilerplatr.csproj" />
+    <ProjectReference Include="..\CodeIn.Domain\CodeIn.Domain.csproj" />
+    <ProjectReference Include="..\CodeIn.Application\CodeIn.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,44 @@
+@using CodeIn.Web.Components.ActionArea
+@model ActionAreaComponent
+
+@{
+    var autocomplete = string.IsNullOrWhiteSpace(Model.Autocomplete) ? "off" : Model.Autocomplete;
+}
+
+<div class="action-area @Model.Class" data-input-id="@Model.Id" data-required="@Model.Required">
+
+    <div class="content">
+
+        @if (Model.Label is not null)
+        {
+            <label for="@Model.Id">@Model.Label</label>
+        }
+
+        <textarea id="@Model.Id" type="@Model.Type" placeholder="@Model.Placeholder" autocomplete="@autocomplete">@Model.Value</textarea>
+
+        @if (Model.InnerButton is true && string.IsNullOrWhiteSpace(Model.ActionText) is false)
+        {
+            <IconButton class="inner-button uppercase">@Model.ActionText</IconButton>
+        }
+    </div>
+
+    @if (Model.InnerButton is not true && string.IsNullOrWhiteSpace(Model.ActionText) is false)
+    {
+        <IconButton class="outter-button uppercase">@Model.ActionText</IconButton>
+    }
+
+    @if (Model.ChildContent is not null || Model.Required is true)
+    {
+        <div class="footer">
+
+            @if (Model.Required is true)
+            {
+                <ActionInputError type="Empty">@L["Required – please enter a value."]</ActionInputError>
+            }
+
+            @Model.ChildContent
+
+        </div>
+    }
+
+</div>

@@ -1,0 +1,12 @@
+@if(string.IsNullOrWhiteSpace(Model.Href))
+{
+    <div id="@Model.Id" class="logo @Model.Class">
+        <partial name="@Model.Type.ToString()">
+    </div>
+}
+else
+{
+    <a id="@Model.Id" class="logo @Model.Class" href="@Model.Href">
+        <partial name="@Model.Type.ToString()">
+    </a>
+}

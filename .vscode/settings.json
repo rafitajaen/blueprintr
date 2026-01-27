@@ -1,0 +1,79 @@
+{
+  // .NET and C# settings
+  "dotnet.defaultSolution": "Blueprintr.slnx",
+  "omnisharp.enableEditorConfigSupport": true,
+  "omnisharp.enableRoslynAnalyzers": true,
+
+  // Files to exclude from explorer
+  "files.exclude": {
+    "**/bin": true,
+    "**/obj": true,
+    "**/.vs": true,
+    "**/node_modules": true
+  },
+
+  // Files to exclude from search
+  "search.exclude": {
+    "**/bin": true,
+    "**/obj": true,
+    "**/node_modules": true,
+    "**/.vs": true,
+    "**/_site": true,
+    "**/coverage": true
+  },
+
+  // Auto-save
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+
+  // Formatting
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+
+  // C# specific
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    },
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true
+  },
+
+  // JSON
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.tabSize": 2
+  },
+
+  // YAML
+  "[yaml]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+
+  // Markdown
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    }
+  },
+
+  // Git
+  "git.ignoreLimitWarning": true,
+
+  // Terminal
+  "terminal.integrated.defaultProfile.linux": "bash",
+
+  // Test Explorer
+  "dotnet-test-explorer.testProjectPath": "tests/**/*.csproj",
+
+  // File associations
+  "files.associations": {
+    "*.slnx": "xml"
+  }
+}

@@ -1,0 +1,26 @@
+@use "../base/mixins" as *;
+@use "../base/breakpoints" as *;
+
+.sepatator {
+    position: relative;
+    width: 100%;
+
+    border-width: 1px;
+    border-color: var(--border);
+    border-style: var(--tw-border-style);
+    border-radius: calc(var(--radius) + var(--card-radius));
+
+    & > * {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+
+        @include font-medium;
+        @include text-sm;
+
+        background: var(--background);
+        padding: 0 calc(var(--spacing)*1);
+    }
+}

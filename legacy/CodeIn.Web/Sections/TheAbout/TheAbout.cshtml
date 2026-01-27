@@ -1,0 +1,60 @@
+@using CodeIn.Web.Sections.TheAbout
+@model TheAboutComponent
+
+@{
+    var host = @ViewContext?.HttpContext.Items["Tenant:Host"]?.ToString() ?? string.Empty;
+}
+
+<section class="about">
+
+    @if (host.Contains("codeinremote") is true)
+    {
+        <h2>We believe in doing work differently.</h2>
+        <p>
+        There’s great talent around the world.  
+        And there are great companies too.  
+        But sometimes, it’s not that easy for them to find each other.
+        </p>
+
+        <p>
+        <i>@host</i> is a curated selection of tech jobs at companies that value their <strong>team</strong>, quality, and long-term thinking.  
+        You won’t find hundreds of listings here. <strong>Only the good ones</strong>.
+        </p>
+
+        <p>
+        Every week, we review each position we publish, one by one.  
+        No shady consultancies, no vague offers, no endless hiring processes.  
+        Only companies that <strong>take care of their people</strong>, with a good atmosphere, fair salaries, and products worth building.
+        </p>
+
+        <p>
+        And every week, we send you <strong>a clear and straightforward newsletter</strong>.  
+        So you can start exploring (or changing) calmly, without wasting time digging through smoke-filled job boards.
+        </p>
+    }
+    else
+    {
+        <h3>Creemos en otra forma de trabajar.</h3>
+        <p>
+        Hay buen talento en España.  
+        Y también buenas empresas.  
+        Pero a veces no es tan fácil que se encuentren.
+        </p>
+
+        <p>
+        <i>@host</i> es una selección curada de trabajos tech en empresas que apuestan por el <strong>equipo</strong>, la calidad y el largo plazo.  
+        Aquí no vas a encontrar cientos de ofertas. <strong>Solo las buenas</strong>.
+        </p>
+
+        <p>
+        Cada semana leemos una por una las posiciones que publicamos.  
+        Nada de consultoras opacas, ni ofertas sin detalles, ni procesos eternos.  
+        Solo compañías que <strong>cuidan a su gente</strong>, con buen ambiente, salarios justos y productos que merece la pena construir.
+        </p>
+
+        <p>
+        Y cada semana, te enviamos <strong>una newsletter clara y directa</strong>.  
+        Para que puedas empezar a mirar (o cambiar) con calma, sin perder tiempo buceando entre portales llenos de humo.
+        </p>
+    }
+</section>

@@ -1,0 +1,47 @@
+@{
+    var url = PageRoutes.GetCompanyUrl(Model.Company);
+}
+
+<div id="@Model.Id" class="company-header @Model.Class">
+
+    <AnchorButton href="@url">
+        @if (Model.Company.HasValidLogo())
+        {
+            <img class="skeleton-logo" alt="@Model.Company.Name logo" src="@Model.Company.LogoUrl" />
+        }
+        else
+        {
+            <span class="skeleton-logo">@StringUtilities.ExtractInitials(Model.Company.Name)</span>
+        }
+    </AnchorButton>
+    <div class="container">
+
+        @if (Model.IsTitle is true)
+        {
+            <h1 class="title">
+                <AnchorButton class="button button-link p-0" href="@url">@Model.Company.Name</AnchorButton>
+            </h1>
+        }
+        else
+        {
+            <h3 class="title">
+                <AnchorButton class="button button-link p-0" href="@url">@Model.Company.Name</AnchorButton>
+            </h3>
+        }
+
+        <div class="subtitle">
+            @if (Model.ChildContent.IsEmptyOrWhiteSpace is false)
+            {
+                @Model.ChildContent
+            }
+            else if (Model.ShowExcerpt is true)
+            {
+                <p class="excerpt">@Model.Company.Excerpt</p>
+            }
+            else
+            {
+                <span class="hq">@Model.Company.Headquarters</span>
+            }
+        </div>
+    </div>
+</div>

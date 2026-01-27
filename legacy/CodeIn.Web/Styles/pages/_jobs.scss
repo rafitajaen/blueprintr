@@ -1,0 +1,110 @@
+@use "../base/mixins" as *;
+@use "../base/breakpoints" as *;
+
+article.jobs {
+
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 7fr 4fr;
+    grid-template-rows: auto;
+    gap: calc(var(--spacing)*4);
+    align-items: start;
+    padding-bottom: calc(var(--spacing) * 10);
+
+    @include max-width-by-screen;
+
+    grid-template-areas:
+    "title title"
+    "info filters"
+    "content filters"
+    ". filters";
+
+    @include onTablet {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "title"
+        "info"
+        "content"
+        "filters";
+    }
+
+    aside, section, .body, .footer {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--spacing) * 2);
+    }
+
+    & > .title { 
+        grid-area: title;
+
+        padding-block: calc(var(--spacing) * 12);
+    }
+    & > .info { grid-area: info }
+    & > .content { grid-area: content }
+    & > aside { 
+        grid-area: filters;
+
+        padding: calc(var(--spacing)*4);
+
+        width: 100%;
+        z-index: 8888;
+        max-width: var(--container-xs);
+        
+        border-width: 1px;
+        border-color: var(--ring);
+        border-style: var(--tw-border-style);
+        border-radius: calc(var(--radius));
+        
+        color: var(--foreground);
+        background-color: var(--background);
+
+        outline-color: color-mix(in oklab,var(--ring)50%,transparent);
+
+        section {
+            border-bottom-width: 1px;
+            border-color: var(--ring);
+            border-style: var(--tw-border-style);
+            border-radius: 0;
+
+            outline-color: color-mix(in oklab,var(--ring)50%,transparent);
+
+            padding-bottom: calc(var(--spacing)*2);
+        }
+
+        .header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    @include onTablet {
+        & > aside.filters {
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            max-width: unset ;
+            height: 100%;
+
+            border-width: 0 ;
+            border-radius: 0 ;
+
+            &:not(.open) {
+                display: none;
+            }
+
+            .body {
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+
+            .footer {
+                margin-top: auto;
+            }
+
+        }
+    }
+}

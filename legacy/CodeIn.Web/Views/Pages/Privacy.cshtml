@@ -1,0 +1,21 @@
+﻿@using Boilerplatr.Mvc
+
+@model BaseViewModel
+
+@{
+    Layout = LayoutTargets.Base;
+    ViewData["Robots"] = "noindex, nofollow";
+    
+    ViewData["Page"] = L["Privacy"];
+    ViewData["Title"] = $"{ViewData["Page"]} - {ViewContext?.HttpContext.Items["Tenant:Name"]}";
+}
+
+<section class="privacy">
+
+</section>
+    
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/empty.js" asp-append-version="true" defer></script>
+}

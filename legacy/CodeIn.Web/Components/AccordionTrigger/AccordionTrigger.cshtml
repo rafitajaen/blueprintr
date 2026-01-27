@@ -1,0 +1,12 @@
+@using CodeIn.Web.Components.AccordionTrigger
+@model AccordionTriggerComponent
+@{
+    var id = RandomString.Generate(6, CharSets.Alphabetic);
+}
+
+<h3 id="@Model.Id" class="accordion-trigger @Model.Class">
+    <IconButton id="@id" on-click="toggleAccordion('@id')">
+        @Model.ChildContent
+        <Icon action-id="@id" type="@IconTypes.ChevronDown" />
+    </IconButton>
+</h3>

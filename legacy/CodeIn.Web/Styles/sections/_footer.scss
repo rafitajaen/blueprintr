@@ -1,0 +1,163 @@
+@use "../base/mixins" as *;
+@use "../base/breakpoints" as *;
+
+.separator {
+    display: none;
+    height: calc(var(--spacing)*4);
+
+    @include onMobile {
+        display: flex;
+    }
+}
+
+footer {
+
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--dark-foreground);
+    background-color: var(--foreground);
+
+    width: 100%;
+    gap: calc(var(--spacing) * 1);
+    padding-bottom: calc(var(--spacing) * 6);
+
+    @include onMobile {
+        width: unset;
+        margin: calc(var(--spacing) * 5);
+        border-radius: calc(var(--radius) * 2);
+    }
+    
+    & > * {
+        display: flex;
+        @include max-width-by-screen;
+        padding-inline: calc(var(--spacing) * 4);
+    }
+
+    .spacer {
+        min-width: 100% !important;
+        background-color: var(--background);
+        height: calc(var(--spacing)*4);
+        border-bottom-left-radius: calc(var(--radius) * 4);
+        border-bottom-right-radius: calc(var(--radius) * 4);
+        box-shadow: var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow);
+
+        @include onMobile {
+            display: none;
+        }
+    }
+
+    .footer-grid {
+
+        display: grid;
+        grid-template-areas:"principal first second third";
+        grid-template-columns: 1fr auto auto auto;
+        
+        row-gap: calc(var(--spacing)*8);
+        column-gap: calc(var(--spacing)*6);
+        padding-top: calc(var(--spacing) * 6);
+
+        & > * {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: flex-start;
+            color: var(--muted-foreground);
+            gap: calc(var(--spacing)*1.5);
+            padding-block: calc(var(--spacing)*1);
+            padding-inline: calc(var(--spacing)*4);
+        }
+    
+        .principal { 
+            grid-area: principal; 
+            gap: calc(var(--spacing)*3);
+            max-width: var(--container-lg);
+        }
+        .first { grid-area: first; }
+        .second { grid-area: second; }
+        .third { grid-area: third; }
+    
+        @include onDesktop {
+            padding-inline: calc(var(--spacing) * 2);
+            row-gap: calc(var(--spacing)*2);
+    
+            grid-template-areas:
+                "principal principal principal" 
+                "first second third";
+            grid-template-columns: auto auto auto;
+        }
+    
+        @include onPortrait {
+    
+            grid-template-areas:
+                "principal" 
+                "first" 
+                "second"
+                "third";
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .description {
+        @include text-sm;
+        color: var(--muted);
+        font-family: 'Outfit';
+    }
+
+    .section-title {
+        font-family: 'Outfit';
+        @include text-md;
+        color: var(--ring);
+    }
+
+    .copyright {
+        display: flex;
+        font-family: 'Outfit';
+        @include text-sm;
+        color: var(--muted);
+        gap: calc(var(--spacing) * 1);
+
+        .button-link {
+            padding: 0;
+            color: var(--muted);
+        }
+    }
+    
+    .legal {
+        display: flex;
+        gap: calc(var(--spacing)*4);
+    }
+
+    .footer-logo {
+
+        @include onMobile {
+            margin-inline: auto;
+        }
+        
+        & > .logo-icon {
+    
+            width: 11rem;
+            height: 4.5rem;
+            padding: unset;
+    
+            // .background { fill: var(--foreground) !important; }
+            // .foreground { fill: var(--secondary) !important; }
+            // .accent { fill: var(--primary); }
+        }
+    }
+
+    .action-input > .content {
+        color: var(--ring);
+    }
+    
+    
+}
+
+.dark footer .logo-icon .foreground {
+    fill: var(--secondary) !important;
+}
+
+

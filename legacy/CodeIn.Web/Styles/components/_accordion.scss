@@ -1,0 +1,64 @@
+@use "../base/mixins" as *;
+@use "../base/breakpoints" as *;
+
+.accordion {
+    display: flex;
+    flex-direction: column;
+    gap:calc(var(--spacing) * 2);
+
+    width: 100%;
+
+    & > .accordion-item:not(:last-child) {
+        border-bottom: 1px solid var(--border);
+        padding-bottom: calc(var(--spacing) * 2); // opcional, si quieres espacio después
+    }
+
+    & > .accordion-item {
+        display: flex;
+        flex-direction: column;
+        gap:calc(var(--spacing) * 2);
+
+        width: 100%;
+
+        & > .accordion-trigger {
+            display: flex;
+            width: 100%;
+            
+            & > button {
+                text-align: start;
+                align-items: center;
+                justify-content: space-between;
+                background-color: transparent;
+                width: 100%;
+                white-space: normal;
+
+                color: var(--foreground);
+                fill: var(--foreground);
+
+                & > .icon {
+                    --tw-duration: .2s;
+                    transition-duration: .2s;
+                    translate: var(--tw-translate-x) var(--tw-translate-y);
+                    transition-property: transform, translate, scale, rotate;
+                    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+                    transition-duration: var(--tw-duration, var(--default-transition-duration));
+                    
+                    &.open {
+                        rotate: 180deg;
+                    }
+                }
+            }
+        }
+
+        & > .accordion-content {
+            display: none;
+            width: 100%;
+
+            padding-inline:calc(var(--spacing) * 6);
+
+            &.open {
+                display: flex;
+            }
+        }
+    }
+}

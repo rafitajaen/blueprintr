@@ -1,0 +1,24 @@
+@using Boilerplatr.Security.SecurityHeaders
+@using CodeIn.Web.Components.IconButton
+@model IconButtonComponent
+
+@{
+    if (SecurityHeader.TryGetInlineScriptHash(Model.OnClick, out var sha))
+    {
+        ViewContext.HttpContext.Items[sha] = sha;
+    }
+}
+
+<button id="@Model.Id" class="button @Model.Class" type="@Model.Type" onclick="@Model.OnClick">
+
+    @if (Model.IncludeLoader is true)
+    {
+        <partial name="LoaderCircle" />
+    }
+    
+    @if (!string.IsNullOrWhiteSpace(Model.Icon?.ToString()))
+    {
+        <partial name="@Model.Icon.ToString()" />
+    }
+    @Model.ChildContent
+</button>

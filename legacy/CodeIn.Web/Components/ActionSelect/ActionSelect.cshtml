@@ -1,0 +1,50 @@
+@using CodeIn.Web.Components.ActionSelect
+@model ActionSelectComponent
+
+@{
+    var autocomplete = string.IsNullOrWhiteSpace(Model.Autocomplete) ? "off" : Model.Autocomplete;
+}
+<div class="action-select" @Model.Class" data-input-id="@Model.Id">
+
+    <div class="content">
+
+        @if (Model.Label is not null)
+        {
+            <label for="@Model.Id">@Model.Label</label>
+        }
+
+        <select id="@Model.Id" placeholder="@Model.Placeholder" autocomplete="@autocomplete">
+            @foreach (var kvp in Model.Options)
+            {
+                var selected = string.Equals(kvp.Key, Model.Value, StringComparison.OrdinalIgnoreCase);
+
+                @if (selected)
+                {
+                    <option value="@kvp.Key" selected>@kvp.Value</option>
+                }
+                else
+                {
+                    <option value="@kvp.Key">@kvp.Value</option>
+                }
+            }
+        </select>
+
+        @if (Model.InnerButton is true && string.IsNullOrWhiteSpace(Model.ActionText) is false)
+        {
+            <IconButton class="inner-button uppercase">@Model.ActionText</IconButton>
+        }
+    </div>
+
+    @if (Model.InnerButton is not true && string.IsNullOrWhiteSpace(Model.ActionText) is false)
+    {
+        <IconButton class="outter-button uppercase">@Model.ActionText</IconButton>
+    }
+
+    @if (Model.ChildContent is not null)
+    {
+        <div class="footer">
+            @Model.ChildContent
+        </div>
+    }
+
+</div>

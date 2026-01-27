@@ -1,0 +1,59 @@
+﻿@using CodeIn.Web.Views.Blog
+@model BlogController.ArticlesViewModel
+
+@{
+    Layout = LayoutTargets.Base;
+
+    ViewData["MainClass"] = "articles";
+    ViewData["Page"] = $"{Model.Article.Title} - {Model.Article.Category.Name}";
+    ViewData["Title"] = $"{ViewData["Page"]} - {ViewContext?.HttpContext.Items["Tenant:Name"]}";
+}
+
+<article class="articles">
+
+    <section class="title">
+        <h1>@Model.Article.Title</h1>
+
+        @Html.Raw(Markdowner.ToHtml(Model.Article.Excerpt))
+
+        <div class="meta">
+
+            <Avatar class="avatar-rounded-sm">
+                <AvatarImage src="@Model.Article.Author.AvatarUrl" alt="@Model.Article.Author.FullName profile picture" initials="@Model.Article.Author.GetInitials()" />
+            </Avatar>
+
+            <span class="name">@Model.Article.Author.FullName</span>
+
+            @if (Model.Article.MinutesRead > 0)
+            {
+                <span class="minutes">@Model.Article.MinutesRead @L["min read"]</span>
+            }
+
+            @if (Model.Article.PublishedAt is Instant time)
+            {
+                <span class="time text-muted">@L["pre ago"]@TimeAgo.Since(time, Model.Now).ToString()@L["post ago"]</span>
+            }
+        </div>
+
+    </section>
+
+
+    @if (!string.IsNullOrWhiteSpace(Model.Article.FeaturedImageUrl))
+    {
+        <img class="featured" src="@Model.Article.FeaturedImageUrl" alt="@Model.Article.FeaturedImageAlt" />
+    }
+
+    <section class="content">
+        @Html.Raw(Markdowner.ToHtml(Model.Article.Content))
+    </section>
+
+    <TheNewsletter metric="@Model.SuscribersMetric" />
+
+    <TheAuthor author="@Model.Article.Author" />
+
+</article>
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/empty.js" asp-append-version="true" defer></script>
+}

@@ -1,0 +1,15 @@
+@{
+    Layout = LayoutTargets.Dashboard;
+    ViewData["Robots"] = "noindex, nofollow";
+    ViewData["CurrentBreadcumb"] = "Overview";
+    ViewData["Title"] = $"{ViewData["CurrentBreadcumb"]} | {ViewContext?.HttpContext.Items["Tenant:Name"]}";
+}
+
+<section>
+    <h1>@ViewData["CurrentBreadcumb"]</h1>
+</section>
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/empty.js" asp-append-version="true" defer></script>
+}

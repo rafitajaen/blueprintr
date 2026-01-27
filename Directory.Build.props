@@ -1,0 +1,21 @@
+<Project>
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+
+        <!-- Treat warnings as errors to enforce code quality -->
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+
+        <!-- Suppress specific warnings that should not be errors -->
+        <!-- NU1510: Problem with package versions in transitive dependencies -->
+        <!-- NU1608: Detected package version outside of dependency constraint -->
+        <!-- CS1591: Missing XML comment for publicly visible type or member -->
+        <WarningsNotAsErrors>NU1510;NU1608;CS1591</WarningsNotAsErrors>
+
+        <!-- Generate XML documentation for DocFX -->
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+</Project>

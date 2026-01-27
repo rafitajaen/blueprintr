@@ -1,0 +1,64 @@
+@using Boilerplatr.Mvc
+@using CodeIn.Web.Views.Auth
+
+@model AuthController.LoginViewModel;
+
+@{
+    Layout = LayoutTargets.Landing;
+    ViewData["Robots"] = "noindex, nofollow";
+
+    ViewData["MainClass"] = "auth";
+    ViewData["Page"] = @L["Log in"];
+    ViewData["Title"] = $"{ViewData["Page"]} | {ViewContext?.HttpContext.Items["Tenant:Name"]}";
+}
+
+<section>
+
+    <div class="info">
+        <h1>@L["Wellcome!"]</h1>
+        <p class="text-muted">@L["Your next opportunity starts with your profile"].</p>
+    </div>
+
+    <div class="form">
+
+        <ActionInput id="email" class="email-action" type="email" icon-type="@IconTypes.MarkEmailRead" placeholder="@L["Enter your email address"]">
+            <ActionInputError type="Email.Invalid">@L["Please enter a valid email address"]</ActionInputError>
+        </ActionInput>
+
+        <IconButton id="submit" class="w-full" icon="@IconTypes.Inbox">
+            @L["Send me a Magic Link"]
+        </IconButton>
+    </div>
+
+    @* <div class="separator"><span>or</span></div>
+    <div class="oauth">
+        <AnchorButton class="button button-outline w-full" href="/auth/google">
+            <Logo type="@LogoTypes.Google" />
+            <span>Continue with Google</span>
+        </AnchorButton>
+    </div> *@
+
+</section>
+
+<Modal id="login-failed">
+
+    <ModalHeader>
+        <ModalTitle>@L["Sign in unavailable"]</ModalTitle>
+        <ModalDescription>
+            @L["The login service is temporarily disabled"].
+            <br />
+            @L["If you have any questions, please contact us at"]
+            <AnchorButton class="button-link" href="mailto:@Model.SupportEmail"><strong>@Model.SupportEmail</strong></AnchorButton>.
+        </ModalDescription>
+    </ModalHeader>
+
+    <ModalFooter>
+        <ModalAction>@L["I understand"]</ModalAction>
+    </ModalFooter>
+
+</Modal>
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/login.js" asp-append-version="true" defer></script>
+}

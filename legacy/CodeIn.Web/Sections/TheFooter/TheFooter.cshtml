@@ -1,0 +1,78 @@
+@using CodeIn.Domain.Topics
+@using CodeIn.Web.Sections.TheFooter
+@model TheFooterComponent
+
+@{
+    var logo =  ViewContext?.HttpContext.Items["Tenant:Logo"]?.ToString();
+
+    if (!Enum.TryParse<LogoTypes>(logo, out var logoType))
+    {
+        logoType = LogoTypes.Root;
+    }
+}
+
+<footer>
+    <div class="spacer"></div>
+    
+    <div class="footer-grid">
+        <div class="principal">
+
+            <Logo type="@logoType" class="footer-logo" href="@ViewContext?.HttpContext.Items["Tenant:ExposedUrl"]"/>
+            <span class="description">
+                @L["Trusted tech jobs in Spain, curated for developers who care about where they work."] 
+                @L["Every role is handpicked from companies that value quality, team well-being, and real opportunities for growth."]
+            </span>
+            @* <ActionInput
+                id="suscribe-footer"
+                class="suscribe full-w"
+                icon-type="@IconTypes.MarkEmailRead"
+                placeholder="@L["SuscribeInputPlaceholder"]"
+                action-text="@L["Suscribe"] ➜"
+            /> *@
+        </div>
+        <div class="first">
+            <span class="section-title">@L["Talents"]</span>
+
+            <AnchorButton class="button button-footer text-xs" href="@TopicSlugs.Badges.Latest">@L["Latest jobs"]</AnchorButton>
+            <AnchorButton class="button button-footer text-xs" href="@PageRoutes.Companies.Base">@L["Top companies"]</AnchorButton>
+            <AnchorButton class="button button-footer text-xs" href="@PageRoutes.Jobs.Base">@L["Search jobs"]</AnchorButton>
+            @* <AnchorButton class="button button-footer text-xs" href="@CategorySlugs.Stories.Value">@L["Stories"]</AnchorButton> *@
+            <AnchorButton class="button button-footer text-xs" href="@PageRoutes.Newsletters.Base">@L["Newsletter"]</AnchorButton>
+            @* TODO: Developer Guide *@
+            @* TODO: Resources *@
+        </div>
+        <div class="second">
+            <span class="section-title">@L["Companies"]</span>
+
+            <AnchorButton class="button button-footer text-xs" href="@PageRoutes.Auth.Login">@L["Employers Login"]</AnchorButton>
+            <AnchorButton class="button button-footer text-xs" href="@PageRoutes.Hire.Base">@L["Hire"]</AnchorButton>
+        </div>
+        <div class="third">
+            <span class="section-title">@ViewContext?.HttpContext.Items["Tenant:Host"]</span>
+
+            <AnchorButton class="button button-footer text-xs" href="@PageRoutes.About">@L["About"]</AnchorButton>
+            @* <AnchorButton class="button button-footer text-xs" href="@CategorySlugs.Blog.Value">@L["Blog"]</AnchorButton> *@
+            @* <AnchorButton class="button button-footer text-xs" href="@PageRoutes.Feedback">@L["Feedback"]</AnchorButton> *@
+            <AnchorButton class="button button-footer text-xs" href="@PageRoutes.Contact">@L["Contact"]</AnchorButton>
+        </div>
+    </div>
+
+    <div class="flex-col px-4">
+        <hr />
+        <div class="flex flex-wrap justify-between full-w px-4">
+            <div class="copyright">
+                @@@DateTime.UtcNow.Year @ViewContext?.HttpContext.Items["Tenant:Host"]. 
+                @L["Crafted by"] 
+                <AnchorButton class="button button-link text-xs" href="https://rafita.me">rafita</AnchorButton>
+            </div>
+            <div class="legal">
+                <AnchorButton class="button button-footer text-xs" href="@PageRoutes.Privacy">@L["Privacy"]</AnchorButton>
+                <AnchorButton class="button button-footer text-xs" href="@PageRoutes.Terms">@L["Terms"]</AnchorButton>
+                <AnchorButton class="button button-footer text-xs" href="@PageRoutes.Cookies">@L["Cookies"]</AnchorButton>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<div class="separator">&nbsp;</div>

@@ -1,0 +1,6 @@
+@use "../base/mixins" as *;
+@use "../base/breakpoints" as *;
+
+section.author {
+    grid-area: author; 
+}

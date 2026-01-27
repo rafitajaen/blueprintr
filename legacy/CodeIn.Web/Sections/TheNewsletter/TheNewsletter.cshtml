@@ -1,0 +1,44 @@
+@using CodeIn.Web.Sections.TheNewsletter
+@model TheNewsletterComponent
+
+<section class="newsletter">
+
+    <h2>@L["SuscribeSectionTitle"]</h2>
+    
+    <p class="text-md">@L["SuscribeSection1"]</p>
+    <p class="text-md">@L["SuscribeSection2"]</p>
+    <p class="text-md">@L["SuscribeSection3"]</p>
+
+    <ActionInput
+        id="suscribe"
+        class="suscribe pt-4"
+        icon-type="@IconTypes.MarkEmailRead"
+        placeholder="@L["SuscribeInputPlaceholder"]"
+        action-text="@L["Suscribe"] ➜"
+    >
+        @if (Model.ShowMetrics is true)
+        {
+            <span>
+                👉 @L["Join"] @Model.Metric @L["readers"] @L["and get our free"] <strong>@L["Developer Salary Guide"] ☝️</strong>
+            </span>
+        }
+    </ActionInput>
+
+    <Modal id="newsletter-success">
+
+        <ModalHeader>
+            <ModalTitle>@L["Newsletter suscription"]</ModalTitle>
+            <ModalDescription>
+            @L["A confirmation email has been sent to your inbox."]
+                <br />
+                @L["If you don't see it, please check your spam folder and add"] <i>@ViewContext?.HttpContext.Items["Tenant:NewsletterEmail"]</i> @L["to your contacts."]
+            </ModalDescription>
+        </ModalHeader>
+
+        <ModalFooter>
+            <ModalAction>@L["Confirm"]</ModalAction>
+        </ModalFooter>
+
+    </Modal>
+
+</section>

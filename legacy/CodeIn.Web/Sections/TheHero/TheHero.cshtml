@@ -1,0 +1,37 @@
+@using CodeIn.Domain.Topics
+@using CodeIn.Web.Sections.TheHero
+
+@model TheHeroComponent
+
+<section class="hero">
+
+    @if (Model.LatestJobCount > 0)
+    {
+        <a class="button button-link button outline" href="@TopicSlugs.Badges.Latest">
+            <div class="blob"></div>
+            <Badge>@L["New"]</Badge>
+            <span class="text">@Model.LatestJobCount @L["jobs added this week"]</span>
+        </a>
+    }
+
+    <h1>Tu próximo trabajo como dev <Icon class="button button-hero" type="@IconTypes.ComputerProgramming" /> está a un clic <Icon class="button button-second-hero" type="@IconTypes.MouseLeftClick06" /></h1>
+    <p>
+        El mejor feed de ofertas tech. Filtrado a mano y siempre actualizado. Encuentra tu próximo trabajo sin complicaciones.
+    </p>
+
+    <div class="quick-filters">
+        <AnchorButton class="button button-secondary text-sm" href="@TopicSlugs.Location.Madrid.Value">
+            <Icon type="@IconTypes.Check" />
+            @L["Madrid"]
+        </AnchorButton>
+        <AnchorButton class="button button-secondary text-sm" href="@TopicSlugs.Language.English.Required.Value">
+            <Icon type="@IconTypes.Check" />
+            @L["English required"]
+        </AnchorButton>
+        <AnchorButton class="button button-secondary text-sm" href="@TopicSlugs.Seniority.Senior.Value">
+            <Icon type="@IconTypes.Check" />
+            @L["3+ Years Of Experience"]
+        </AnchorButton>
+    </div>
+
+</section>

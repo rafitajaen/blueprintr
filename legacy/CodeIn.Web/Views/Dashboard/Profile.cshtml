@@ -1,0 +1,74 @@
+@using Boilerplatr.Shared
+@{
+    Layout = LayoutTargets.Dashboard;
+    ViewData["Robots"] = "noindex, nofollow";
+    ViewData["CurrentBreadcumb"] = "Profile";
+    ViewData["Title"] = $"{ViewData["CurrentBreadcumb"]} | {ViewContext?.HttpContext.Items["Tenant:Name"]}";
+}
+
+<section class="dashboard-profile">
+
+    <div class="flex full-w">
+        <IconButton id="save" class="ml-auto" icon="@IconTypes.Save">Save changes</IconButton>
+    </div>
+
+    <div class="info">
+
+        <Avatar>
+            <AvatarImage  alt="profile picture" initials="@Model.User.GetInitials()" />
+        </Avatar>
+
+        <div class="group">
+            <ActionInput
+                id="profile-name"
+                type="text"
+                placeholder="e.g., John Doe"
+                label="Your Name"
+                value="@Model.User.FullName"
+            >
+                <ActionInputError type="Name.Invalid">This field must be less than 50 characters.</ActionInputError>
+            </ActionInput>
+
+            <ActionInput
+                id="profile-location"
+                type="text"
+                placeholder="e.g., Madrid, Spain"
+                label="Your Location"
+                value="@Model.User.Location"
+            >
+                <ActionInputError type="Location.Invalid">This field must be less than 50 characters.</ActionInputError>
+            </ActionInput>
+        </div>
+    </div>
+
+    <div class="bio">
+
+        <ActionArea
+            id="profile-bio"
+            label="Your Bio"
+            value="@Model.User.Bio"
+            placeholder="e.g., Software Engineer from Spain. Contact me below. Currently building Refactor.com and indiemakers.io"
+        >
+            <ActionInputError type="Bio.Invalid">This field must be less than 1000 characters.</ActionInputError>
+        </ActionArea>
+    </div>
+
+    <div class="socials">
+        <label>Your Socials</label>
+        <IconButton class="@Model.User?.Social.GetFilledClass(Socials.X)" icon="@IconTypes.Twitter" />
+        <IconButton class="@Model.User?.Social.GetFilledClass(Socials.DevTo)" icon="@IconTypes.DevTo" />
+        <IconButton class="@Model.User?.Social.GetFilledClass(Socials.Medium)" icon="@IconTypes.Medium" />
+        <IconButton class="@Model.User?.Social.GetFilledClass(Socials.Github)" icon="@IconTypes.Github" />
+        <IconButton class="@Model.User?.Social.GetFilledClass(Socials.Gitlab)" icon="@IconTypes.Gitlab" />
+        <IconButton class="@Model.User?.Social.GetFilledClass(Socials.Instagram)" icon="@IconTypes.Instagram" />
+        <IconButton class="@Model.User?.Social.GetFilledClass(Socials.Youtube)" icon="@IconTypes.Youtube" />
+        <IconButton class="@Model.User?.Social.GetFilledClass(Socials.Discord)" icon="@IconTypes.Discord" />
+        <IconButton class="@Model.User?.Social.GetFilledClass(Socials.Telegram)" icon="@IconTypes.Telegram" />
+
+    </div>
+</section>
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/profile.js" asp-append-version="true" defer></script>
+}

@@ -1,0 +1,112 @@
+@font-face {
+    font-family: "Geist";
+    font-style: normal;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-display:swap;
+    src: url("./../../fonts/Geist/Geist-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Geist";
+    font-style: normal;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-display:swap;
+    src: url("./../../fonts/Geist/Geist-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Geist";
+    font-style: normal;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-display:swap;
+    src: url("./../../fonts/Geist/Geist-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Geist";
+    font-style: normal;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-display:swap;
+    src: url("./../../fonts/Geist/Geist-ExtraBold.ttf") format("truetype");
+}
+
+/* Geist Mono */
+
+@font-face {
+    font-family: "Geist Mono";
+    font-style: normal;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-display:swap;
+    src: url("./../../fonts/GeistMono/GeistMono-Regular.ttf") format("truetype");
+}
+
+/* Albert Sans */
+
+@font-face {
+    font-family: "Albert Sans";
+    font-style: normal;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-display:swap;
+    src: url("./../../fonts/Albert_Sans/AlbertSans-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Albert Sans";
+    font-style: normal;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-display:swap;
+    src: url("./../../fonts/Albert_Sans/AlbertSans-SemiBold.ttf") format("truetype");
+}
+
+/* Nunito */
+@font-face {
+    font-family: "Nunito";
+    font-style: normal;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-display:swap;
+    src: url("./../../fonts/Nunito/Nunito-Regular.ttf") format("truetype");
+}
+
+/* Outfit */
+@font-face {
+    font-family: "Outfit";
+    font-style: normal;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-display:swap;
+    src: url("./../../fonts/Outfit/Outfit-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Outfit";
+    font-style: normal;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-display:swap;
+    src: url("./../../fonts/Outfit/Outfit-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family:Geist Fallback;
+  src:local("Arial");
+  ascent-override:95.94%;
+  descent-override:28.16%;
+  line-gap-override:0.00%;
+  size-adjust:104.76%
+}
+
+@font-face {
+  font-family:Geist Mono Fallback;
+  src:local("Arial");
+  ascent-override:95.94%;
+  descent-override:28.16%;
+  line-gap-override:0.00%;
+  size-adjust:104.76%
+}

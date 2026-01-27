@@ -1,0 +1,51 @@
+@use "../base/mixins" as *;
+@use "../base/breakpoints" as *;
+
+.job-item {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing) * .8);
+
+    color: var(--muted);
+    padding-bottom: calc(var(--spacing) * var(--card-spacing, 5));
+
+    h4, h4 a /* Job Role */ {
+
+        font-family: 'Geist';
+        @include text-lg;
+        @include font-semibold;
+
+        a {
+            white-space: wrap;
+            padding-right: calc(var(--spacing) * 2);
+        }
+    }
+
+    .time {
+        white-space: nowrap;
+    }
+
+    & > div {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: calc(var(--spacing) * var(--card-gap, 2));
+    }
+
+    .tags {
+        flex-wrap: wrap;
+        padding-top: calc(var(--spacing) * .8);
+
+        .button {
+            font-size: var(--text-xs);
+        }
+    }
+
+    p {
+        font-family: 'Geist';
+    }
+
+    
+}

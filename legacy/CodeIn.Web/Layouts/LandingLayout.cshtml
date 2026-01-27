@@ -1,0 +1,12 @@
+﻿@{
+    Layout = LayoutTargets.Empty;
+    ViewData["BodyClass"] = "landing";
+}
+
+<Logo class="root" type="@LogoTypes.Root" href="@PageRoutes.Home"/>
+
+<main class="@ViewData["MainClass"]">
+    @RenderBody()
+</main>
+
+@await RenderSectionAsync("Scripts", required: false)

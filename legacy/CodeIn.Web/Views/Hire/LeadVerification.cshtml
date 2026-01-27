@@ -1,0 +1,58 @@
+﻿@{
+    Layout = LayoutTargets.Base;
+    ViewData["Robots"] = "noindex, nofollow";
+
+    ViewData["MainClass"] = "articles";
+    ViewData["Page"] = L["Application Status"];
+    ViewData["Title"] = $"{ViewData["Page"]} - {ViewContext?.HttpContext.Items["Tenant:Name"]}";
+}
+
+<section class="verify">
+
+    @if (Model.WasVerifiedSuccessfully)
+    {
+        <Card class="size-lg inverse">
+
+            <CardHeader>
+                <CardTitle>@L["We have received your submission successfully!"]</CardTitle>
+            </CardHeader>
+
+            <CardContent class="flex-col gap-1">
+
+                <p>@L["Your email verification has been successfully completed."]</p>
+                <p>@L["Thank you for submitting your job offer. Our team is reviewing it and will get in touch via email soon to explain the next steps."]</p>
+                <p>
+                    @L["If you have any questions in the meantime, feel free to write to us at"] 
+                    <AnchorButton class="button-link" href="mailto:@Model.SupportEmail"><strong>@Model.SupportEmail</strong></AnchorButton>.
+                </p>
+
+            </CardContent>
+        </Card>
+    }
+    else
+    {
+        <Card class="size-lg inverse">
+
+            <CardHeader>
+                <CardTitle>@L["There was a problem processing your submission"]</CardTitle>
+            </CardHeader>
+
+            <CardContent class="flex-col gap-1">
+
+                <p>@L["We were unable to verify your email or complete the process of submitting your job offer."]</p>
+                <p>
+                    @L["Please try again later. If the problem persists, feel free to contact us at"] 
+                    <AnchorButton class="button-link" href="mailto:@Model.SupportEmail"><strong>@Model.SupportEmail</strong></AnchorButton>.
+                </p>
+
+            </CardContent>
+
+        </Card>
+    }
+
+</section>
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/empty.js" asp-append-version="true" defer></script>
+}

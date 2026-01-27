@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, ...</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, ...</value>
+  </resheader>
+
+  <data name="offers" xml:space="preserve">
+    <value>jobs</value>
+  </data>
+  <data name="PoliciesPost" xml:space="preserve">
+    <value> Policies</value>
+  </data>
+  <data name="SuscribeInputPlaceholder" xml:space="preserve">
+    <value>One email every Wednesday. Curated by hand.</value>
+  </data>
+
+  <!-- Application Page -->
+  <data name="CoverLetterFieldDescription" xml:space="preserve">
+    <value>In a couple of paragraphs, demonstrate your enthusiasm for the company or position, and show why you're a match for what they're looking for. A custom, well written message can be the difference between getting an interview or not.</value>
+  </data>
+
+  <data name="pre ago" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="post ago" xml:space="preserve">
+    <value>ago</value>
+  </data>
+  <!-- Companies Page -->
+  <data name="FeaturedParagraph" xml:space="preserve">
+    <value>A curated selection of standout companies doing things differently — from work culture to the products they build.</value>
+  </data>
+  <data name="TransparentParagraph" xml:space="preserve">
+    <value>These companies are upfront about what they pay, so you don’t have to guess or negotiate in the dark.</value>
+  </data>
+  <data name="RemoteParagraph" xml:space="preserve">
+    <value>Teams that operate entirely online — work from a café, a mountain cabin, or your couch, it's all good.</value>
+  </data>
+  <data name="InternationalParagraph" xml:space="preserve">
+    <value>Hiring people from different countries and time zones, these companies value global talent and perspectives.</value>
+  </data>
+  <data name="AIParagraph" xml:space="preserve">
+    <value>From smart assistants to weird chatbots, these teams are working with machine learning and AI in all kinds of ways.</value>
+  </data>
+  <data name="EntertainmentParagraph" xml:space="preserve">
+    <value>Companies making games, music tools, streaming apps, and other fun stuff that people actually enjoy using.</value>
+  </data>
+  <data name="AutomotiveParagraph" xml:space="preserve">
+    <value>Working on everything from EVs to car-sharing, these teams are doing their thing in the world of wheels.</value>
+  </data>
+  <data name="AviationParagraph" xml:space="preserve">
+    <value>From building drones to managing flight data, these companies are all about the skies — not just airports and planes.</value>
+  </data>
+  <data name="BlockchainParagraph" xml:space="preserve">
+    <value>Yes, crypto is still a thing. These teams are working on wallets, NFTs, DeFi, and other blockchain stuff (some of it actually useful).</value>
+  </data>
+  <data name="ConstructionParagraph" xml:space="preserve">
+    <value>Whether it’s buildings, bridges, or digital tools for the job site, these companies support the people who build the world.</value>
+  </data>
+  <data name="ConsultingParagraph" xml:space="preserve">
+    <value>These aren’t your typical suit-and-tie consultants — think lean teams helping others solve problems, ship faster, or clean up messy workflows.</value>
+  </data>
+  <data name="DataManagementParagraph" xml:space="preserve">
+    <value>Companies that deal with the messy reality of data — collecting it, organizing it, making it make sense.</value>
+  </data>
+  <data name="DevToolsParagraph" xml:space="preserve">
+    <value>APIs, SDKs, CLIs, and all the other acronyms that make developers’ lives easier (or at least more interesting).</value>
+  </data>
+  <data name="EcommerceParagraph" xml:space="preserve">
+    <value>Shops, carts, shipping — whether you’re buying socks or selling digital art, these companies help people sell things online.</value>
+  </data>
+  <data name="EducationParagraph" xml:space="preserve">
+    <value>Apps and platforms that help people learn new things — whether it's math, languages, or how to write better code.</value>
+  </data>
+  <data name="EnterpriseParagraph" xml:space="preserve">
+    <value>Big tools for big companies. These are the platforms that keep teams, projects, and systems running smoothly at scale.</value>
+  </data>
+  <data name="EventsParagraph" xml:space="preserve">
+    <value>Whether it’s selling tickets, hosting webinars, or managing music festivals, these companies help make events happen.</value>
+  </data>
+  <data name="GamingParagraph" xml:space="preserve">
+    <value>From indie studios to platform tools, these companies live and breathe games — for fun, for mobile, for consoles, for all of it.</value>
+  </data>
+  <data name="ManufacturingParagraph" xml:space="preserve">
+    <value>Not everything is digital — these companies help produce real, physical stuff, from factories to supply chains.</value>
+  </data>
+  <data name="MarketingParagraph" xml:space="preserve">
+    <value>Brands need stories, content, and analytics. These tools and teams help spread the word, reach the right people, and make it stick.</value>
+  </data>
+  <data name="MarketplaceParagraph" xml:space="preserve">
+    <value>Connecting buyers and sellers — from handmade crafts to niche B2B services, these platforms bring people together.</value>
+  </data>
+  <data name="RealStateParagraph" xml:space="preserve">
+    <value>Helping people buy, rent, or manage properties. Some make fancy tools, others just make the process less painful.</value>
+  </data>
+  <data name="RoboticsParagraph" xml:space="preserve">
+    <value>These companies build the kind of machines that move, sense, or think (a little). Not all of them are robots, but many are pretty close.</value>
+  </data>
+  <data name="SaaSParagraph" xml:space="preserve">
+    <value>Software you don’t have to install. Monthly fees, cloud dashboards, and (hopefully) helpful features for your workflow.</value>
+  </data>
+  <data name="SecurityParagraph" xml:space="preserve">
+    <value>Providing protection and risk management services, including surveillance, cybersecurity, and physical security.</value>
+  </data>
+  <data name="SocialNetworkingParagraph" xml:space="preserve">
+    <value>Online platforms for people to connect, share content, and communicate with others globally.</value>
+  </data>
+  <data name="TranslationsParagraph" xml:space="preserve">
+    <value>Solutions to help users translate text, speech, or content between languages, including automated translation and localization platforms.</value>
+  </data>
+
+  <data name="SuscribeSectionTitle" xml:space="preserve">
+    <value>Take the next step in your career</value>
+  </data>
+
+  <data name="SuscribeSection1" xml:space="preserve">
+    <value>
+    Once a week, I send handpicked opportunities for developers.
+    </value>
+  </data>
+  <data name="SuscribeSection2" xml:space="preserve">
+    <value>
+    No automated lists, no fluff — only solid companies that value their teams.
+    </value>
+  </data>
+  <data name="SuscribeSection3" xml:space="preserve">
+    <value>
+    No spam, no tracking. Your email stays yours.
+    </value>
+  </data>
+
+  <data name="NesletterPageTitle" xml:space="preserve">
+    <value>Join our developer community</value>
+  </data>
+  <data name="NesletterPageSubtitle" xml:space="preserve">
+    <value>Get exclusive opportunities, practical resources, and connect with professionals who value quality, innovation, and impact in their work.</value>
+  </data>
+  <data name="TelegramCardTitle" xml:space="preserve">
+    <value>Telegram Channel</value>
+  </data>
+  <data name="TelegramCardText" xml:space="preserve">
+    <value>Join our Telegram channel and receive the best tech opportunities and useful resources for professionals in real time.</value>
+  </data>
+  <data name="TelegramCardButton" xml:space="preserve">
+    <value>Go to Telegram</value>
+  </data>
+  <data name="LinkedinCardTitle" xml:space="preserve">
+    <value>LinkedIn Group</value>
+  </data>
+  <data name="LinkedinCardText" xml:space="preserve">
+    <value>Join our LinkedIn community of tech professionals. Share opportunities, connect with talent, and follow industry trends.</value>
+  </data>
+  <data name="LinkedinCardButton" xml:space="preserve">
+    <value>Go to LinkedIn</value>
+  </data>
+  <data name="WhatsappCardTitle" xml:space="preserve">
+    <value>WhatsApp Channel</value>
+  </data>
+  <data name="WhatsappCardText" xml:space="preserve">
+    <value>Receive direct alerts of new opportunities and useful resources on your mobile. All in real time, hassle-free.</value>
+  </data>
+  <data name="WhatsappCardButton" xml:space="preserve">
+    <value>Go to WhatsApp</value>
+  </data>
+
+
+</root>

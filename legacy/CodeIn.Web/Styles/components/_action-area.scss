@@ -1,0 +1,80 @@
+@use "../base/mixins" as *;
+@use "../base/breakpoints" as *;
+
+.action-area {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing)*2);
+
+    & > .content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: calc(var(--spacing)*3);
+    
+        // margin: 1rem 0;
+        // padding: calc(var(--spacing)*1);
+        // padding-left: calc(var(--spacing)*4);
+    
+        width: 100%;
+
+        svg {
+            display: block;
+            flex-shrink: 0;
+            pointer-events: none;
+            width: calc(var(--spacing)*4);
+            height: calc(var(--spacing)*4);
+            opacity: 0.7;
+        }
+        
+        &:has(> label) {
+            margin-top: calc(var(--spacing)*8);
+        }
+        
+        & > label {
+            user-select: none;
+
+            position:absolute;
+            top: 0;
+            left: 0;
+
+            @include font-medium;
+        }
+    
+        & > textarea {
+            resize: vertical;
+            border-color: var(--ring);
+            border-style: var(--tw-border-style);
+            border-width: 1px;
+            border-radius: calc(var(--radius) - 2px + var(--spacing)*.5);
+            padding: calc(var(--spacing) * 4);
+            min-height: calc(var(--spacing) * 26);
+            width: 100%;
+        }
+        
+    }
+
+    &:has(.footer .error:not([hidden])) .content{
+        color: var(--destructive);
+        border-color: var(--destructive);
+        outline-color: color-mix(in oklab,var(--destructive)70%,transparent);
+    }
+
+    .inner-button, .outter-button {
+        cursor: pointer;
+        padding-block: calc(var(--spacing)*3);
+        padding-inline: calc(var(--spacing)*8);
+    }
+
+    & > .footer {
+        @include text-sm;
+        text-align: left;
+
+        .error {
+            padding-left: calc(var(--spacing)*2);
+            color: color-mix(in oklab,var(--destructive)70%,transparent);
+        }
+    }
+}

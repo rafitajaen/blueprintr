@@ -1,0 +1,51 @@
+.blob {
+    --pulse-size: 0.8rem;
+    --pulse-color: var(--primary);
+    
+    background: var(--pulse-color);
+    border-radius: 50%;
+    
+    // margin: 4px;
+    height: var(--pulse-size);
+    width: var(--pulse-size);
+
+    box-shadow: 0 0 0 0 var(--pulse-color);
+    transform: scale(1);
+    animation: pulse 2s infinite;
+
+    &.floating-blob {
+        --pulse-size: 1.5rem;
+        --pulse-radial: calc(var(--spacing) * var(--card-spacing));
+        border-radius: 5px;
+        rotate: calc(var(--rotation) * -1);
+        
+        display: inline-block;
+        background-color: var(--ring); //oklch(64.586% 0.23797 331.644);
+        box-shadow: 0 0 0 var(--pulse-radial) var(--background);
+        transform: scale(.5);
+        animation: none;
+        
+        z-index: 1;
+        position: absolute;
+        top: calc(var(--pulse-radial) * .1);
+        left: calc(0px - (var(--pulse-size) - var(--pulse-radial) / 2));
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 color-mix(in oklab,var(--pulse-color)50%,transparent);
+    }
+
+    70% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 8px rgba(46, 204, 113, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+    }
+}
+

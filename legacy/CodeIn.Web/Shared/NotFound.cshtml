@@ -1,0 +1,26 @@
+@{
+    Layout = LayoutTargets.Base;
+    ViewData["Robots"] = "noindex, nofollow";
+    
+    ViewData["MainClass"] = "articles";
+    ViewData["Title"] = $"{ViewContext?.HttpContext.Items["Tenant:Name"]} - {ViewContext?.HttpContext.Items["Tenant:Excerpt"]}";
+}
+
+<article class="articles">
+
+    <section class="title">
+        <h1>@L["Oops... we couldn't find what you're looking for"]</h1>
+        <p>
+            @L["The link might be broken, the page has been moved, or it simply doesn't exist anymore."]
+        </p>
+        <p>
+            @L["Why not head back to the homepage or explore other sections?"]
+        </p>
+    </section>
+
+</article>
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/not-found.js" asp-append-version="true" defer></script>
+}

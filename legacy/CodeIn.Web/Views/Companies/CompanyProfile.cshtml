@@ -1,0 +1,137 @@
+﻿@using CodeIn.Domain.Companies
+@using CodeIn.Web.Views.Companies
+@using Humanizer
+@using Markdig
+@using NodaTime
+@using System.Globalization
+
+@model CompanyProfileViewModel
+
+@{
+    Layout = LayoutTargets.Base;
+
+    ViewData["Title"] = $"{Model.Company.Name} - {Model.Company.Excerpt} | {ViewContext?.HttpContext.Items["Tenant:Name"]}";
+
+    var now = SystemClock.Instance.GetCurrentInstant();
+
+    var max = 1;
+    var counter = 0;
+
+    var id = RandomString.Generate(5, CharSets.Alphabetic);
+}
+
+<article class="company-profile">
+
+    <div class="info">
+
+        <section id="header" class="header">
+            <CompanyHeader class="company-header-xl" company="@Model.Company" is-title="true" />
+        </section>
+
+        <SocialGroup id="socials" class="socials" social="@Model.Company.Social" />
+
+        <p class="description">@Model.Company.Description</p>
+
+        <nav class="toc">
+            <ol aria-label="Table of Contents">
+                <li>
+                    <AnchorButton class="button button-secondary" href="@Url.Action("CompanyProfile")#overview">
+                        <Icon type="@IconTypes.FileText" />
+                        <span>@L["Overview"]</span>
+                    </AnchorButton>
+                </li>
+                <li>
+                    <AnchorButton class="button button-secondary" href="@Url.Action("CompanyProfile")#policies">
+                        <Icon type="@IconTypes.Scale" />
+                        <span>@L["Policies"]</span>
+                    </AnchorButton>
+                </li>
+
+                @if (Model.Company.Jobs.Any())
+                {
+                    <li>
+                        <AnchorButton class="button button-secondary" href="@Url.Action("CompanyProfile")#jobs">
+                            <div class="flex">
+                                <Icon type="@IconTypes.BriefcaseBusiness" />
+                                <span>@L["Jobs"]</span>
+                            </div>
+                            <span class="ml-auto">@Model.Company.Jobs.Count()</span>
+                        </AnchorButton>
+                    </li>
+                }
+            </ol>
+        </nav>
+
+    </div>
+
+    <div class="body">
+
+        <section id="overview" class="overview">
+            <h2>@Model.Company.Excerpt</h2>
+            @Html.Raw(Markdowner.ToHtml(Model.Company.Overview))
+        </section>
+
+        <section id="policies" class="policies">
+            <h2>@L["PoliciesPre"]@Model.Company.Name@L["PoliciesPost"]</h2>
+            <div class="container">
+
+                @if (!string.IsNullOrWhiteSpace(Model.Company.Policies.RemoteWork))
+                {
+                    <hr />
+                    <div class="row">
+                        <div class="text-muted-md">@L["Remote work"]</div>
+                        @Html.Raw(Markdowner.ToHtmlList(Model.Company.Policies.RemoteWork))
+                    </div>
+                }
+
+                @if (!string.IsNullOrWhiteSpace(Model.Company.Policies.Holidays))
+                {
+                    <hr />
+                    <div class="row">
+                        <div class="text-muted-md">@L["Holidays"]</div>
+                        @Html.Raw(Markdowner.ToHtmlList(Model.Company.Policies.Holidays))
+                    </div>
+                }
+
+                @if (!string.IsNullOrWhiteSpace(Model.Company.Policies.WorkingHours))
+                {
+                    <hr />
+                    <div class="row">
+                        <div class="text-muted-md">@L["Working hours"]</div>
+                        @Html.Raw(Markdowner.ToHtmlList(Model.Company.Policies.WorkingHours))
+                    </div>
+                }
+                <hr />
+
+            </div>
+        </section>
+
+        <section id="jobs" class="jobs">
+            <h2>@L["Open positions at"] @Model.Company.Name</h2>
+            <div class="container">
+                @foreach (var job in Model.Company.Jobs)
+                {
+                    counter++;
+                    var hide = counter > max ? "hide" : string.Empty;
+                    var hideable = counter > max ? "hideable" : string.Empty;
+
+                    <hr />
+                    <JobItem class="@hideable @hide" hide-id="@id" job="@job" now="@now" href="@PageRoutes.GetJobUrl(Model.Company, job)"/>
+                }
+
+                @if (counter > max)
+                {
+                    @* var diff = counter - max; *@
+                    <IconButton id="@id" class="button button-skill" on-click="showMore('@id')">+ @L["Show more"]</IconButton>
+                }
+                <hr />
+            </div>
+        </section>
+    </div>
+
+</article>
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/empty.js" asp-append-version="true" defer></script>
+}

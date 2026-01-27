@@ -1,0 +1,43 @@
+@use "../base/mixins" as *;
+@use "../base/breakpoints" as *;
+
+.skeleton {
+    --skeleton-spacing: var(--spacing);
+    --skeleton-radius: var(--radius);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: calc(var(--skeleton-spacing) * 2);
+    border-radius: calc(var(--skeleton-radius));
+
+    color: var(--muted-foreground);
+    background-color: var(--muted);
+    
+    text-align: center;
+    vertical-align: middle;
+}
+
+.skeleton-logo {
+    rotate: calc(var(--rotation) * -1);
+    display: inline-block;
+
+    width: var(--image-container, 3.5rem);
+    max-width: var(--image-container, 3.5rem);
+    height: var(--image-container, 3.5rem);
+    max-height: var(--image-container, 3.5rem);
+
+    border-radius: calc(var(--radius));
+
+    color: var(--muted-foreground);
+    background-color: var(--muted);
+    
+    text-align: center;
+    vertical-align: middle;
+    font-size: var(--text-xl);
+    line-height: var(--image-container, 3.5rem);
+
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+}

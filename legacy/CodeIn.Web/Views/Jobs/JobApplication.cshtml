@@ -1,0 +1,79 @@
+﻿@using Boilerplatr.Shared
+@using CodeIn.Domain.Jobs
+@using CodeIn.Domain.Companies
+@using CodeIn.Domain.Topics
+@using CodeIn.Web.Views.Jobs
+
+@model JobsController.JobApplicationViewModel
+
+@{
+    Layout = LayoutTargets.Base;
+    ViewData["Robots"] = "noindex, nofollow";
+
+    ViewData["Title"] = $"{Model.Job.Role} - {Model.Job.Company.Name} | {ViewContext?.HttpContext.Items["Tenant:Name"]}";
+
+    var now = SystemClock.Instance.GetCurrentInstant();
+    var jobs = new List<Job>() { Model.Job };
+}
+
+<article class="articles job-application" data-job-id="@Model.Job.Id.ToString()">
+
+    <section class="title">
+        <h1 class="text-4xl">@L["Interested in this role?"]</h1>
+        <p>@L["Apply now — we’d love to hear from you!"]</p>
+        <CompanyCard Company="@Model.Job.Company" Jobs="@jobs" now="@now" />
+    </section>
+
+    <section class="form">
+        <ActionArea id="cover" label="@L["Cover letter or message"]" placeholder="@L["Write a short message about why you're a good fit for this position..."]" required="true">
+            <p class="text-muted-sm">@L["CoverLetterFieldDescription"]</p>
+            <ActionInputError type="TooLong">@L["Your message is too long. Please keep it under"] 2000 @L["characters"].</ActionInputError>
+        </ActionArea>
+
+        <ActionInput id="full-name" type="text" icon-type="@IconTypes.UserCheck" label="@L["Full name"]" placeholder="Alex Johnson" required="true">
+            <ActionInputError type="Required">@L["Please enter your full name."]</ActionInputError>
+            <ActionInputError type="TooLong">@L["Your message is too long. Please keep it under"] 200 @L["characters"].</ActionInputError>
+            <p class="text-muted-sm">@L["This helps us know who you are."]</p>
+        </ActionInput>
+
+        <ActionInput id="email" type="email" icon-type="@IconTypes.MarkEmailRead" label="@L["Your email"]" placeholder="alex@gmail.com" required="true">
+            <ActionInputError type="InvalidEmail">@L["Hmm... that doesn’t look like a valid email."]</ActionInputError>
+            <p class="text-muted-sm">@L["We'll use this to get back to you."]</p>
+        </ActionInput>
+
+        <ActionFile id="resume" accept="application/pdf" label="@L["Resume — PDF Only"]" placeholder="No file selected." required="true">
+            <ActionInputError type="Required">@L["Please, upload a resume in a valid PDF format."]</ActionInputError>
+            <p class="text-muted-sm">@L["Upload your resume in PDF format. This helps us evaluate your experience."]</p>
+        </ActionFile>
+    </section>
+
+    <section class="content">
+        <IconButton id="submit" class="w-full" icon="@IconTypes.Rocket" include-loader="true">
+            @L["Submit application"]
+        </IconButton>
+    </section>
+
+</article>
+
+<Modal id="submit-failed">
+
+    <ModalHeader>
+        <ModalTitle>@L["Submit unavailable"]</ModalTitle>
+        <ModalDescription>
+            @L["The submit service is temporarily disabled"].
+            <br />
+            @L["If you have any questions, please contact us at"]
+            <AnchorButton class="button-link" href="mailto:@Model.SupportEmail"><strong>@Model.SupportEmail</strong></AnchorButton>.
+        </ModalDescription>
+    </ModalHeader>
+
+    <ModalFooter>
+        <ModalAction>@L["I understand"]</ModalAction>
+    </ModalFooter>
+
+</Modal>
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/applications.js" asp-append-version="true" defer></script>
+}

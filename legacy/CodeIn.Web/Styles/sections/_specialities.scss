@@ -1,0 +1,16 @@
+@use "../base/mixins" as *;
+@use "../base/breakpoints" as *;
+
+section.specialities {
+
+    grid-area: specialities;
+
+    width: 100%;
+    padding-inline: calc(var(--spacing) * 1);
+    
+    li a {
+        display: flex;
+        justify-content: space-between;
+    }
+
+}

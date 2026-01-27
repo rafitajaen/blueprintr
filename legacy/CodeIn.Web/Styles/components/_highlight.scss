@@ -1,0 +1,26 @@
+@use "../base/mixins" as *;
+@use "../base/breakpoints" as *;
+
+.highlight {
+    display: flex;
+    align-items: center;
+
+    & > .relative {
+        position: relative;
+
+        & > .background {
+            position: absolute;
+
+            display: block;
+            height: 50%;
+            inset: calc(var(--spacing) * 2.4);
+            left: calc(var(--spacing));
+            bottom: 0;
+            background-color: color-mix(in oklab,var(--primary)25%,transparent);
+        }
+
+        & > .text {
+            z-index: 2;
+        }
+    }
+}

@@ -1,0 +1,88 @@
+﻿@using CodeIn.Web.Views.Pages
+@model PagesController.ContactViewModel
+
+@{
+    Layout = LayoutTargets.Base;
+
+    ViewData["MainClass"] = "articles";
+    ViewData["Page"] = @L["Contact"];
+    ViewData["Title"] = $"{ViewData["Page"]} - {ViewContext?.HttpContext.Items["Tenant:Name"]}";
+}
+
+<article class="articles hire">
+
+    <section class="title">
+        <h1>!Hablemos!</h1>
+        <p>
+            Ya sea que estés buscando impulsar tu carrera, atraer talento global, 
+            <br />compartir una idea, dejarnos tu opinión o simplemente hacernos una pregunta, nos encantará saber de ti.
+        </p>
+    </section>
+
+    <section class="cta">
+
+        <!-- Email -->
+        <Card class="text-start first" href="mailto:@Model.ContactEmail">
+
+            <CardHeader class="flex">
+                <IconButton class="button button-leading" icon="@IconTypes.MarkEmailRead" />
+                <h2>Envíanos un correo</h2>
+            </CardHeader>
+
+            <CardContent>
+                <p class="text-muted-sm">
+                    ¿Tienes preguntas, ideas o comentarios? Escríbenos directamente y te responderemos pronto.
+                </p>
+            </CardContent>
+        </Card>
+
+        <!-- LinkedIn -->
+        <Card class="text-start second" href="@Model.Social.Linkedin">
+
+            <CardHeader class="flex">
+                <IconButton class="button button-leading" icon="@IconTypes.Linkedin" />
+                <h2>Conéctate por LinkedIn</h2>
+            </CardHeader>
+
+            <CardContent>
+                <p class="text-muted-sm">
+                    Síguenos en LinkedIn para conocer novedades, oportunidades y cómo trabajamos con talento global.
+                </p>
+            </CardContent>
+        </Card>
+
+        <!-- X / Twitter -->
+        <Card class="text-start third" href="@Model.Social.X">
+
+            <CardHeader class="flex">
+                <IconButton class="button button-leading" icon="@IconTypes.Twitter" />
+                <h2>Síguenos en X</h2>
+            </CardHeader>
+
+            <CardContent>
+                <p class="text-muted-sm">
+                    Únete a la conversación en X. Compartimos contenido útil, actualizaciones y oportunidades para todos.
+                </p>
+            </CardContent>
+        </Card>
+
+    </section>
+
+    <section class="title">
+        <h2>¿Ya conoces nuestra newsletter?</h2>
+        <p>
+            Cada semana seleccionamos cuidadosamente las mejores ofertas de empleo (remotas o no)
+            <br />y te las enviamos directo a tu bandeja de entrada. Sin spam.
+        </p>
+
+        <ActionInput id="suscribe" class="suscribe" icon-type="@IconTypes.MarkEmailRead" placeholder="@L["SuscribeInputPlaceholder"]" action-text="@L["Suscribe"] ➜" />
+
+    </section>
+
+
+</article>
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/empty.js" asp-append-version="true" defer></script>
+}

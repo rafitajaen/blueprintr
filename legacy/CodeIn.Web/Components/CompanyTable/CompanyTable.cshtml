@@ -1,0 +1,32 @@
+@using CodeIn.Web.Components.CompanyTable
+
+@model CompanyTableComponent
+
+@{
+    var max = 6;
+    var counter = 0;
+
+    var id = RandomString.Generate(5, CharSets.Alphabetic);
+}
+
+<div class="company-table">
+
+    <div class="companies">
+
+        @foreach (var company in Model.Companies)
+        {
+            counter++;
+            var hide = counter > max ? "hide" : string.Empty;
+            var hideable = counter > max ? "hideable" : string.Empty;
+
+            <CompanyCard class="@hideable @hide" header-class="company-header-md" hide-id="@id" company="@company" />
+        }
+    </div>
+
+    @if (counter > max)
+    {
+        @* var diff = counter - max; *@
+        <IconButton id="@id" class="button-link" on-click="showMore('@id')">+ @L["Show more companies"]</IconButton>
+    }
+
+</div>

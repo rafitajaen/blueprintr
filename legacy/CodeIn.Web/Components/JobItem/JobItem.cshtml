@@ -1,0 +1,62 @@
+@using CodeIn.Domain.Topics
+@using CodeIn.Web.Components.JobItem
+
+@model JobItemComponent
+@{
+    var topics = Model.Job.Topics.OrderBy(t => t.Kind);
+}
+
+<div id="@Model.Id" class="job-item @Model.Class" data-hide="@Model.HideId">
+
+    <span class="blob floating-blob"></span>
+    <div class="role">
+        <h4 class="text-start">
+            <AnchorButton class="button button-link p-0" href="@Model.Href">@Model.Job.Role</AnchorButton>
+            @if (Model.Job.PublishedAt is Instant time)
+            {
+                <span class="time text-muted">@L["pre ago"]@TimeAgo.Since(time, Model.Now).ToString()@L["post ago"]</span>
+            }
+        </h4>
+    </div>
+
+    @if (!string.IsNullOrWhiteSpace(Model.Job.Excerpt))
+    {
+        <p class="text-muted text-start">@Model.Job.Excerpt</p>
+    }
+
+    <div class="tags">
+
+        @if (Model.Job.HasValidCompensation())
+        {
+
+            @if (topics.Any(t => t.Slug == TopicSlugs.Salary.Included))
+            {
+                <AnchorButton class="button button-dense button-compensation" href="@TopicSlugs.Salary.Included.Value">@L["Up to"] @Model.Job.Compensation.ToString()</AnchorButton>
+            }
+            else if (topics.FirstOrDefault(t => t.Kind == TopicKind.Salary) is Topic salary)
+            {
+                <AnchorButton class="button button-dense button-compensation" href="@salary.Slug.Value">@L["Up to"] @Model.Job.Compensation.ToString()</AnchorButton>
+            }
+        }
+
+        @foreach (var topic in topics)
+        {
+            if (topic.Kind == TopicKind.Salary)
+            {
+                continue;
+            }
+            else if (topic.Kind is TopicKind.Featured)
+            {
+                <AnchorButton class="button button-dense button-featured" href="@topic.Slug.Value">@L[topic.Name]</AnchorButton>
+            }
+            else if (topic.Kind <= TopicKind.Requeriment)
+            {
+                <AnchorButton class="button button-dense button-requeriment" href="@topic.Slug.Value">@L[topic.Name]</AnchorButton>
+            }
+            else
+            {
+                <AnchorButton class="button button-dense button-skill" href="@topic.Slug.Value">@L[topic.Name]</AnchorButton>
+            }
+        }
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Blueprintr.Endpoints/Blueprintr.Endpoints.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Blueprintr.Endpoints.Tests/Blueprintr.Endpoints.Tests.csproj" />
+  </Folder>
+</Solution>

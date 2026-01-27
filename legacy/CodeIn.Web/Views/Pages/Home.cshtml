@@ -1,0 +1,30 @@
+﻿@using CodeIn.Web.Views.Pages
+@using System.Globalization
+
+@model PagesController.HomeViewModel
+
+@{
+    Layout = LayoutTargets.Base;
+    ViewData["Title"] = $"{ViewContext?.HttpContext.Items["Tenant:Name"]} - {ViewContext?.HttpContext.Items["Tenant:Excerpt"]}";
+    ViewData["MainClass"] = "home";
+}
+
+<TheHero latest-job-count="@Model.LatestJobCount"/>
+
+<TheFeatured 
+    featured="@Model.FeaturedCompanies" 
+    last-update-at="@Model.LastUpdateAt" 
+    published-jobs-count="@Model.PublishedJobsCount"
+    />
+
+<TheAbout />
+
+<aside>
+    <TheNewsletter metric="@Model.SuscribersMetric" />
+    <TheSpecialityBrowser specialities="@Model.Specialities" />
+</aside>
+
+@section Scripts
+{
+    <script type="module" src="@ProjectRoute.Content/js/empty.js" asp-append-version="true" defer></script>
+}

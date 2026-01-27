@@ -1,0 +1,85 @@
+﻿@{
+    var script = ViewContext?.HttpContext.Items["Analytics:Script"]?.ToString();
+    var exposedUrl = ViewContext?.HttpContext.Items["Tenant:ExposedUrl"]?.ToString();
+    var gsv = ViewContext?.HttpContext.Items["Tenant:GoogleSiteVerification"]?.ToString();
+
+    ViewData["Robots"] = "index, follow";
+    ViewData["ThemeColor"] = "#18181b";
+    ViewData["Url"] = $"{exposedUrl}/{ViewContext?.HttpContext.Request.Path}".NormalizeUrl();
+    ViewData["ImageUrl"] = $"{exposedUrl}/{@ProjectRoute.Content}/favicon.png".NormalizeUrl();
+
+}
+<!DOCTYPE html>
+<html lang="@ViewContext?.HttpContext.Items["Language"]">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <base href="/" />
+    <script type="importmap"></script>
+    
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Primary Meta Tags -->
+    <title>@ViewData["Title"]</title>
+    <meta name="title" content="@ViewData["Title"]" />
+    <meta name="description" content="@ViewData["Description"]" />
+
+    @if(!string.IsNullOrWhiteSpace("Author"))
+    {
+        <meta name="author" content="@ViewData["Author"]" />
+    }
+    <meta name="robots" content="@ViewData["Robots"]" />
+    <meta name="theme-color" content="@ViewData["ThemeColor"]" />
+
+    <!-- Google -->
+    <meta name="google" content="notranslate">
+    @if (!string.IsNullOrWhiteSpace(gsv))
+    {
+        <meta name="google-site-verification" content="@gsv" />
+    }
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="@ViewData["Url"]" />
+    <meta property="og:title" content="@ViewData["Title"]" />
+    <meta property="og:description" content="@ViewData["Description"]" />
+    @* <meta property="og:image" content="@ViewData["ImageUrl"]" /> *@
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="@ViewData[index: "Url"]" />
+    <meta property="twitter:title" content="@ViewData["Title"]" />
+    <meta property="twitter:description" content="@ViewData["Description"]" />
+    @* <meta property="twitter:image" content="@ViewData["ImageUrl"]" /> *@
+
+    @if (!string.IsNullOrWhiteSpace(script))
+    {
+        @Html.Raw(script)
+    }
+
+    <link rel="stylesheet" href="@ProjectRoute.Content/css/styles.css" />
+    <link rel="preload" href="@ProjectRoute.Content/css/styles.css" as="style" />
+
+    @if (ViewContext?.HttpContext.Items["ThemeEnabled"] is true)
+    {
+        <link rel="stylesheet" href="@ProjectRoute.Content/css/dark-theme.css" />
+        <link rel="preload" href="@ProjectRoute.Content/css/dark-theme.css" as="style" />
+    }
+    
+    <link rel="icon" type="image/png" href="@ProjectRoute.Content/favicon.png" />
+
+</head>
+
+<body class="@ViewContext?.HttpContext.Items["Theme"] @ViewData["BodyClass"] @ViewData["MainClass"] @ViewContext?.HttpContext.Items["Tenant:Class"]">
+
+    @RenderBody()
+
+    @await RenderSectionAsync("Scripts", required: false)
+    
+</body>
+
+</html>

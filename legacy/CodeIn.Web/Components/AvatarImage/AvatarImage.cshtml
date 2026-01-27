@@ -1,0 +1,10 @@
+<div class="avatar-image-container">
+    @if (string.IsNullOrWhiteSpace(Model.Src))
+    {
+        <span class="avatar-skeleton">@Model.Initials</span>
+    }
+    else
+    {
+        <img class="avatar-image" src="@Model.Src" alt="@Model.Alt"  />
+    }
+</div>
