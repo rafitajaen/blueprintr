@@ -43,9 +43,8 @@ blueprintr/
 │   └── Blueprintr.Endpoints.Tests/     # NUnit tests (12 tests ✅)
 ├── docs/                               # DocFX documentation
 ├── .github/workflows/                  # CI/CD pipelines
-│   ├── ci.yml                         # Build + Test
-│   ├── publish-nuget.yml              # NuGet publishing
-│   └── documentation.yml              # Docs generation
+│   ├── ci.yml                         # PR validation (tests only)
+│   └── deploy.yml                     # Auto-deploy: Tests → NuGet → Docs
 ├── .vscode/                           # VS Code config
 ├── Blueprintr.slnx                    # Solution file
 └── CLAUDE.md                          # This file
@@ -85,7 +84,7 @@ find . -type f \( -name "*.md" -o -name "*.csproj" -o -name "*.json" \) \
 GitHub → Settings → Branches → Add rule
 Branch pattern: main
 ✅ Require pull request before merging
-✅ Require status checks: CI - Build and Test / build-and-test
+✅ Require status checks: "Build and Test"
 ✅ Do not allow bypassing
 ```
 
@@ -178,7 +177,7 @@ dotnet test tests/Blueprintr.Endpoints.Tests/
 ```
 1. Push to feature branch
 2. Create Pull Request
-3. CI Workflow runs:
+3. CI Workflow (ci.yml) runs:
    - Restore dependencies
    - Build (Release)
    - Run tests
@@ -187,15 +186,28 @@ dotnet test tests/Blueprintr.Endpoints.Tests/
    Tests fail? → Merge blocked ❌
 ```
 
-### What Happens on Main Push?
+### What Happens on Merge to Main?
 ```
-1. Merge to main
-2. Publish Workflow runs:
-   - Run CI first (must pass)
+1. Merge to main (or direct push)
+2. Deploy Workflow (deploy.yml) runs EVERYTHING automatically:
+
+   Step 1: Build & Test
+   - Restore dependencies
+   - Build (Release)
+   - Run all tests
+   - Generate coverage reports
+
+   Step 2: Publish to NuGet (if src/ changed)
    - Detect changed projects
-   - Build packages
-   - Version with MinVer
-   - Publish to NuGet
+   - Version with MinVer (from git tags)
+   - Pack NuGet packages
+   - Publish to NuGet.org
+
+   Step 3: Deploy Documentation
+   - Generate API docs with DocFX
+   - Deploy to GitHub Pages
+
+All in one workflow! 🚀
 ```
 
 ## 📚 Adding New Library
