@@ -7,7 +7,7 @@
 
     <!-- NuGet Package Properties -->
     <PackageId>Blueprintr</PackageId>
-    <Authors>Blueprintr Team</Authors>
+    <Authors>Rafael Tajahuerce</Authors>
     <Company>Blueprintr</Company>
     <Product>Blueprintr</Product>
     <Description>Production-ready boilerplate utilities library for .NET projects including converters, validators, extensions, and common patterns.</Description>
