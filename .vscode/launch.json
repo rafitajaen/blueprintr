@@ -6,7 +6,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/src/Blueprintr.Endpoints/bin/Debug/net10.0/Blueprintr.Endpoints.dll",
+      "program": "${workspaceFolder}/src/Blueprintr/bin/Debug/net10.0/Blueprintr.dll",
       "args": [],
       "cwd": "${workspaceFolder}",
       "console": "internalConsole",

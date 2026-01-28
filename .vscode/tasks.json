@@ -89,7 +89,7 @@
       "type": "process",
       "args": [
         "pack",
-        "${workspaceFolder}/src/Blueprintr.Endpoints/Blueprintr.Endpoints.csproj",
+        "${workspaceFolder}/src/Blueprintr/Blueprintr.csproj",
         "--configuration",
         "Release",
         "--output",
@@ -105,7 +105,7 @@
         "watch",
         "run",
         "--project",
-        "${workspaceFolder}/src/Blueprintr.Endpoints/Blueprintr.Endpoints.csproj"
+        "${workspaceFolder}/src/Blueprintr/Blueprintr.csproj"
       ],
       "problemMatcher": "$msCompile"
     }

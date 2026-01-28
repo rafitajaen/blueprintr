@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using NodaTime;
 using NodaTime.Serialization.SystemTextJson;
 using System.Text.Json.Serialization;
+using Serilog;
 
 namespace Blueprintr.DependencyInjection;
 
@@ -44,12 +45,14 @@ public static class WebApplicationExtensions
     /// - Configures JSON serialization with enum string conversion, NodaTime support, and null value handling
     /// Added in version 1.0.0.
     /// </remarks>
-    public static WebApplicationBuilder ConfigureWebHost(
+    public static WebApplicationBuilder ConfigureWebHost
+    (
         this WebApplicationBuilder builder,
         string settingsFilename = "appsettings.json",
         string settingsDirectory = "settings",
         CompressionLevel compressionLevel = CompressionLevel.Fastest,
-        Action<JsonOptions>? configureJsonOptions = null)
+        Action<JsonOptions>? configureJsonOptions = null
+    )
     {
         builder.WebHost.UseContentRoot(Directory.GetCurrentDirectory());
         builder.WebHost.UseKestrel(options => builder.Configuration.GetSection("Kestrel").Bind(options));
@@ -81,6 +84,9 @@ public static class WebApplicationExtensions
             serviceType: typeof(CancellationToken),
             implementationFactory: sp => sp.GetRequiredService<IHttpContextAccessor>().HttpContext?.RequestAborted ?? CancellationToken.None
         );
+
+        /* Configure Serilog */
+        builder.Host.UseSerilog((ctx, logger) => logger.ReadFrom.Configuration(ctx.Configuration));
 
         /* Configure JSON Serialization */
         builder.Services.Configure<JsonOptions>(options =>
