@@ -56,17 +56,17 @@ The simplest and most universal method:
 # Navigate to your project directory
 cd /path/to/your/project
 
-# Install Blueprintr.Endpoints
-dotnet add package Blueprintr.Endpoints
+# Install Blueprintr
+dotnet add package Blueprintr
 ```
 
 **For specific versions:**
 ```bash
 # Install a specific stable version
-dotnet add package Blueprintr.Endpoints --version 1.0.0
+dotnet add package Blueprintr --version 1.0.0
 
 # Install the latest pre-release version
-dotnet add package Blueprintr.Endpoints --prerelease
+dotnet add package Blueprintr --prerelease
 ```
 
 ### Method 2: Package Manager Console (Visual Studio)
@@ -75,13 +75,13 @@ If you're using Visual Studio:
 
 ```powershell
 # Install latest stable version
-Install-Package Blueprintr.Endpoints
+Install-Package Blueprintr
 
 # Install specific version
-Install-Package Blueprintr.Endpoints -Version 1.0.0
+Install-Package Blueprintr -Version 1.0.0
 
 # Install pre-release version
-Install-Package Blueprintr.Endpoints -Prerelease
+Install-Package Blueprintr -Prerelease
 ```
 
 ### Method 3: Visual Studio NuGet GUI
@@ -89,7 +89,7 @@ Install-Package Blueprintr.Endpoints -Prerelease
 1. Right-click on your project in Solution Explorer
 2. Select **"Manage NuGet Packages"**
 3. Click the **"Browse"** tab
-4. Search for **"Blueprintr.Endpoints"**
+4. Search for **"Blueprintr"**
 5. Select the package and click **"Install"**
 6. Review and accept the license
 
@@ -106,7 +106,7 @@ Add directly to your project file:
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Blueprintr.Endpoints" Version="1.0.0" />
+    <PackageReference Include="Blueprintr" Version="1.0.0" />
   </ItemGroup>
 </Project>
 ```
@@ -125,21 +125,21 @@ After installation, verify the package is correctly installed:
 dotnet list package
 
 # Expected output includes:
-# > Blueprintr.Endpoints    1.0.0
+# > Blueprintr    1.0.0
 ```
 
 ---
 
 ## Basic Usage
 
-### Blueprintr.Endpoints
+### Blueprintr
 
-The Blueprintr.Endpoints library provides utilities for working with endpoint paths in ASP.NET Core applications.
+The Blueprintr library provides utilities for working with endpoint paths in ASP.NET Core applications.
 
 #### Import the Namespace
 
 ```csharp
-using Blueprintr.Endpoints;
+using Blueprintr;
 ```
 
 #### GetEndpointName Extension Method
@@ -147,7 +147,7 @@ using Blueprintr.Endpoints;
 Converts an endpoint path to a standardized, URL-friendly name:
 
 ```csharp
-using Blueprintr.Endpoints;
+using Blueprintr;
 
 public class MyService
 {
@@ -165,6 +165,85 @@ public class MyService
 - Preserves other characters
 - Case is preserved
 
+#### Entity Framework Core with PostgreSQL
+
+The Blueprintr library provides extension methods for simplified Entity Framework Core configuration with PostgreSQL:
+
+```csharp
+using Blueprintr.EntityFramework;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Configure DbContext with optimized PostgreSQL settings
+builder.AddDbContext<AppDbContext>(
+    builder.Configuration.GetConnectionString("DefaultConnection")
+);
+
+var app = builder.Build();
+
+// Apply migrations and seed database (in development)
+app.UseDbContext<AppDbContext>();
+
+app.Run();
+```
+
+**Features included:**
+- ✅ **Connection pooling** - Improved performance with `AddDbContextPool`
+- ✅ **PostgreSQL support** - Npgsql provider with NodaTime
+- ✅ **Snake case naming** - Automatic conversion (UserName → user_name)
+- ✅ **Single query optimization** - Better LINQ query performance
+- ✅ **Auto-migrations** - Applies pending migrations on startup
+- ✅ **Development seeding** - Optional automatic data seeding
+
+**Optional: Implement seeding interface**
+
+```csharp
+using Blueprintr.EntityFramework;
+using Microsoft.EntityFrameworkCore;
+
+public class AppDbContext : DbContext, ISeedeableDbContext
+{
+    public DbSet<User> Users { get; set; }
+
+    public AppDbContext(DbContextOptions<AppDbContext> options)
+        : base(options)
+    {
+    }
+
+    // Called before seeding check
+    public void Initialize()
+    {
+        // Create views, triggers, etc.
+    }
+
+    // Check if database already has seed data
+    public bool IsSeeded()
+    {
+        return Users.Any();
+    }
+
+    // Seed initial data (only in Development)
+    public void Seed()
+    {
+        Users.AddRange(
+            new User { Name = "Admin", Email = "admin@example.com" },
+            new User { Name = "Test User", Email = "test@example.com" }
+        );
+        // SaveChanges() called automatically after Seed()
+    }
+}
+```
+
+**Connection String Example:**
+
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=localhost;Database=myapp;Username=postgres;Password=postgres"
+  }
+}
+```
+
 ---
 
 ## Code Examples
@@ -172,7 +251,7 @@ public class MyService
 ### Example 1: Basic Endpoint Name Conversion
 
 ```csharp
-using Blueprintr.Endpoints;
+using Blueprintr;
 
 // Single conversion
 var name = "/api/users".GetEndpointName();
@@ -182,7 +261,7 @@ Console.WriteLine(name);  // Output: api-users
 ### Example 2: Multiple Endpoint Processing
 
 ```csharp
-using Blueprintr.Endpoints;
+using Blueprintr;
 
 var endpoints = new[]
 {
@@ -210,7 +289,7 @@ foreach (var endpoint in endpoints)
 ### Example 3: ASP.NET Core Minimal API Integration
 
 ```csharp
-using Blueprintr.Endpoints;
+using Blueprintr;
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
@@ -230,7 +309,7 @@ app.Run();
 ### Example 4: Controller-Based API Integration
 
 ```csharp
-using Blueprintr.Endpoints;
+using Blueprintr;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -258,7 +337,7 @@ public class UsersController : ControllerBase
 ### Example 5: Dynamic Route Registration
 
 ```csharp
-using Blueprintr.Endpoints;
+using Blueprintr;
 
 public static class EndpointRegistration
 {
@@ -282,7 +361,7 @@ EndpointRegistration.RegisterEndpoints(app, routes);
 ### Example 6: OpenAPI/Swagger Operation IDs
 
 ```csharp
-using Blueprintr.Endpoints;
+using Blueprintr;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
@@ -297,6 +376,172 @@ app.UseSwaggerUI();
 app.MapGet("/api/users/{id}", (int id) => Results.Ok(new { id, name = "User" }))
    .WithName($"{"/api/users".GetEndpointName()}-get-by-id")
    .WithOpenApi();
+
+app.Run();
+```
+
+### Example 7: Entity Framework with PostgreSQL
+
+Complete example showing Entity Framework setup with automatic seeding:
+
+```csharp
+using Blueprintr.EntityFramework;
+using Microsoft.EntityFrameworkCore;
+
+// Program.cs
+var builder = WebApplication.CreateBuilder(args);
+
+// Add DbContext with PostgreSQL
+builder.AddDbContext<BlogDbContext>(
+    builder.Configuration.GetConnectionString("DefaultConnection")
+);
+
+var app = builder.Build();
+
+// Apply migrations and seed
+app.UseDbContext<BlogDbContext>();
+
+// Define endpoints
+app.MapGet("/api/posts", async (BlogDbContext db) =>
+{
+    var posts = await db.Posts.ToListAsync();
+    return Results.Ok(posts);
+});
+
+app.MapPost("/api/posts", async (Post post, BlogDbContext db) =>
+{
+    db.Posts.Add(post);
+    await db.SaveChangesAsync();
+    return Results.Created($"/api/posts/{post.Id}", post);
+});
+
+app.Run();
+
+// Models
+public class Post
+{
+    public int Id { get; set; }
+    public required string Title { get; set; }
+    public required string Content { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+}
+
+// DbContext with seeding
+public class BlogDbContext : DbContext, ISeedeableDbContext
+{
+    public DbSet<Post> Posts { get; set; }
+
+    public BlogDbContext(DbContextOptions<BlogDbContext> options)
+        : base(options)
+    {
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Post>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Title).IsRequired().HasMaxLength(200);
+            entity.Property(e => e.Content).IsRequired();
+            entity.HasIndex(e => e.CreatedAt);
+        });
+    }
+
+    public void Initialize()
+    {
+        // Custom initialization (runs every startup)
+        Console.WriteLine("Database initialized");
+    }
+
+    public bool IsSeeded()
+    {
+        return Posts.Any();
+    }
+
+    public void Seed()
+    {
+        // Seed data (only in Development, only once)
+        Posts.AddRange(
+            new Post
+            {
+                Title = "Welcome to Blueprintr",
+                Content = "This is a sample blog post created during database seeding."
+            },
+            new Post
+            {
+                Title = "Getting Started with EF Core",
+                Content = "Learn how to use Entity Framework Core with PostgreSQL."
+            }
+        );
+    }
+}
+```
+
+**appsettings.json:**
+
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=localhost;Database=blogdb;Username=postgres;Password=postgres;Include Error Detail=true"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.EntityFrameworkCore": "Warning"
+    }
+  }
+}
+```
+
+**Create and apply migrations:**
+
+```bash
+# Install EF Core tools (first time only)
+dotnet tool install --global dotnet-ef
+
+# Create initial migration
+dotnet ef migrations add InitialCreate
+
+# Migration will be applied automatically on app startup
+# Or manually: dotnet ef database update
+```
+
+### Example 8: Production-Ready Entity Framework Setup
+
+For production environments, consider disabling automatic migrations:
+
+```csharp
+using Blueprintr.EntityFramework;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add DbContext
+builder.AddDbContext<AppDbContext>(
+    builder.Configuration.GetConnectionString("DefaultConnection")
+);
+
+var app = builder.Build();
+
+// Custom migration strategy for production
+if (app.Environment.IsProduction())
+{
+    // Manual migration deployment recommended
+    // Apply migrations only if explicitly requested via environment variable
+    if (bool.TryParse(
+        Environment.GetEnvironmentVariable("RUN_MIGRATIONS"),
+        out var runMigrations) && runMigrations)
+    {
+        using var scope = app.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        await db.Database.MigrateAsync();
+    }
+}
+else
+{
+    // Development: auto-migrate and seed
+    app.UseDbContext<AppDbContext>();
+}
 
 app.Run();
 ```
@@ -367,7 +612,7 @@ public class LoggingMiddleware
 Test your endpoint name transformations:
 
 ```csharp
-using Blueprintr.Endpoints;
+using Blueprintr;
 using NUnit.Framework;
 
 [TestFixture]
@@ -384,6 +629,86 @@ public class EndpointNamingTests
 }
 ```
 
+### 5. Entity Framework Best Practices
+
+**Connection String Security:**
+
+Never hardcode connection strings. Use user secrets in development:
+
+```bash
+# Initialize user secrets
+dotnet user-secrets init
+
+# Set connection string
+dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Host=localhost;Database=myapp;Username=postgres;Password=postgres"
+```
+
+**Production Migration Strategy:**
+
+Avoid automatic migrations in production:
+
+```csharp
+// Recommended: Separate migration from app startup
+// Deploy migrations using:
+// dotnet ef database update --connection "production-connection-string"
+
+// Or use a separate migration job in your CI/CD pipeline
+```
+
+**Connection Pooling:**
+
+The `AddDbContext<T>` extension uses connection pooling by default. Monitor pool usage:
+
+```csharp
+// Monitor in logs
+builder.Services.AddDbContextPool<AppDbContext>(
+    options => options.UseNpgsql(connectionString)
+        .LogTo(Console.WriteLine, LogLevel.Information),
+    poolSize: 128  // Default pool size
+);
+```
+
+**Seeding Strategy:**
+
+Only seed in development. For production data:
+
+```csharp
+public void Seed()
+{
+    // Development seed data only
+    if (!Users.Any(u => u.Email == "admin@example.com"))
+    {
+        Users.Add(new User { /* ... */ });
+    }
+}
+
+// Production: Use migration data seeding
+protected override void Up(MigrationBuilder migrationBuilder)
+{
+    migrationBuilder.InsertData(
+        table: "Users",
+        columns: new[] { "Id", "Name", "Email" },
+        values: new object[] { 1, "Admin", "admin@example.com" }
+    );
+}
+```
+
+**Performance Optimization:**
+
+```csharp
+// Use AsNoTracking for read-only queries
+var posts = await db.Posts.AsNoTracking().ToListAsync();
+
+// Use projections to fetch only needed data
+var postTitles = await db.Posts
+    .Select(p => new { p.Id, p.Title })
+    .ToListAsync();
+
+// Batch operations for bulk inserts
+db.Posts.AddRange(largeBatchOfPosts);
+await db.SaveChangesAsync();
+```
+
 ---
 
 ## Troubleshooting
@@ -397,7 +722,7 @@ public class EndpointNamingTests
 1. **Verify package name:**
    ```bash
    # Correct
-   dotnet add package Blueprintr.Endpoints
+   dotnet add package Blueprintr
 
    # Incorrect
    dotnet add package Blueprintr  # Old package name
@@ -445,7 +770,7 @@ public class EndpointNamingTests
 
 4. **Update package to latest:**
    ```bash
-   dotnet add package Blueprintr.Endpoints --version "*"
+   dotnet add package Blueprintr --version "*"
    ```
 
 ### Extension Method Not Found
@@ -456,7 +781,7 @@ public class EndpointNamingTests
 
 1. **Add the using directive:**
    ```csharp
-   using Blueprintr.Endpoints;
+   using Blueprintr;
    ```
 
 2. **Verify installation:**
@@ -487,7 +812,7 @@ public class EndpointNamingTests
 
 3. **Force specific version:**
    ```xml
-   <PackageReference Include="Blueprintr.Endpoints" Version="[1.0.0]" />
+   <PackageReference Include="Blueprintr" Version="[1.0.0]" />
    ```
 
 ---
@@ -513,7 +838,7 @@ Interested in contributing? Here's how:
 ### Stay Updated
 
 - **Watch the Repository**: Get notified of new releases
-- **Check NuGet**: New versions appear at https://www.nuget.org/packages/Blueprintr.Endpoints/
+- **Check NuGet**: New versions appear at https://www.nuget.org/packages/Blueprintr/
 - **Read Release Notes**: Each release includes detailed change information
 
 ---
@@ -522,12 +847,12 @@ Interested in contributing? Here's how:
 
 | Action | Command |
 |--------|---------|
-| Install package | `dotnet add package Blueprintr.Endpoints` |
-| Install specific version | `dotnet add package Blueprintr.Endpoints --version 1.0.0` |
-| Install prerelease | `dotnet add package Blueprintr.Endpoints --prerelease` |
+| Install package | `dotnet add package Blueprintr` |
+| Install specific version | `dotnet add package Blueprintr --version 1.0.0` |
+| Install prerelease | `dotnet add package Blueprintr --prerelease` |
 | List packages | `dotnet list package` |
-| Update package | `dotnet add package Blueprintr.Endpoints` |
-| Remove package | `dotnet remove package Blueprintr.Endpoints` |
+| Update package | `dotnet add package Blueprintr` |
+| Remove package | `dotnet remove package Blueprintr` |
 | Clear cache | `dotnet nuget locals all --clear` |
 
 ---

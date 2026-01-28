@@ -8,26 +8,52 @@ Blueprintr provides reusable, well-tested C# libraries that accelerate developme
 
 ## Available Libraries
 
-### Blueprintr.Endpoints
+### Blueprintr
 
-[![NuGet](https://img.shields.io/nuget/v/Blueprintr.Endpoints.svg)](https://www.nuget.org/packages/Blueprintr.Endpoints/)
+[![NuGet](https://img.shields.io/nuget/v/Blueprintr.svg)](https://www.nuget.org/packages/Blueprintr/)
 
-Common utilities and patterns for building endpoints in ASP.NET Core applications.
+Common utilities and patterns for building endpoints and configuring Entity Framework Core in ASP.NET Core applications.
 
 **Quick Installation:**
 ```bash
-dotnet add package Blueprintr.Endpoints
+dotnet add package Blueprintr
 ```
 
-**Quick Usage:**
+**Quick Usage - Endpoint Utilities:**
 ```csharp
-using Blueprintr.Endpoints;
+using Blueprintr;
 
 var endpointName = "/api/users".GetEndpointName();
 // Returns: "api-users"
 ```
 
-**API Documentation:** [Blueprintr.Endpoints API Reference](xref:Blueprintr.Endpoints)
+**Quick Usage - Entity Framework with PostgreSQL:**
+```csharp
+using Blueprintr.EntityFramework;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Configure DbContext with PostgreSQL (includes pooling, snake_case, NodaTime)
+builder.AddDbContext<AppDbContext>(
+    builder.Configuration.GetConnectionString("DefaultConnection")
+);
+
+var app = builder.Build();
+
+// Apply migrations and seed database (optional seeding in Development)
+app.UseDbContext<AppDbContext>();
+
+app.Run();
+```
+
+**Features:**
+- ✅ Endpoint path formatting utilities
+- ✅ Entity Framework Core with PostgreSQL support
+- ✅ Connection pooling and performance optimization
+- ✅ Automatic migrations and optional seeding
+- ✅ Snake case naming conventions for database tables
+
+**API Documentation:** [Blueprintr API Reference](xref:Blueprintr)
 
 ## Documentation Overview
 
@@ -52,7 +78,7 @@ var endpointName = "/api/users".GetEndpointName();
 
 ## Quick Links
 
-- **NuGet Package**: https://www.nuget.org/packages/Blueprintr.Endpoints/
+- **NuGet Package**: https://www.nuget.org/packages/Blueprintr/
 - **GitHub Repository**: https://github.com/rafitajaen/blueprintr
 - **GitHub Issues**: https://github.com/rafitajaen/blueprintr/issues
 - **GitHub Discussions**: https://github.com/rafitajaen/blueprintr/discussions
@@ -62,9 +88,9 @@ var endpointName = "/api/users".GetEndpointName();
 ```
 blueprintr/
 ├── src/                           # Source code
-│   └── Blueprintr.Endpoints/      # NuGet library
+│   └── Blueprintr/                # NuGet library
 ├── tests/                         # Test projects
-│   └── Blueprintr.Endpoints.Tests/ # NUnit tests
+│   └── Blueprintr.Tests/          # NUnit tests
 ├── docs/                          # Documentation
 ├── .github/workflows/             # CI/CD pipelines
 │   ├── ci.yml                     # Build + Test

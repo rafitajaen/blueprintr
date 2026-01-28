@@ -9,17 +9,34 @@ Collection of boilerplate code libraries for C# projects. Reusable libraries aut
 ## 📚 Available Libraries
 
 ### Blueprintr
-Common utilities and patterns for building endpoints in ASP.NET Core applications.
+Common utilities and patterns for building endpoints and configuring Entity Framework Core in ASP.NET Core applications.
 
 ```bash
 dotnet add package Blueprintr
 ```
 
+**Endpoint utilities:**
 ```csharp
 using Blueprintr;
 
 var name = "/api/users".GetEndpointName();
 // Returns: "api-users"
+```
+
+**Entity Framework with PostgreSQL:**
+```csharp
+using Blueprintr.EntityFramework;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Configure DbContext with PostgreSQL
+builder.AddDbContext<AppDbContext>(
+    builder.Configuration.GetConnectionString("DefaultConnection")
+);
+
+var app = builder.Build();
+app.UseDbContext<AppDbContext>();
+app.Run();
 ```
 
 ## 🚀 Quick Start

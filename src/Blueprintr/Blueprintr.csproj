@@ -7,11 +7,11 @@
 
     <!-- NuGet Package Properties -->
     <PackageId>Blueprintr</PackageId>
-    <Authors>Rafael Tajahuerce</Authors>
+    <Authors>Rafael Jaen</Authors>
     <Company>Blueprintr</Company>
     <Product>Blueprintr</Product>
     <Description>Production-ready boilerplate utilities library for .NET projects including converters, validators, extensions, and common patterns.</Description>
-    <Copyright>Copyright © 2025 Rafael Tajahuerce</Copyright>
+    <Copyright>Copyright © 2026 Rafael Jaen</Copyright>
     <PackageTags>dotnet;boilerplate;utilities;blueprintr;converters;validators;extensions</PackageTags>
     <RepositoryUrl>https://github.com/rafitajaen/blueprintr</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -36,14 +36,27 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" />
-    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
-    <PackageReference Include="NodaTime" />
-    <PackageReference Include="NodaTime.Serialization.SystemTextJson" />
     <PackageReference Include="AspNetCore.HealthChecks.NpgSql" />
     <PackageReference Include="AspNetCore.HealthChecks.Redis" />
+    <PackageReference Include="EFCore.NamingConventions" />
     <PackageReference Include="FileSignatures" />
+    <PackageReference Include="FluentValidation" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    <PackageReference Include="NodaTime" />
+    <PackageReference Include="NodaTime.Serialization.SystemTextJson" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.NodaTime" />
+    <PackageReference Include="Scalar.AspNetCore" />
+    <PackageReference Include="Serilog.AspNetCore" />
     <PackageReference Include="Ulid" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleToSuffix Include=".Tests" />
+    <InternalsVisibleToSuffix Include=".UnitTests" />
+    <InternalsVisibleToSuffix Include=".FunctionalTests" /> 
+    <InternalsVisibleToSuffix Include=".IntegrationTests" /> 
   </ItemGroup>
 
   <ItemGroup>
