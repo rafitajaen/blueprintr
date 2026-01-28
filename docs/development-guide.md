@@ -48,7 +48,7 @@ Blueprintr uses **NUnit** as the testing framework with strict quality standards
 
 | Element | Convention | Example |
 |---------|------------|---------|
-| Test Project | `{Library}.Tests` | `Blueprintr.Endpoints.Tests` |
+| Test Project | `{Library}.Tests` | `Blueprintr.Tests` |
 | Test Class | `{ClassName}Tests` | `EndpointExtensionsTests` |
 | Test Method | `MethodName_Scenario_ExpectedBehavior` | `GetEndpointName_WithLeadingSlash_RemovesSlash` |
 
@@ -59,7 +59,7 @@ Blueprintr uses **NUnit** as the testing framework with strict quality standards
 Follow the **Arrange-Act-Assert (AAA)** pattern:
 
 ```csharp
-namespace Blueprintr.Endpoints.Tests;
+namespace Blueprintr.Tests;
 
 [TestFixture]
 public class EndpointExtensionsTests
@@ -145,7 +145,7 @@ dotnet test --configuration Release
 dotnet test --verbosity detailed
 
 # Run specific project
-dotnet test tests/Blueprintr.Endpoints.Tests/
+dotnet test tests/Blueprintr.Tests/
 
 # Run tests matching a filter
 dotnet test --filter "FullyQualifiedName~GetEndpointName"
@@ -365,7 +365,7 @@ Blueprintr uses **DocFX** for documentation generation.
 #### Document All Public APIs
 
 ```csharp
-namespace Blueprintr.Endpoints;
+namespace Blueprintr;
 
 /// <summary>
 /// Extension methods for endpoint path manipulation.
@@ -453,10 +453,10 @@ docfx serve _site
 git checkout -b feat/new-feature
 
 # 2. Make changes in src/
-code src/Blueprintr.Endpoints/NewFeature.cs
+code src/Blueprintr/NewFeature.cs
 
 # 3. Add tests
-code tests/Blueprintr.Endpoints.Tests/NewFeatureTests.cs
+code tests/Blueprintr.Tests/NewFeatureTests.cs
 
 # 4. Run tests locally
 dotnet test
@@ -737,6 +737,50 @@ yamllint .github/workflows/ci.yml
 | `Directory.Build.props` | Shared build settings |
 | `Directory.Packages.props` | Central package versions |
 | `docfx.json` | DocFX configuration |
+
+### Package Management
+
+#### Directory.Packages.props Structure
+
+Blueprintr uses **Central Package Management (CPM)** to maintain consistent package versions across all projects. The `Directory.Packages.props` file is organized into logical categories:
+
+| Category | Description | Examples |
+|----------|-------------|----------|
+| **ASP.NET Core & Base Framework** | Core web framework and authentication | JWT Bearer, OpenAPI, Caching |
+| **Entity Framework Core** | ORM and database providers | EF Core, PostgreSQL, migrations |
+| **Validation & Serialization** | Data validation and serialization | FluentValidation, NodaTime, ULID |
+| **Caching & Performance** | Caching strategies and optimizations | Redis, FusionCache |
+| **Health Checks** | Application health monitoring | PostgreSQL, Redis health checks |
+| **Messaging & Event Bus** | Message queue and event-driven patterns | MassTransit, RabbitMQ |
+| **Observability: Logging** | Structured logging infrastructure | Serilog, Console, Seq sinks |
+| **Observability: OpenTelemetry** | Distributed tracing and metrics | OTLP exporter, instrumentation |
+| **API Documentation** | API documentation and interactive UI | Swagger, Scalar |
+| **Email & Templates** | Email sending and template rendering | MailKit, MJML, Razor |
+| **Testing** | Testing frameworks and tools | NUnit, NSubstitute, Selenium |
+| **.NET Aspire** | Cloud-native orchestration | Aspire hosting, resilience |
+| **Utilities** | Helper libraries | Humanizer, Markdig, file handling |
+| **Code Quality & Analysis** | Static analysis and linting | SonarAnalyzer |
+| **Build & Versioning** | Build automation and versioning | MinVer, SourceLink |
+
+#### Adding New Packages
+
+```bash
+# Add package reference to Directory.Packages.props
+<PackageVersion Include="NewPackage" Version="1.0.0" />
+
+# Reference in project (version omitted)
+dotnet add package NewPackage
+
+# In .csproj (no version attribute)
+<PackageReference Include="NewPackage" />
+```
+
+#### Best Practices
+
+- **Versions**: All versions centralized in `Directory.Packages.props`
+- **Organization**: Keep packages sorted within their category
+- **Updates**: Update versions centrally for consistency across projects
+- **Documentation**: Comment unusual version choices or pinned versions
 
 ---
 
